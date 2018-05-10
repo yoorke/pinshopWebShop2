@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "css/style.min.css",
+    "inputFile": "less/style.less",
+    "minify": {
+      "commentMode": "none"
+    },
+    "options": {
+      "relativeUrls": false
+    }
+  },
+  {
+    "outputFile": "css/font-awesome.css",
+    "inputFile": "less/font-awesome/font-awesome.less",
+    "minify": {
+      "commentMode": "none"
+    },
+    "options": {
+      "relativeUrls": false
+    }
+  }
+]

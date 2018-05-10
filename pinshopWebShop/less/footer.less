@@ -1,0 +1,105 @@
+﻿.footer {
+    //margin-top: 2em;
+    border-top:1px solid #aaa;
+
+    ul {
+        list-style-type: none;
+        padding-left: 0.5em;
+    }
+
+    .footer-top {
+        //background-color:#f7f7f7;
+        color: #555;
+        padding-bottom:1em;
+        background:linear-gradient(to bottom, #ccc 5%, #f7f7f7);
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: bold;
+
+            .fa {
+                //color: #ccc;
+            }
+        }
+
+        p.content {
+            margin-left: 2.3em;
+            margin-bottom: 0;
+        }
+
+        .content.primary {
+            color: #175e87;
+            font-weight: bold;
+            //font-size:1.3em;
+        }
+
+        p.content.primary{
+            //font-size:1.3em;
+        }
+
+        .social-icons{
+            font-size:3em;
+
+            .fa{
+                transition:0.2s ease all;
+                color:#999;
+            }
+
+            .fa-facebook-official:hover{
+                color:#3b5998;
+            }
+
+            .fa-youtube-play:hover{
+                color:#ff0000;
+            }
+
+            .fa-twitter-square:hover{
+                color:#0084b4;
+            }
+        }
+    }
+
+    .footer-middle {
+        background-color: #2f343d;
+        color: #ccc;
+        padding-bottom: 2em;
+
+        h4 {
+            text-transform: uppercase;
+        }
+
+        a {
+            color: #ccc;
+            transition: 0.2s all ease;
+        }
+
+        a:hover {
+            color: #f0f0f0;
+        }
+
+        .fa {
+            color: @brand-primary;
+            font-size: 0.7em;
+            margin-right:0.7em;
+            transition:0.2s ease all;
+        }
+
+        li:hover{
+            .fa{
+                margin-right:0.1em;
+            }
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        font-size: 0.9em;
+        padding: 0.2em 0;
+        background-color: darken(#2f343d, 10%);
+        border-top: 2px solid @brand-primary;
+
+        p {
+            margin-bottom: 5px;
+        }
+    }
+}

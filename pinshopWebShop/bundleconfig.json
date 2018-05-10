@@ -1,0 +1,124 @@
+[
+  //{
+  //"outputFileName": "js/bootstrap.min.js",
+  //"inputFiles": [
+  //"js.src/bootstrap.js"
+  //],
+  //"minify": {
+  //"enabled": true,
+  //"preserveImportantComments": false
+  //}
+  //},
+  {
+    "outputFileName": "js/main-menu-vertical-v2-start.js",
+    "inputFiles": [
+      "js.src/main-menu-vertical-v2-start.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "js/slider.js",
+    "inputFiles": [
+      "js.src/jquery.mobile.customized.min.js",
+      "js.src/jquery.easing.1.3.js",
+      "js.src/camera.js",
+      "js.src/slider-start.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "js/bundle.js",
+    "inputFiles": [
+      "js.src/modernizr.js",
+      "js.src/bootstrap.js",
+      "js.src/jquery.menu-aim.js",
+      "js.src/main.js",
+      "js.src/jquery.tmpl.min.js",
+      "js.src/tooltip-start.js",
+      "js.src/web-shop.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "js/lightbox.js",
+    "inputFiles": [
+      "js.src/lightbox.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "js/registration.js",
+    "inputFiles": [
+      "js.src/registration.js"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "js/product-image-zoom.js",
+    "inputFiles": [
+      "js.src/product-image-zoom.js"
+    ],
+    "minify": {
+      "enabled": true 
+    }
+  },
+  {
+    "outputFileName": "css/main-menu-vertical-v1.css",
+    "inputFiles": [
+      "css.src/main-menu-vertical-v1.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "css/main-menu-vertical-v2.css",
+    "inputFiles": [
+      "css.src/main-menu-vertical-v2.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  //{
+    //"outputFileName": "css/main-menu-vertical-v2-start.min.css",
+    //"inputFiles": [
+      //"css.src/"
+    //]
+  //},
+  {
+    "outputFileName": "css/camera-bundle.css",
+    "inputFiles": [
+      "css.src/camera.css",
+      "css.src/camera-override.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  },
+  {
+    "outputFileName": "css/lightbox.css",
+    "inputFiles": [
+      "css.src/lightbox.css"
+    ],
+    "minify": {
+      "enabled": true
+    }
+  }
+  
+    
+  
+]

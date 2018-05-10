@@ -1,0 +1,157 @@
+﻿.ws-btn{
+    border:none;
+    background-color:transparent;
+    transition:0.2s ease all;
+}
+
+.btn-cart{
+    background-color:@brand-primary;
+    color:#eee;
+    
+    text-transform:uppercase;
+    padding:5px 0;
+
+    .fa{
+        font-size:1.2em;
+        margin-right:0.5em;
+        transition:0.5s ease all;
+    }
+}
+
+.btn-cart:hover{
+    background-color:lighten(@brand-primary, 10%);
+
+    .fa{
+        transform:rotateY(360deg);
+    }
+}
+
+.btn-icon{
+    transition:0.2s ease all;
+    color:@dark-gray;
+}
+
+.btn-icon:hover{
+    color:@brand-primary;
+    font-size:1.2em;
+}
+
+//.product-fp .btn-icon{
+    //position:absolute;
+    //top:2px;
+    //color:@default-gray;
+    //text-align:center;
+    //transition:0.2s ease all;
+//}
+
+.btn-details{
+    background-color:#ccc;
+    color:@dark-gray;
+    width:100%;
+    text-align:center;
+    text-transform:uppercase;
+    padding:2px 0;
+    display:inline-block;
+}
+
+//.btn-compare{
+    //position:absolute;
+    //top:2px;
+    //left:0;
+    //color:@default-gray;    
+    //text-align:center;
+    //text-transform:uppercase;
+    //background-color:transparent;
+    //border:none;
+    //transition:0.2s ease all;
+    //display:block;
+//}
+
+//.btn-compare:hover{
+    //color:@brand-primary;
+    //font-size:1.2em;
+    //margin-top:-2px;
+    //margin-left:-2px;
+//}
+
+//.btn-wishlist{
+    //position:absolute;
+    //top:2px;
+    //right:0;
+    //color:@default-gray;
+    //text-align:center;
+    //text-transform:uppercase;
+    //background-color:transparent;
+    //border:none;
+    //display:block;
+    //transition:0.2s ease all;
+//}
+
+//.btn-wishlist:hover{
+    //color:@brand-primary;
+    //font-size:1.2em;
+    //margin-top:-2px;
+    //margin-right:-2px;
+//}
+
+
+//Buttons in productFP
+
+.product-fp {
+    .btn-cart{
+        display:inline-block;
+        font-size:1.1em;
+        width:100%;
+    }
+
+    .btn-icon{
+        position:absolute;
+        bottom:2px;
+        //color:@default-gray;
+        text-align:center;
+        //transition:0.2s ease all;
+    }
+
+    .btn-icon:hover{
+        //color:@brand-primary;
+        //font-size:1.2em;
+        //margin-top:-2px;
+    }
+
+    .btn-wishlist{
+        right:0;
+    }
+
+    .btn-wishlist:hover{
+        margin-right:-2px;
+        margin-bottom:-2px;
+        //bottom:0px;
+        //right:-2px;
+    }
+
+    .btn-compare{
+        left:0;
+    }
+
+    .btn-compare:hover{
+        margin-left:-2px;
+        margin-bottom:-2px;
+    }
+}
+
+.product{
+    .btn-cart{
+        padding:0.5em 1em;
+    }
+}
+
+
+
+//.btn-cart{    
+    //display:inline-block;
+    //font-size:1.1em;
+//}
+
+.btn-order{
+    padding:2em 4em;
+}

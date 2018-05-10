@@ -1,0 +1,266 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="webShop.master.cs" Inherits="WebShop2.webShop" %>
+<%@ Register Src="~/userControls/MainMenuVertical.ascx" TagName="MainMenuVertical" TagPrefix="Ws2" %>
+<%@ Register Src="~/userControls/MasterMenu.ascx" TagName="MasterMenu" TagPrefix="Ws2" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PinShop - računari, komponente, mobilni telefoni</title>
+    <link rel="stylesheet" href="<%# ResolveUrl("~/css/style.min.css") %>" />
+    <link rel="stylesheet" href="<%# ResolveUrl("~/css/font-awesome.min.css") %>" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="header">
+            <div class="top-menu">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-5 col-sm-8 col-xs-9">
+                            <span>PinShop - Vaša online prodavnica<span class="hidden-xs"> tehnike</span></span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 hidden-xs hidden-sm">
+                            <span class="bold">023 236 140</span>
+                            <span class="hidden-md">, Prodavnica Zrenjanin</span>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-3 text-right">
+                            <asp:LoginView ID="loginView" runat="server" EnableViewState="false">
+                                <AnonymousTemplate>
+                                    <a href="/prijava" class="margin-right-05"><span class="fa fa-fw fa-user"></span><span class="hidden-xs"> Prijava</span></a>
+                                    <a href="/registracija" class="margin-right-05"><span class="fa fa-fw fa-user-plus"></span><span class="hidden-xs"> Registracija</span></a>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <span>Dobrodošli, </span><asp:Label ID="lblUsername" runat="server"></asp:Label>
+                                    <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Odjava" EnableViewState="false" CausesValidation="false"></asp:LinkButton>
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4">
+                            <div class="logo">
+                                <a href="/">
+                                    <img src="<%=ResolveUrl("~/images/logo.png") %>" class="img-responsive" alt="Pin - Service & Shop" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6 col-sm-5 col-xs-8">
+                            <div class="search-box">
+                                <div class="input-group">
+                                    <input type="text" ID="txtSearch" class="form-control" placeholder="Pronađi..." />
+                                    <span class="input-group-btn"><button type="button" ID="btnSearch" class="btn btn-default" onclick="btnSearch_Click"><span class="fa fa-search"></span></button></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <div class="header-box cart-fp-container">
+                                <div class="cart-fp" onclick="ShowCartFpContainer('cartButton')" id="btnCartFp">
+                                    <span class="fa fa-fw fa-shopping-cart"></span>
+                                    <span class="title">Korpa</span>
+                                    <span class="fa fa-fw fa-chevron-down hidden-md pull-right"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-bottom">
+                        <div class="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="master-menu-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5 padding-left-0">
+                        <Ws2:MainMenuVertical ID="mainMenuVertical" runat="server" Visible="false" />
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-9 xol-xs-7">
+                        <Ws2:MasterMenu ID="masterMenu" runat="server" MasterMenuID="1" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                        <span class="fa fa-fw fa-phone-square"></span>
+                                        <span>Kontakt</span>
+                                    </h3>
+                                    <p class="content">Pin servis s.t.k.r.</p>
+                                    <p class="content">Pupinova 16, 23000 Zrenjanin</p>
+                                    <p class="content">maloprodaja@pinservis.co.rs</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <p class="content margin-top-1"><span class="fa fa-phone"></span><span> Fiksni</span></p>
+                                    <p class="content primary">023 236 140</p>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <p class="content margin-top-1"><span class="fa fa-mobile"></span><span> Mobilni</span></p>
+                                    <p class="content primary">063 999 999</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                        <span class="fa fa-fw fa-clock-o"></span>
+                                        <span>Radno vreme</span>
+                                    </h3>
+                                    <p class="content"><span>Radnim danima: </span> <span class="content primary">09h - 20h</span></p>
+                                    <p class="content"><span>Subotom: </span><span class="content primary">09h - 14h</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                        <span class="fa fa-fw fa-envelope"></span>
+                                        <span>Newsletter</span>
+                                    </h3>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" id="txtNewsLetterEmail" class="form-control font-size-09" placeholder="Unesite vašu email adresu" />
+                                            <span class="input-group-btn"><button type="button" class="btn btn-default"><span class="font-size-09">Prijavi se</span></button></span>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3>
+                                        <span class="fa fa-fw fa-facebook-official"></span>
+                                        <span>Pronađite nas</span>
+                                    </h3>
+                                    <div class="social-icons">
+                                        <a href="http://www.facebook.com/pinservis" target="_blank"><span class="fa fa-fw fa-facebook-official"></span></a>
+                                        <a href="http://www.youtube.com" target="_blank"><span class="fa fa-fw fa-youtube-play"></span></a>
+                                        <a href="http://twitter.com" target="_blank"><span class="fa fa-fw fa-twitter-square"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h4>Proizvodi</h4>
+                            <asp:Repeater ID="rptCategoriesFooter" runat="server" EnableViewState="false">
+                                <HeaderTemplate><ul></HeaderTemplate>
+                                <ItemTemplate>
+                                    <li><span class="fa fa-fw fa-chevron-right"></span><asp:HyperLink ID="lnkCategory" runat="server" NavigateUrl='<%#ResolveUrl("~/proizvodi/" + Eval("url")) %>' Text='<%#Eval("name") %>' EnableViewState="false"></asp:HyperLink></li>
+                                </ItemTemplate>
+                                <FooterTemplate></ul>
+                                </FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Informacije</h4>
+                            <asp:Repeater ID="rptFt1" runat="server" EnableViewState="false">
+                                <HeaderTemplate><ul></HeaderTemplate>
+                                <ItemTemplate>
+                                    <li><span class="fa fa-fw fa-chevron-right"></span><asp:HyperLink ID="lnkCustomPage" runat="server" NavigateUrl='<%#ResolveUrl("~/" + Eval("url")) %>' Text='<%#Eval("title") %>' EnableViewState="false"></asp:HyperLink></li>
+                                </ItemTemplate>
+                                <FooterTemplate></ul></FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Pomoć pri kupovini</h4>
+                            <asp:Repeater ID="rptFt2" runat="server" EnableViewState="false">
+                                <HeaderTemplate><ul></HeaderTemplate>
+                                <ItemTemplate>
+                                    <li><span class="fa fa-fw fa-chevron-right"></span><asp:HyperLink ID="lnkCustomPage" runat="server" NavigateUrl='<%#ResolveUrl("~/" + Eval("url")) %>' Text='<%#Eval("title") %>' EnableViewState="false"></asp:HyperLink></li>
+                                </ItemTemplate>
+                                <FooterTemplate></ul></FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Korisnički servis</h4>
+                            <asp:Repeater ID="rptFt3" runat="server" EnableViewState="false">
+                                <HeaderTemplate><ul></HeaderTemplate>
+                                <ItemTemplate>
+                                    <li><span class="fa fa-fw fa-chevron-right"></span><asp:HyperLink ID="lnkCustomPage" runat="server" NavigateUrl='<%#ResolveUrl("~/" + Eval("url")) %>' Text='<%#Eval("title") %>' EnableViewState="false"></asp:HyperLink></li>
+                                </ItemTemplate>
+                                <FooterTemplate></ul></FooterTemplate>
+                            </asp:Repeater>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p><a href="/uslovi-koriscenja">Uslovi korišćenja</a> | <a href="/politika-privatnosti">Politika privatnosti</a> |
+                                <span>2015 Pin servis stkr. Sva prava zadržana.</span>
+                            </p>
+                            <p>Cene na sajtu su izražene u dinarima sa uračunatim porezom i plaćanje se vrši isključivo u dinarima.</p>
+                            <p>Nastojimo da budemo što precizniji u opisu proizvoda, prikazu slika i samih cena, ali ne možemo garantovati da su sve informacije kompletne i bez grešaka.</p>
+                            <p>Svi artikli prikazani na sajtu su deo naše ponude i ne podrazumeva se da su dostupni u svakom trenutku.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cartFpContainer" style="display:none" class="fp-container">
+            <span class="close"><span class="fa fa-fw fa-remove"></span></span>
+            <span class="fp-container-heading">Sadržaj korpe</span>
+            <table id="tblCartItems"></table>
+            <div class="total">
+                <span>Ukupno: </span>
+                <span id="cartFpTotal">0,00 RSD</span>
+            </div>
+            <div class="buttons">
+                <a href="<%=ResolveUrl("~/korpa") %>" class="ws-button btn btn-primary pull-left">Korpa</a>
+                <a href="<%=ResolveUrl("~/porucivanje") %>" class="ws-button btn btn-primary pull-right">Kupi odmah</a>
+            </div>
+        </div>
+
+        <div id="compareFpContainer" style="display:none" class="fp-container">
+            <span class="close"><span class="fa fa-fw fa-remove"></span></span>
+            <span class="fp-container-heading">Proizvod dodat na poređenje</span>
+            <span>Ukupno proizvoda: </span><span id="compareFpCount"></span>
+            <a class="btn btn-primary" href="<%=ResolveUrl("~/uporedi") %>">Uporedi</a>
+        </div>
+
+        <div id="wishListFpContainer" style="display:none" class="fp-container">
+            <span class="close"><span class="fa fa-fw fa-remove"></span></span>
+            <span class="fp-container-heading">Proizvod dodat u listu želja</span>
+            <span>Ukupno proizvoda: </span><span id="wishListFpCount"></span>
+            <a class="btn btn-primary" href="<%=ResolveUrl("~/lista-zelja") %>">Lista želja</a>
+        </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="<%=ResolveUrl("~/js/bundle.min.js") %>"></script>
+    <%--<script src="/js.src/web-shop.js" type="text/javascript"></script>--%>
+    <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
+</body>
+</html>
