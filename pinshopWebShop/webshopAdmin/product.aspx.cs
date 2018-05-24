@@ -123,8 +123,8 @@ namespace webshopAdmin
                     lblPageHeader.Text = ViewState["productName"] != null ? ViewState["productName"].ToString() : "Proizvod";
                     TabName.Value = Request.Form[TabName.UniqueID];
                 }
-                txtPrice.Enabled = bool.Parse(ConfigurationManager.AppSettings["allowProductPriceChange"]);
-                txtWebPrice.Enabled = bool.Parse(ConfigurationManager.AppSettings["allowProductPriceChange"]);
+                txtPrice.Enabled = bool.Parse(ConfigurationManager.AppSettings["allowProductPriceChange"]) || Page.Request.QueryString["id"] == null;
+                txtWebPrice.Enabled = bool.Parse(ConfigurationManager.AppSettings["allowProductPriceChange"]) || Page.Request.QueryString["id"] == null;
             }
             else
                 Page.Response.Redirect("/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/login.aspx?returnUrl=" + Page.Request.RawUrl);

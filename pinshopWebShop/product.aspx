@@ -31,6 +31,7 @@
                 <asp:HiddenField ID="lblProductID" runat="server" />
                 <h1><asp:Literal ID="lblBrand" runat="server"></asp:Literal></h1>
                 <h2><asp:Literal ID="lblName" runat="server"></asp:Literal></h2>
+                <div class="code">Šifra: <asp:Label ID="lblCode" runat="server"></asp:Label></div>
                 <p>Pogledajte i ostale proizvode iz kategorije <asp:HyperLink ID="lnkCategory" runat="server" CssClass="underline"></asp:HyperLink></p>
                 
                 <%--Kredit i rate--%>

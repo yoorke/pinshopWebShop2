@@ -79,17 +79,17 @@
                                     <div class="col-lg-6">
                                         <div role="form">
                                             <div class="form-group">
-                                                <label for="txtLastname">Ime: </label>
+                                                <label for="txtFirstname">Ime: </label>
                                                 <asp:TextBox ID="txtFirstname" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator1" runat="server" ControlToValidate="txtLastname" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator1" runat="server" ControlToValidate="txtFirstname" ErrorMessage="Ime je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--form--%>
                                     </div><%--col--%>
                                     <div class="col-lg-6">
                                         <div role="form">
-                                            <label for="txtFirstname">Prezime: </label>
+                                            <label for="txtLastname">Prezime: </label>
                                             <asp:TextBox ID="txtLastname" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                            <asp:RequiredFieldValidator ID="requiredFiledValidator2" runat="server" ControlToValidate="txtFirstname" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                            <asp:RequiredFieldValidator ID="requiredFieldValidator2" runat="server" ControlToValidate="txtLastname" ErrorMessage="Prezime je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                         </div><%--form--%>
                                     </div><%--col--%>
                         
@@ -100,8 +100,8 @@
                                             <div class="form-group">
                                                 <label for="txtEmail">Email: </label>
                                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator3" runat="server" ControlToValidate="txtEmail" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                <asp:RegularExpressionValidator ID="regularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ToolTip="Email adresa nije u odgovarajućem formatu" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator3" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
+                                                <asp:RegularExpressionValidator ID="regularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email adres nije u odgovarajućem formatu" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ToolTip="Email adresa nije u odgovarajućem formatu" Display="Dynamic" CssClass="form-control-error"></asp:RegularExpressionValidator>
                                             </div>
                                         </div><%--form--%>
                                     </div><%--col--%>
@@ -113,7 +113,7 @@
                                                 <label for="txtCompanyName">Naziv: </label>
                                                 <asp:TextBox ID="txtCompanyName" runat="server" CssClass="textbox form-control" Text="0"></asp:TextBox>
                                                 <%--<asp:CustomValidator ID="customValidator1" runat="server" ClientValidationFunction="companyNameValidation" ErrorMessage="*" ValidateEmptyText="true" ControlToValidate="txtCompanyName" EnableClientScript="true"></asp:CustomValidator>--%>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator8" ControlToValidate="txtCompanyName" runat="server" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator8" ControlToValidate="txtCompanyName" runat="server" ErrorMessage="Naziv je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--form--%>
                                     </div><%--col--%>
@@ -122,7 +122,7 @@
                                             <div class="form-group">
                                                 <label for="txtPib">PIB: </label>
                                                 <asp:TextBox ID="txtPib" runat="server" Text="0" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator9" ControlToValidate="txtPib" runat="server" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator9" ControlToValidate="txtPib" runat="server" ErrorMessage="PIB je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--form-group--%>
                                     </div><%--col--%>
@@ -133,7 +133,7 @@
                                             <div class="form-group">
                                                 <label for="txtAddress">Adresa: </label>
                                                 <asp:TextBox ID="txtAddress" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator4" runat="server" ControlToValidate="txtAddress" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator4" runat="server" ControlToValidate="txtAddress" ErrorMessage="Adresa je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--form--%>
                                     </div><%--col--%>
@@ -144,7 +144,7 @@
                                             <div class="form-group">
                                                 <label for="txtCity">Mesto: </label>
                                                 <asp:TextBox ID="txtCity" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator5" runat="server" ControlToValidate="txtCity" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator5" runat="server" ControlToValidate="txtCity" ErrorMessage="Mesto je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--col--%>
                                     </div>
@@ -153,8 +153,8 @@
                                             <div class="form-group">
                                                 <label for="txtZip">Poštanski broj: </label>
                                                 <asp:TextBox ID="txtZip" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RegularExpressionValidator ID="regularExpressionValidator2" runat="server" ControlToValidate="txtZip" ErrorMessage="" ValidationExpression="^\d{5}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                                                <asp:RequiredFieldValidator ID="requiredFiledValidator6" runat="server" ControlToValidate="txtZip" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>                                    
+                                                <asp:RegularExpressionValidator ID="regularExpressionValidator2" runat="server" ControlToValidate="txtZip" ErrorMessage="PTT nije u odgovarajućem formatu" ValidationExpression="^\d{5}$" Display="Dynamic" CssClass="form-control-error"></asp:RegularExpressionValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator6" runat="server" ControlToValidate="txtZip" ErrorMessage="PTT je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>                                    
                                             </div><%--form-group--%>
                                         </div><%--form--%>
                                     </div><%--col--%>
@@ -165,7 +165,7 @@
                                             <div class="form-group">
                                                 <label for="txtPhone">Telefon: </label>
                                                 <asp:TextBox ID="txtPhone" runat="server" CssClass="textbox form-control"></asp:TextBox>
-                                                <asp:RequiredFieldValidator ID="requiredFieldValidator7" runat="server" ControlToValidate="txtPhone" ErrorMessage="" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="requiredFieldValidator7" runat="server" ControlToValidate="txtPhone" ErrorMessage="Telefon je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>
                                         </div><%--form--%>
                                     </div><%--col--%>
@@ -380,9 +380,11 @@
                 
    </div><%--row--%>
     <div class="row margin-top-2 margin-bottom-2">
-        <div class="col-lg-12">
-            <asp:LinkButton ID="btnBack" runat="server" Text="Vrati se na korpu" CssClass="btn btn-default margin-top-3" OnClick="btnBack_Click" CausesValidation="false"></asp:LinkButton>
-            <asp:LinkButton ID="btnOrder" runat="server" Text="Naruči" CssClass="btn btn-primary btn-order pull-right" OnClick="btnOrder_Click"></asp:LinkButton>
+        <div class="col-lg-7">
+            <asp:LinkButton ID="btnBack" runat="server" Text="Vrati se na korpu" CssClass="btn btn-default margin-top-3 btn-order" OnClick="btnBack_Click" CausesValidation="false"></asp:LinkButton>
+        </div>
+        <div class="col-lg-5">
+            <asp:LinkButton ID="btnOrder" runat="server" Text="Naruči" CssClass="btn btn-primary btn-order pull-right width-100" OnClick="btnOrder_Click" OnClientClick="return removeValidatorStyle()"></asp:LinkButton>
         </div>
     </div>
 </div><%--checkout--%>
@@ -510,6 +512,12 @@
         }
         else
             args.isValid = true;
+    }
+</script>
+<script>
+    function removeValidatorStyle() {
+        $('[id*=requiredFieldValidator]').removeAttr('style');
+        $('[id*=regularExpressionValidator]').removeAttr('style');
     }
 </script>
 <script>

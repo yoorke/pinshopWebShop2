@@ -130,6 +130,8 @@ namespace WebShop2
             }
 
             btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+
+            lblCode.Text = product.Code;
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

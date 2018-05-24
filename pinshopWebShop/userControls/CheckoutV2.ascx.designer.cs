@@ -103,13 +103,13 @@ namespace WebShop2.UserControls {
         protected global::System.Web.UI.WebControls.TextBox txtLastname;
         
         /// <summary>
-        /// requiredFiledValidator2 control.
+        /// requiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFiledValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator2;
         
         /// <summary>
         /// txtEmail control.
@@ -238,13 +238,13 @@ namespace WebShop2.UserControls {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator regularExpressionValidator2;
         
         /// <summary>
-        /// requiredFiledValidator6 control.
+        /// requiredFieldValidator6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFiledValidator6;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator6;
         
         /// <summary>
         /// txtPhone control.

@@ -166,6 +166,11 @@ function btnSearch_Click() {
         window.location = '/pretraga?a=' + $('#txtSearch').val();
 }
 
+$('#btnSearch').click(function () {
+    btnSearch_Click();
+    return false;
+})
+
 $('#txtSearch').keydown(function (event) {
     if (event.keyCode == 13) {
         btnSearch_Click();
