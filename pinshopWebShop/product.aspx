@@ -29,6 +29,7 @@
             <div class="col-sm-7">
                 <div id="imgZoom" class="img-zoom"></div>
                 <asp:HiddenField ID="lblProductID" runat="server" />
+                <asp:Image ID="imgBrand" runat="server" Visible="false" CssClass="brand-logo" />
                 <h1><asp:Literal ID="lblBrand" runat="server"></asp:Literal></h1>
                 <h2><asp:Literal ID="lblName" runat="server"></asp:Literal></h2>
                 <div class="code">Šifra: <asp:Label ID="lblCode" runat="server"></asp:Label></div>
@@ -110,7 +111,7 @@
                         </a>
                     </div>
                 </div><%--row--%>
-                <div class="row margin-top-2">
+                <div class="row margin-top-1">
                     <div class="col-lg-12 text-right">
                         <div id="lblProductFacebookLike" runat="server"></div>
                     </div>

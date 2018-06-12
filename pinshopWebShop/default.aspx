@@ -3,8 +3,8 @@
 <%@ Register Src="~/userControls/Slider.ascx" TagName="Slider" TagPrefix="Ws2" %>
 <%@ Register Src="~/userControls/ProductSlider.ascx" TagName="ProductSlider" TagPrefix="Ws2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="<%# ResolveUrl("~/css/main-menu-vertical-v2.min.css") %>" rel="stylesheet" />
-    <link href="<%# ResolveUrl("~/css/camera-bundle.min.css") %>" rel="stylesheet" />
+    <link href="<%# ResolveUrl("~/css/main-menu-vertical-v2.min.css") %>" rel="stylesheet" type="text/css" />
+    <link href="<%# ResolveUrl("~/css/camera-bundle.min.css") %>" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">

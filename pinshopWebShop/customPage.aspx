@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="customPage.aspx.cs" Inherits="WebShop2.customPage" Title="Untitled Page" %>
 <%@ Register Src="userControls/Banner.ascx" TagName="Banner" TagPrefix="banner" %>
+<%@ Register Src="userControls/ProductFPV2.ascx" TagName="ProductFP" TagPrefix="ws" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="<%=ResolveUrl("~/css/mainMenuVerticalV1.min.css") %>" />
     <asp:Literal ID="lblHeader" runat="server"></asp:Literal>
@@ -16,6 +17,15 @@
         
                 <div id="divContent" runat="server"></div>
             </div>
+        </div>
+        <div class="row margin-top-2">
+            <asp:Repeater ID="rptProducts" runat="server">
+                <ItemTemplate>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding-left-0 padding-right-0">
+                        <ws:ProductFP id="productFP" runat="server" ProductItem='<%#Container.DataItem %>' />
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
         <%--<div class="row banners">
             <div class="col-md-4 padding-left-0 padding-right-0 bannerFP fp1">

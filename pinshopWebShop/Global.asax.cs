@@ -6,6 +6,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using eshopBL;
 using System.Configuration;
+using eshopUtilities;
 
 namespace WebShop2
 {
@@ -35,9 +36,15 @@ namespace WebShop2
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
-            if (bool.Parse(ConfigurationManager.AppSettings["useSSL"]))
-                if (!HttpContext.Current.Request.IsSecureConnection && !HttpContext.Current.Request.IsLocal)
-                    Response.Redirect("https://" + Request.ServerVariables["HTTP_HOST"] + HttpContext.Current.Request.RawUrl);
+            if (((bool.Parse(ConfigurationManager.AppSettings["useSSL"]) && !HttpContext.Current.Request.IsSecureConnection)
+                || !HttpContext.Current.Request.Url.ToString().ToLower().StartsWith(ConfigurationManager.AppSettings["webShopUrl"]))
+                && !HttpContext.Current.Request.IsLocal)
+            { 
+
+                Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl);
+                eshopUtilities.ErrorLog.LogMessage(DateTime.Now.ToString() + " - Redirected: " + Request.ServerVariables["HTTP_HOST"].ToString() + HttpContext.Current.Request.RawUrl + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl);
+            }
+            //ErrorLog.LogMessage(DateTime.Now.ToString() + Request.ServerVariables["HTTP_HOST"] + HttpContext.Current.Request.RawUrl);
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)

@@ -576,11 +576,14 @@
     <Content Include="reports\reportTemplates\reportHeaderTemplate.html" />
     <Content Include="userControls\PagerV2.ascx" />
     <Content Include="userControls\ProductRatingView.ascx" />
+    <Content Include="WebResources.aspx" />
     <Content Include="webshopAdmin\attribute.aspx" />
     <Content Include="webshopAdmin\attributeKimtecAttribute.aspx" />
     <Content Include="webshopAdmin\attributeKupindoAttribute.aspx" />
     <Content Include="webshopAdmin\attributes.aspx" />
     <Content Include="webshopAdmin\banner.aspx" />
+    <Content Include="webshopAdmin\brand.aspx" />
+    <Content Include="webshopAdmin\brands.aspx" />
     <Content Include="webshopAdmin\categories.aspx" />
     <Content Include="webshopAdmin\category.aspx" />
     <Content Include="webshopAdmin\categoryBanner.aspx" />
@@ -1182,6 +1185,20 @@
     </Compile>
     <Compile Include="webshopAdmin\banner.aspx.designer.cs">
       <DependentUpon>banner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webshopAdmin\brand.aspx.cs">
+      <DependentUpon>brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webshopAdmin\brand.aspx.designer.cs">
+      <DependentUpon>brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webshopAdmin\brands.aspx.cs">
+      <DependentUpon>brands.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webshopAdmin\brands.aspx.designer.cs">
+      <DependentUpon>brands.aspx</DependentUpon>
     </Compile>
     <Compile Include="webshopAdmin\categories.aspx.cs">
       <DependentUpon>categories.aspx</DependentUpon>

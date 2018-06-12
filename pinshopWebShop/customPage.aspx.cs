@@ -12,6 +12,7 @@ using System.Web.UI.HtmlControls;
 using System.Xml.Linq;
 using eshopBE;
 using eshopBL;
+using System.Collections.Generic;
 
 namespace WebShop2
 {
@@ -42,6 +43,13 @@ namespace WebShop2
             divContent.InnerHtml = customPage.Content;
             //lblHeader.Text = customPage.Head;
             lblFooter.Text = customPage.Footer;
+
+            List<Product> products = new List<Product>();
+            foreach (CustomPageProduct customPageProduct in customPage.Products)
+                products.Add(new ProductBL().GetProduct(customPageProduct.ProductID, string.Empty, false, string.Empty));
+
+            rptProducts.DataSource = products;
+            rptProducts.DataBind();
         }
     }
 }

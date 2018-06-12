@@ -129,7 +129,7 @@ namespace WebShop2.UserControls
             }
             else
             {
-                if(bool.Parse(ConfigurationManager.AppSettings["showNewTag"]) && (DateTime.Now - _product.InsertDate).Days < 5)
+                if(bool.Parse(ConfigurationManager.AppSettings["showNewTag"]) && (DateTime.Now - _product.InsertDate).Days < 5 && _product.Promotion == null)
                 { 
                     divNis.Style.Add("display", "block");
                     divNis.Attributes["class"] = "nis-cont new";

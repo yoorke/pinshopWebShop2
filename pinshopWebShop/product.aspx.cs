@@ -59,8 +59,8 @@ namespace WebShop2
                 Page.Title = ViewState["pageTitle"].ToString();
                 
             }
-            lblProductFacebookLike.InnerHtml = "<div class='fb-like' data-href='http://www.pinshop.co.rs" + Page.Request.RawUrl + "' data-width='100' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>";
-            //createProductTags();
+            lblProductFacebookLike.InnerHtml = "<div class='fb-like' data-href='" + ConfigurationManager.AppSettings["webShopUrl"] + Page.Request.RawUrl + "' data-width='100' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>";
+            createProductTags();
             loanBox.Visible = bool.Parse(ConfigurationManager.AppSettings["loanBoxVisible"]);
         }
 
@@ -69,69 +69,82 @@ namespace WebShop2
             ProductBL productBL = new ProductBL();
             Product product = productBL.GetProduct(productID, string.Empty, true, string.Empty);
 
-            //images = product.Images;
-            priProductImages.Images = product.Images;
-            priProductImages.ShowImages();
+            if(product != null) { 
 
-            switch(ConfigurationManager.AppSettings["product_Line1"])
+                //images = product.Images;
+                priProductImages.Images = product.Images;
+                priProductImages.ShowImages();
+
+                switch(ConfigurationManager.AppSettings["product_Line1"])
+                {
+                    case "Name": lblBrand.Text = product.Name; break;
+                    case "Brand": lblBrand.Text = product.Brand.Name; break;
+                }
+                switch(ConfigurationManager.AppSettings["product_Line2"])
+                {
+                    case "Name": lblName.Text = product.Name;break;
+                    case "Description": lblName.Text = product.Description;break;
+                }
+                lblDescription.Text = product.Description;
+                lblPrice.Text = "MP cena: " + string.Format("{0:N2}", product.Price);
+                lblWebPrice.Text = (product.Promotion == null) ? string.Format("{0:N2}", product.WebPrice) : string.Format("{0:N2}", product.Promotion.Price);
+                lblSaving.Text = "Ušteda: " + string.Format("{0:N2}", product.Price - double.Parse(lblWebPrice.Text));
+
+                if(product.Price == double.Parse(lblWebPrice.Text))
+                {
+                    priceDiv.Visible = false;
+                    savingDiv.Visible = false;
+                }
+
+                lblSpecification.Text = !product.Specification.Contains("<table class='table table-striped'><tbody></table>") ? product.Specification : "Nema podataka";
+                lblDescription.Text = product.Description != string.Empty ? product.Description : "Nema opisa";
+                if (product.Promotion != null)
+                {
+                    imgPromotion.ImageUrl = "/images/" + product.Promotion.ImageUrl;
+                    imgPromotion.Visible = true;
+                }
+                lblProductID.Value = product.ProductID.ToString();
+                Page.Title = (ConfigurationManager.AppSettings["product_Line1"] == "Name" ? product.Name : product.Brand.Name) + " " + (ConfigurationManager.AppSettings["product_Line2"] == "Name" ? product.Name : product.Description);
+                ViewState.Add("pageTitle", Page.Title);
+                ViewState.Add("productDescription", product.Description);
+                if(product.Images != null && product.Images.Count > 0)
+                    ViewState.Add("image", product.Images[0]);
+
+                lnkCategory.NavigateUrl = "/proizvodi/" + product.Categories[0].Url;
+                lnkCategory.Text = product.Categories[0].Name;
+
+                loadProductSliders(product.Categories[0]);
+
+                divUputstvo.Visible = ConfigurationManager.AppSettings["categoryManual"].Contains(product.Categories[0].Url.ToLower()) ? true : false;
+
+                txtAvailability.Text = product.IsInStock ? "NA STANJU" : "NEMA NA STANJU";
+
+                lblStockIcon.CssClass = "fa fa-fw fa-check-square";
+
+                if (!product.IsInStock)
+                { 
+                    btnCartAjax.Attributes.Add("disabled", "true");
+                    btnCartAjax.Attributes.Add("class", "ws-btn btn-cart btn-not-in-stock");
+                    divNis.Style.Add("display", "block");
+                    txtDelivery.Text = "-";
+                    lblStockIcon.CssClass = "fa fa-fw fa-remove not-in-stock";
+                    divNis.Attributes["class"] = "nis-cont not-in-stock";
+                }
+
+                btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+                
+                lblCode.Text = product.Code;
+
+                if(product.Brand.LogoUrl != null && product.Brand.LogoUrl != string.Empty && bool.Parse(ConfigurationManager.AppSettings["showBrandLogoOnProductPage"]))
+                {
+                    imgBrand.Visible = true;
+                    imgBrand.ImageUrl = "/images/brand/" + product.Brand.LogoUrl;
+                }
+            }
+            else
             {
-                case "Name": lblBrand.Text = product.Name; break;
-                case "Brand": lblBrand.Text = product.Brand.Name; break;
+                Server.Transfer("~/not-found.aspx");
             }
-            switch(ConfigurationManager.AppSettings["product_Line2"])
-            {
-                case "Name": lblName.Text = product.Name;break;
-                case "Description": lblName.Text = product.Description;break;
-            }
-            lblDescription.Text = product.Description;
-            lblPrice.Text = "MP cena: " + string.Format("{0:N2}", product.Price);
-            lblWebPrice.Text = (product.Promotion == null) ? string.Format("{0:N2}", product.WebPrice) : string.Format("{0:N2}", product.Promotion.Price);
-            lblSaving.Text = "Ušteda: " + string.Format("{0:N2}", product.Price - double.Parse(lblWebPrice.Text));
-
-            if(product.Price == double.Parse(lblWebPrice.Text))
-            {
-                priceDiv.Visible = false;
-                savingDiv.Visible = false;
-            }
-
-            lblSpecification.Text = !product.Specification.Contains("<table class='table table-striped'><tbody></table>") ? product.Specification : "Nema podataka";
-            lblDescription.Text = product.Description != string.Empty ? product.Description : "Nema opisa";
-            if (product.Promotion != null)
-            {
-                imgPromotion.ImageUrl = "/images/" + product.Promotion.ImageUrl;
-                imgPromotion.Visible = true;
-            }
-            lblProductID.Value = product.ProductID.ToString();
-            Page.Title = (ConfigurationManager.AppSettings["product_Line1"] == "Name" ? product.Name : product.Brand.Name) + " " + (ConfigurationManager.AppSettings["product_Line2"] == "Name" ? product.Name : product.Description);
-            ViewState.Add("pageTitle", Page.Title);
-            ViewState.Add("productDescription", product.Description);
-            if(product.Images != null && product.Images.Count > 0)
-                ViewState.Add("image", product.Images[0]);
-
-            lnkCategory.NavigateUrl = "/proizvodi/" + product.Categories[0].Url;
-            lnkCategory.Text = product.Categories[0].Name;
-
-            loadProductSliders(product.Categories[0]);
-
-            divUputstvo.Visible = ConfigurationManager.AppSettings["categoryManual"].Contains(product.Categories[0].Url.ToLower()) ? true : false;
-
-            txtAvailability.Text = product.IsInStock ? "NA STANJU" : "NEMA NA STANJU";
-
-            lblStockIcon.CssClass = "fa fa-fw fa-check-square";
-
-            if (!product.IsInStock)
-            { 
-                btnCartAjax.Attributes.Add("disabled", "true");
-                btnCartAjax.Attributes.Add("class", "ws-btn btn-cart btn-not-in-stock");
-                divNis.Style.Add("display", "block");
-                txtDelivery.Text = "-";
-                lblStockIcon.CssClass = "fa fa-fw fa-remove not-in-stock";
-                divNis.Attributes["class"] = "nis-cont not-in-stock";
-            }
-
-            btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
-
-            lblCode.Text = product.Code;
         }
 
         protected void btnCart_Click(object sender, EventArgs e)
@@ -171,13 +184,25 @@ namespace WebShop2
             tag = new HtmlMeta();
             tag.Attributes.Clear();
             tag.Attributes.Add("property", "og:url");
-            tag.Attributes.Add("content", "http://www.pinshop.co.rs" + Page.Request.RawUrl);
+            tag.Attributes.Add("content", ConfigurationManager.AppSettings["webShopUrl"] + Page.Request.RawUrl);
             Header.Controls.Add(tag);
 
             tag = new HtmlMeta();
             tag.Attributes.Clear();
             tag.Attributes.Add("property", "og:image");
-            tag.Attributes.Add("content", "http://www.pinshop.co.rs" + ViewState["image"].ToString());
+            tag.Attributes.Add("content", ConfigurationManager.AppSettings["webShopUrl"] + priProductImages.GetMainImageUrl);
+            Header.Controls.Add(tag);
+
+            tag = new HtmlMeta();
+            tag.Attributes.Clear();
+            tag.Attributes.Add("property", "og:image:width");
+            tag.Attributes.Add("content", priProductImages.GetMainImageWidth.ToString());
+            Header.Controls.Add(tag);
+
+            tag = new HtmlMeta();
+            tag.Attributes.Clear();
+            tag.Attributes.Add("property", "og:image:height");
+            tag.Attributes.Add("content", priProductImages.GetMainImageHeight.ToString());
             Header.Controls.Add(tag);
 
             tag = new HtmlMeta();
@@ -189,12 +214,12 @@ namespace WebShop2
             tag = new HtmlMeta();
             tag.Attributes.Clear();
             tag.Attributes.Add("property", "og:description");
-            tag.Attributes.Add("content", string.Empty);
+            tag.Attributes.Add("content", ViewState["pageTitle"].ToString() + " " + ViewState["productDescription"].ToString());
             Header.Controls.Add(tag);
 
             HtmlLink link = new HtmlLink();
             link.Attributes.Add("rel", "canonical");
-            link.Attributes.Add("href", "http://www.pinshop.co.rs" + Page.Request.RawUrl);
+            link.Attributes.Add("href", ConfigurationManager.AppSettings["webShopUrl"] + Page.Request.RawUrl);
             Header.Controls.Add(link);
         }
 

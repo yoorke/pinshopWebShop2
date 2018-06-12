@@ -223,8 +223,8 @@
             }
             else {
                 $('.product-filter').css('position', 'absolute');
-                $('.product-filter').css('opacity', '0.9');
-                $('.product-filter').offset({ top: $('.product_box').offset().top, left: -236 });
+                //$('.product-filter').css('opacity', '0.9');
+                $('.product-filter').offset({ top: $('.product_box').offset().top, left: -270});
                 
             }
         }
@@ -237,13 +237,13 @@
             $('.product-filter').offset({ top: $('.product_box').offset().top, left: $('.product-filter').offset().left });
             $('.product-filter').removeClass('product-filter-xs-visible');
             //$('.product-filter').show();
-            if ($('.product-filter').offset().left == -236){
+            if ($('.product-filter').offset().left == -270){
                 
                 $('.product-filter').offset({ top: $('.product_box').offset().top, left: 0 });
                 $('.product-filter').addClass('product-filter-xs-visible');
             }
             else {
-                $('.product-filter').offset({ top: $('.product_box').offset().top, left: -236 });
+                $('.product-filter').offset({ top: $('.product_box').offset().top, left: -270 });
             }
         }
     </script>

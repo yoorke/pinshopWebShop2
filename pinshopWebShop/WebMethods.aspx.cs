@@ -149,5 +149,17 @@ namespace WebShop2
             }
             return JsonConvert.SerializeObject(cartProducts);
         }
+
+        [WebMethod]
+        public static bool UpdateProductQuantity(int productID, int value)
+        {
+            return new CartBL().UpdateProductQuantity(productID, value, HttpContext.Current.Session["cartID"].ToString());
+        }
+
+        [WebMethod]
+        public static int DeleteProductFromCart(int productID)
+        {
+            return new CartBL().DeleteProductFromCart(productID, HttpContext.Current.Session["cartID"].ToString());
+        }
     }
 }

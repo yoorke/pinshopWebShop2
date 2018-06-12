@@ -8,6 +8,7 @@ using eshopBL;
 using eshopBE;
 using System.Configuration;
 using System.IO;
+using System.Drawing;
 
 namespace WebShop2.UserControls
 {
@@ -18,6 +19,45 @@ namespace WebShop2.UserControls
         public List<ProductImage> Images {
             get { return _images; }
             set { _images = value; }
+        }
+
+        public string GetMainImageUrl
+        {
+            get { return lnkMainImage.NavigateUrl; }
+        }
+
+        public int GetMainImageWidth
+        {
+            get
+            {
+                try
+                {
+                    string imagePath = getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + getExtension(_images[0].ImageUrl);
+                    Bitmap image = new Bitmap(Server.MapPath("~/" + (File.Exists(Server.MapPath(imagePath)) ? imagePath : "/images/no-image.jpg")));
+                    return image.Width;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
+        }
+
+        public int GetMainImageHeight
+        {
+            get
+            {
+                try
+                {
+                    string imagePath = getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + getExtension(_images[0].ImageUrl);
+                Bitmap image = new Bitmap(Server.MapPath("~/" + (File.Exists(Server.MapPath(imagePath)) ? imagePath : "/images/no-image.jpg")));
+                return image.Height;
+                }
+                catch
+                {
+                    return 0;
+                }
+            }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,7 +81,7 @@ namespace WebShop2.UserControls
             {
                 string imagePath = getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + "-" + ConfigurationManager.AppSettings["mainName"] + getExtension(_images[0].ImageUrl);
                 imgMain.ImageUrl = File.Exists(Server.MapPath(imagePath)) ? imagePath : "/images/no-image.jpg";
-                lnkMainImage.NavigateUrl = getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + getExtension(_images[0].ImageUrl);
+                lnkMainImage.NavigateUrl = File.Exists(Server.MapPath(getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + getExtension(_images[0].ImageUrl))) ? getDirectory(getFilename(_images[0].ImageUrl)) + getFilename(_images[0].ImageUrl) + getExtension(_images[0].ImageUrl) : "/images/no-image.jpg";
                 pnlThumbs.Controls.Clear();
                 if (_images.Count > 1)
                 {

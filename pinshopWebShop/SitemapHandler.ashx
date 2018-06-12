@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="SitemapHandler.ashx.cs" Class="eshopv2.SitemapHandler" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="SitemapHandler.ashx.cs" Class="WebShop2.SitemapHandler" %>

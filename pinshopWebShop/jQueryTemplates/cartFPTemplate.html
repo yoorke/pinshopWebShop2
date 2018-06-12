@@ -1,7 +1,9 @@
 ﻿<tr>
-    <td><img src="${imageUrl}" /></td>
+    <td style="max-width:40px"><img src="${imageUrl}" /></td>
     <!--<td><span>${code}</span></td>-->
-    <td><span>${name} ${description}, ${code}</span></td>
-    <td class="text-right"><span>${parseFloat(userPrice).toFixed(2)}</span> RSD</td>
-    <td class="text-right"><span>${quantity}</span> kom</td>
+    <td style="width:30%;word-break:break-all"><span>${name.toString().substring(0, 50) + '...'}, ${description}, ${code}</span></td>
+    <td class="text-right"><span class="value">${parseFloat(userPrice).toFixed(2)}</span> <span class="unit">RSD</span></td>
+    <td class="text-right" style="width:90px"><div class="update-cont"><span class="fa fa-fw fa-minus left" onclick="CartFpUpdateQuantity(${ productID }, -1)"></span><span class="value">${quantity}</span><span class="fa fa-fw fa-plus right" onclick="CartFpUpdateQuantity(${ productID }, 1)"></span></div> <span class="unit">kom</span></td>
+    <td class="text-right"><span class="value">${parseFloat(total).toFixed(2)}</span> <span class="unit">RSD</span></td>
+    <td class="text-right"><span class="fa fa-fw fa-close" onclick="CartFpDeleteProduct(${ productID })"></span></td>
 </tr>

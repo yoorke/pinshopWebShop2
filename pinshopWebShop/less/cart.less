@@ -1,19 +1,66 @@
 ﻿#cartFpContainer {
+    //font-size:0.9em;
     .total {
         text-align: right;
-        margin: 1em 0;
+        margin: 0.5em 0 0 0;
         font-size: 1.2em;
+        background-color:@default-gray;
+        border-top:1px solid #eee;
 
         #cartFpTotal {
             font-weight: bold;
             color: @brand-primary;
+            font-size:1.3em;
         }
+    }
+
+    span.fa-close{
+        cursor:pointer;
+        color:lighten(@text-color, 10%);
+    }
+
+    .update-cont{
+        display:inline-block;
+        padding:2px;
+        background-color:@default-gray;
+
+        span.fa{
+            cursor:pointer;
+            color: lighten(@text-color, 10%);
+        }
+
+        span.fa.left{
+            margin-right:2px;
+        }
+
+        span.fa.right{
+            margin-left:2px;
+        }
+    }
+
+    span.unit{
+        font-size:0.7em;
+    }
+
+    table td{
+        padding:0 !important;
+    }
+
+    span.value{
+        font-weight:bold;
+        font-size:1.3em;
+    }
+
+    #cartFpMessage{
+        display:block;
+        width:100%;
+        text-align:center;
     }
 }
 
 @media only screen and (min-width: 1024px) {
     #cartFpContainer {
-        width: 400px;
+        width: 500px;
     }
 }
 

@@ -42,18 +42,26 @@ namespace WebShop2.reports.reportTemplates.product
 
             var pdfBytes = pdfCreator.GeneratePdf(content);
 
-            using (FileStream fs = new FileStream(Server.MapPath("~/pdf/product.pdf"), FileMode.Create, FileAccess.Write))
+            DirectoryInfo di = new DirectoryInfo(Server.MapPath("~/pdf"));
+            foreach(FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            using (FileStream fs = new FileStream(Server.MapPath("~/pdf/product-" + productID.ToString() + ".pdf"), FileMode.Create, FileAccess.Write))
             {
                 fs.Write(pdfBytes, 0, pdfBytes.Length);
                 fs.Close();
             }
 
-            Response.Redirect(ResolveUrl("~/pdf/product.pdf"));
+            Response.Redirect(ResolveUrl("~/pdf/product-" + productID.ToString() + ".pdf"));
         }
 
         private Product loadProduct(int productID)
         {
-            return new ProductBL().GetProduct(productID, string.Empty, false, string.Empty);
+            Product product = new ProductBL().GetProduct(productID, string.Empty, false, string.Empty);
+            if (product == null)
+                Server.Transfer("~/not-found.aspx");
+            return product;
         }
 
         private string loadTemplate(string type)
@@ -123,11 +131,16 @@ namespace WebShop2.reports.reportTemplates.product
 
         private string getImageUrl(Product product)
         {
-            string filename = product.Images[0].ImageUrl.Substring(0, product.Images[0].ImageUrl.LastIndexOf('.'));
-            string extension = product.Images[0].ImageUrl.Substring(product.Images[0].ImageUrl.LastIndexOf('.'));
-            string mainName = ConfigurationManager.AppSettings["mainName"];
+            if(product.Images != null && product.Images.Count > 0) { 
+                string filename = product.Images[0].ImageUrl.Substring(0, product.Images[0].ImageUrl.LastIndexOf('.'));
+                string extension = product.Images[0].ImageUrl.Substring(product.Images[0].ImageUrl.LastIndexOf('.'));
+                string mainName = ConfigurationManager.AppSettings["mainName"];
 
-            return Server.MapPath("~/" + new ProductBL().CreateImageDirectory(int.Parse(filename)) + filename + "-" + mainName + extension);
+                if (File.Exists(Server.MapPath("~/" + new ProductBL().CreateImageDirectory(int.Parse(filename)) + filename + "-" + mainName + extension)))
+                    return Server.MapPath("~/" + new ProductBL().CreateImageDirectory(int.Parse(filename)) + filename + "-" + mainName + extension);
+                else return Server.MapPath("~/images/no-image.jpg");
+            }
+            return Server.MapPath("~/images/no-image.jpg");
         }
 
         private string getHeader()

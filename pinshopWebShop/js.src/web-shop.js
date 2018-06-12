@@ -49,7 +49,10 @@ function GetCartItems() {
         dataType: 'json',
         success: function (response) {
             $('#tblCartItems tr').remove();
+            $('#cartFpMessage').show();
             $.get('/jQueryTemplates/cartFPTemplate.html', null, function (cartTemplate) {
+                if (JSON.parse(response.d).length > 0)
+                    $('#cartFpMessage').hide();
                 $.tmpl(cartTemplate, JSON.parse(response.d)).appendTo('#tblCartItems');
             })
             var total = 0;
@@ -121,7 +124,7 @@ $(window).scroll(function () {
 })
 
 $(document).click(function (e) {
-    if ($('#cartFpContainer').is(':visible') && e.target.parentElement.className != 'cart-fp' && e.target.parentElement.className != 'header-box cart-fp-container') {
+    if ($('#cartFpContainer').is(':visible') && e.target.parentElement.className != 'cart-fp' && e.target.parentElement.className != 'header-box cart-fp-container' && e.target.parentElement.className != 'update-cont') {
         $('#cartFpContainer').hide();
     }
     if ($('#compareFpContainer').is(':visible')) {
@@ -144,7 +147,7 @@ $(document).ready(function () {
             $('.cd-dropdown-trigger').show();
             $('.cd-dropdown-trigger').css({ "margin-top": "-40px", "width": "150px" });
             if ($(window).width() < 751) {
-                $('.cd-dropdown-trigger').css({ "margin-top": "-54px", "line-height": "54px" });
+                $('.cd-dropdown-trigger').css({ "margin-top": "-52px", "line-height": "52px" });
             }
         }
     }
@@ -177,3 +180,36 @@ $('#txtSearch').keydown(function (event) {
         return false;
     }    
 })
+
+function CartFpUpdateQuantity(productID, value) {
+    
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/UpdateProductQuantity',
+        data: JSON.stringify({ 'productID': productID, 'value': value }),
+        contentType: 'application/json;charset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            ShowCartFpContainer('cartButton');
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+
+        }
+    })
+}
+
+function CartFpDeleteProduct(productID) {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/DeleteProductFromCart',
+        data: JSON.stringify({ 'productID': productID }),
+        contentType: 'application/json;chartset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            ShowCartFpContainer('cartButton');
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+
+        }
+    })
+}
