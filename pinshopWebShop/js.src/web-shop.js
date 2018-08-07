@@ -32,6 +32,7 @@ function AddToCart(lblProductID) {
         dataType: 'json',
         success: function (response) {
             ShowCartFpContainer('productFp');
+            GetCartProductsCount();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
@@ -59,7 +60,7 @@ function GetCartItems() {
             $.each(JSON.parse(response.d), function (index, value) {
                 total += parseFloat(value.userPrice) * parseFloat(value.quantity);
             })
-            $('#cartFpTotal')[0].innerText = total.toFixed(2);
+            $('#cartFpTotal')[0].innerText = total.toLocaleString('sr', { minimumFractionDigits: 2 });
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.responseText);
@@ -151,6 +152,7 @@ $(document).ready(function () {
             }
         }
     }
+    GetCartProductsCount();
 })
 
 function ChangeImage(imageUrl) {
@@ -178,7 +180,10 @@ $('#txtSearch').keydown(function (event) {
     if (event.keyCode == 13) {
         btnSearch_Click();
         return false;
-    }    
+    }
+    if ($('txtSearch').val().length > 2) {
+        $('.search-items-cont').show();
+    }
 })
 
 function CartFpUpdateQuantity(productID, value) {
@@ -207,9 +212,30 @@ function CartFpDeleteProduct(productID) {
         dataType: 'json',
         success: function (msg) {
             ShowCartFpContainer('cartButton');
+            GetCartProductsCount();
         },
         error: function (jqXhr, textStatus, errorThrown) {
 
         }
     })
+}
+
+function GetCartProductsCount() {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/GetCartProductsCount',
+        data: '',
+        contentType: 'application/json;chartset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            $('#cartFpProductsCount')[0].innerText = msg.d;
+        },
+        error: function (jqXhr, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    })
+}
+
+function formatCurrency(value) {
+    return value.toLocaleString('sr', { minimumFractionDigits: 2 });
 }

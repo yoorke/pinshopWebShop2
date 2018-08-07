@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="account.aspx" />
     <Content Include="cart.aspx" />
+    <Content Include="categoriesRedirectUrls.txt" />
     <Content Include="checkout.aspx" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
@@ -576,6 +577,7 @@
     <Content Include="reports\reportTemplates\reportHeaderTemplate.html" />
     <Content Include="userControls\PagerV2.ascx" />
     <Content Include="userControls\ProductRatingView.ascx" />
+    <Content Include="userControls\Search.ascx" />
     <Content Include="WebResources.aspx" />
     <Content Include="webshopAdmin\attribute.aspx" />
     <Content Include="webshopAdmin\attributeKimtecAttribute.aspx" />
@@ -709,6 +711,7 @@
     <Content Include="less\cart.less" />
     <Content Include="kupindoXml.ashx" />
     <Content Include="less\custom-page.less" />
+    <Content Include="less\breadcrumbs.less" />
     <None Include="packages.config" />
     <Content Include="SitemapHandler.ashx" />
     <None Include="Web.Debug.config">
@@ -1115,6 +1118,13 @@
     </Compile>
     <Compile Include="userControls\Retail.ascx.designer.cs">
       <DependentUpon>Retail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\Search.ascx.cs">
+      <DependentUpon>Search.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\Search.ascx.designer.cs">
+      <DependentUpon>Search.ascx</DependentUpon>
     </Compile>
     <Compile Include="userControls\Slider.ascx.cs">
       <DependentUpon>Slider.ascx</DependentUpon>

@@ -22,7 +22,7 @@ namespace webshopAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (User.Identity.IsAuthenticated && User.IsInRole("administrator"))
+            if (User.Identity.IsAuthenticated && (User.IsInRole("administrator") || User.IsInRole("korisnik") || User.IsInRole("prodavac")))
             {
                 if (!Page.IsPostBack)
                 {
@@ -133,6 +133,11 @@ namespace webshopAdmin
             cmbSort.Items.Add(new ListItem("Datumu unosa", "product.insertDate"));
             cmbSort.Items.Add(new ListItem("Datumu izmene", "product.updateDate"));
             cmbSort.Items.Add(new ListItem("Datum izmene opadajuće", "product.updateDate DESC"));
+
+            cmbNewCategory.DataSource = new CategoryBL().GetNestedCategoriesDataTable(true, true);
+            cmbNewCategory.DataTextField = "name";
+            cmbNewCategory.DataValueField = "categoryID";
+            cmbNewCategory.DataBind();
         }
 
         protected void btnShowProducts_Click(object sender, EventArgs e)

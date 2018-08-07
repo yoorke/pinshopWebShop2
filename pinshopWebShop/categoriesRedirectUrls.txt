@@ -1,0 +1,16 @@
+﻿/proizvodi/prenosni-racunari/laptopovi,/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi
+/proizvodi/laptopovi,/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi
+/proizvodi/laptop,/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi
+/proizvodi/prenosni-racunari/dodatna-oprema,/proizvodi/prenosni-racunari/dodatna-oprema
+/proizvodi/dodatna-oprema,/proizvodi/prenosni-racunari/dodatna-oprema
+/proizvodi/prenosni-racunari/tableti,/proizvodi/prenosni-racunari/tableti-i-oprema/tableti
+/proizvodi/tableti,/proizvodi/prenosni-racunari/tableti-i-oprema/tableti
+/proizvodi/racunari/brandname,/proizvodi/racunari/brandname-racunari
+/proizvodi/brandname,/proizvodi/racunari/brandname-racunari
+/proizvodi/all-in-one,/proizvodi/racunari/brandname-racunari/all-in-one
+/proizvodi/napajanja,/proizvodi/komponente/kucista-i-napajanja/napajanja
+/proizvodi/hard-diskovi,/proizvodi/komponente/hard-diskovi
+/proizvodi/dvd-uredjaji,/proizvodi/komponente/opticki-uredjaji/dvd-uredjaji
+/proizvodi/maticne-ploce,/proizvodi/komponente/maticne-ploce
+/proizvodi/tastature,/proizvodi/periferije/tastature-i-misevi/tastature
+/proizvodi/pegle,/proizvodi/kucni-i-kuhinjski-aparati/kucni-aparati/pegle

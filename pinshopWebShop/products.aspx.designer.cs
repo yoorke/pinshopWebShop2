@@ -103,6 +103,33 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.Label lblCategoryDescription;
         
         /// <summary>
+        /// divSubCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSubCategories;
+        
+        /// <summary>
+        /// rptSubCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSubCategories;
+        
+        /// <summary>
+        /// divStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divStatus;
+        
+        /// <summary>
         /// pgrPager control.
         /// </summary>
         /// <remarks>
@@ -128,15 +155,6 @@ namespace WebShop2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList cmbSort;
-        
-        /// <summary>
-        /// divStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divStatus;
         
         /// <summary>
         /// rptProducts control.

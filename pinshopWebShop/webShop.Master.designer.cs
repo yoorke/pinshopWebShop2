@@ -40,6 +40,15 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.LoginView loginView;
         
         /// <summary>
+        /// searchControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebShop2.userControls.Search searchControl;
+        
+        /// <summary>
         /// mainMenuVertical control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,24 @@ namespace WebShop2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebShop2.UserControls.MasterMenu masterMenu;
+        
+        /// <summary>
+        /// breadcrumbsCont control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl breadcrumbsCont;
+        
+        /// <summary>
+        /// sitemappath control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SiteMapPath sitemappath;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

@@ -19,11 +19,11 @@
                     <div class="separator" runat="server" visible="false"></div>
                     <asp:Repeater ID="rptSubMenu" runat="server" DataSource='<%#Eval("SubCategory") %>' OnItemDataBound="rptSubMenu_ItemDataBound">
                         <HeaderTemplate>
-                            <ul class="cd-secondary-dropdown is-hidden">
+                            <ul class="cd-secondary-dropdown is-hidden second-level">
                             <li class="go-back"><a href="#0">Nazad</a></li>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <li id="secondLi" runat="server">
+                            <li id="secondLi" runat="server">                                
                                 <asp:HyperLink ID="lnkSubMenu" runat="server" NavigateUrl='<%# ResolveUrl("~" + Eval("url")) %>'>
                                     <asp:HiddenField ID="lblImageUrlSource" runat="server" Value='<%#Eval("imageUrlSource") %>'></asp:HiddenField>
                                     <asp:HiddenField ID="lblImageUrlPositionX" runat="server" Value='<%#Eval("imageUrlPositionX") %>' />
@@ -34,13 +34,17 @@
                                 </asp:HyperLink>
                                         
                                 <asp:Repeater ID="rptSubMenu3" runat="server" DataSource='<%#Eval("SubCategory") %>'>
-                                    <ItemTemplate>
-                                        <ul class="is-hidden">
+                                    <HeaderTemplate>
+                                        <ul class="is-hidden third-level">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>                                        
                                             <li>
                                                 <asp:HyperLink ID="lnkSubMenu3" runat="server" NavigateUrl='<%#Eval("url") %>' Text='<%#Eval("name") %>'></asp:HyperLink>
-                                            </li>
-                                        </ul>
+                                            </li>                                        
                                     </ItemTemplate>
+                                    <FooterTemplate>
+                                        </ul>
+                                    </FooterTemplate>
                                 </asp:Repeater>
                             </li>
 

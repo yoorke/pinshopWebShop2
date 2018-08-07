@@ -12,7 +12,7 @@ jQuery(document).ready(function($){
 	});
 
 	//on mobile - open submenu
-	$('.has-children').children('a').on('click', function(event){
+	$('.has-children').not('.second-level>li').children('a').on('click', function(event){
 		//prevent default clicking on direct children of .has-children 
 		event.preventDefault();
 		var selected = $(this);

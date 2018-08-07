@@ -1,9 +1,20 @@
 ﻿<tr>
-    <td style="max-width:40px"><img src="${imageUrl}" /></td>
+    <td style="width:50px"><img src="${imageUrl}" class="img-responsive" /></td>
     <!--<td><span>${code}</span></td>-->
-    <td style="width:30%;word-break:break-all"><span>${name.toString().substring(0, 50) + '...'}, ${description}, ${code}</span></td>
-    <td class="text-right"><span class="value">${parseFloat(userPrice).toFixed(2)}</span> <span class="unit">RSD</span></td>
-    <td class="text-right" style="width:90px"><div class="update-cont"><span class="fa fa-fw fa-minus left" onclick="CartFpUpdateQuantity(${ productID }, -1)"></span><span class="value">${quantity}</span><span class="fa fa-fw fa-plus right" onclick="CartFpUpdateQuantity(${ productID }, 1)"></span></div> <span class="unit">kom</span></td>
-    <td class="text-right"><span class="value">${parseFloat(total).toFixed(2)}</span> <span class="unit">RSD</span></td>
-    <td class="text-right"><span class="fa fa-fw fa-close" onclick="CartFpDeleteProduct(${ productID })"></span></td>
+    <td style="word-break:break-all;padding-bottom:2em !important;width:320px">
+        <span class="code" style="padding-left:5px;">${code}</span>
+        <span style="padding:0 5px;display:inline-block">${name}, ${description}, </span>
+    </td>
+    <!--<td class="text-right"><span class="value">${parseFloat(userPrice).toFixed(2)}</span> <span class="unit">RSD</span></td>-->
+    <td class="text-right" style="width:90px">
+        <div class="update-cont">
+            <span class="fa fa-fw fa-minus left" onclick="CartFpUpdateQuantity(${ productID }, -1)"></span>
+            <span class="value">${quantity}</span>
+            <span class="fa fa-fw fa-plus right" onclick="CartFpUpdateQuantity(${ productID }, 1)"></span>
+        </div>
+        <!--<span class="unit">kom</span>-->
+        <span class="value">${formatCurrency(parseFloat(total))}</span> <span class="unit">RSD</span>
+    </td>
+    <!--<td class="text-right"></td>-->
+    <td class="text-right" style="width:20px;position:relative"><span class="fa fa-fw fa-close" style="position:absolute;top:0;right:0" onclick="CartFpDeleteProduct(${ productID })"></span></td>
 </tr>

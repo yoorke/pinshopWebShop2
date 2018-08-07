@@ -18,6 +18,7 @@ namespace WebShop2
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.FindControl("mainMenuVertical").Visible = true;
+            cart1.QuantityChanged += Cart1_QuantityChanged;
         }
 
         protected void btnCheckout_Click(object sender, EventArgs e)
@@ -28,6 +29,11 @@ namespace WebShop2
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
             Response.Redirect("/");
+        }
+
+        private void Cart1_QuantityChanged(object sender, EventArgs e)
+        {
+            ScriptManager.RegisterClientScriptBlock(updatePanel, updatePanel.GetType(), "UpdateCartFpProductsCount", "GetCartProductsCount()", true);
         }
     }
 }

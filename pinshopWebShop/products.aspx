@@ -10,9 +10,9 @@
     <%--<link rel="stylesheet" href="<%=ResolveUrl("~/css/jquery.bxslider.min.css") %>" />--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="row">
+    <%--<div class="row">
         <div class="col-xs-12"></div>
-    </div>
+    </div>--%>
     <div class="row">
         <div class="product-filter">
             <%--<h2>Kategorija</h2>
@@ -49,6 +49,29 @@
                     <asp:Label ID="lblCategoryDescription" runat="server" EnableViewState="false"></asp:Label>
                 </div>
             </div>
+            <div class="row text-center margin-bottom-1" id="divSubCategories" runat="server" visible="false">
+                <asp:Repeater ID="rptSubCategories" runat="server">
+                    <ItemTemplate>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                            <div class="subCategory-cont">
+                                <asp:HyperLink runat="server" NavigateUrl='<%#Eval("url") %>'>
+                                    <asp:Image ImageUrl='<%#"/images/" + Eval("imageUrl") %>' runat="server" CssClass="subCategory-image img-responsive" />
+                                    <div class="subCategory-name">
+                                        <asp:Label ID="lblSubCategoryName" runat="server" Text='<%#Eval("name") %>'></asp:Label>
+                                    </div>
+                                </asp:HyperLink>
+                            </div>
+                        </div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            <div class="row status" id="divStatus" runat="server" visible="false">
+                <div class="col-lg-12">
+                    <div class="alert alert-warning text-center">
+                        Nema proizvoda za traženi filter
+                    </div>
+                </div>
+            </div>
             <div class="row product-pager">
                 <div class="col-lg-5">
                     <pager:Pager ID="pgrPager" runat="server" OnOnClick="pgrPages_Click" />
@@ -77,12 +100,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row status" id="divStatus" runat="server" visible="false">
-                <div class="col-lg-12">
-                    Nema proizvoda za traženi filter
-                </div>
-            </div>
+            </div>            
             <div class="row filter-btn hidden-sm hidden-md hidden-lg">
                 <div class="col-xs-12">
                     <button type="button" class="btn btn-default width-100" onclick="ShowFilter()"><span class="fa fa-fw fa-filter"></span> Filter</button>

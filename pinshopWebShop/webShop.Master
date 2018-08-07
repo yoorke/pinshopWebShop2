@@ -1,13 +1,14 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="webShop.master.cs" Inherits="WebShop2.webShop" %>
 <%@ Register Src="~/userControls/MainMenuVertical.ascx" TagName="MainMenuVertical" TagPrefix="Ws2" %>
 <%@ Register Src="~/userControls/MasterMenu.ascx" TagName="MasterMenu" TagPrefix="Ws2" %>
+<%@ Register Src="~/userControls/Search.ascx" TagName="SearchControl" TagPrefix="Ws2" %>
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PinShop - računari, komponente, mobilni telefoni</title>
-    <link rel="stylesheet" href="<%# ResolveUrl("~/css/style.min.css?v=2.0") %>" type="text/css" />
+    <link rel="stylesheet" href="<%# ResolveUrl("~/css/style.min.css?v=2.1") %>" type="text/css" />
     <link rel="stylesheet" href="<%# ResolveUrl("~/css/font-awesome.min.css") %>" type="text/css" />
 
     <!-- Google Tag Manager -->
@@ -70,14 +71,16 @@
                         </div>
                         <div class="col-lg-7 col-md-6 col-sm-5 col-xs-8">
                             <div class="search-box">
-                                <div class="input-group">
+                                <%--<div class="input-group">
                                     <input type="text" ID="txtSearch" class="form-control" placeholder="Pronađi..." />
                                     <span class="input-group-btn"><button type="button" ID="btnSearch" class="btn btn-default" onclick="btnSearch_Click"><span class="fa fa-search"></span></button></span>
-                                </div>
+                                </div>--%>
+                                <Ws2:SearchControl ID="searchControl" runat="server"></Ws2:SearchControl>
                             </div>
                         </div>
                         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
                             <div class="header-box cart-fp-container">
+                                <div id="cartFpProductsCount">0</div>
                                 <div class="cart-fp" onclick="ShowCartFpContainer('cartButton')" id="btnCartFp">
                                     <span class="fa fa-fw fa-shopping-cart"></span>
                                     <span class="title">Korpa</span>
@@ -108,6 +111,14 @@
         </div>
         <div class="main-content">
             <div class="container">
+                <div class="row breadcrumbs" id="breadcrumbsCont" runat="server">
+                    <%--<div class="col-lg-2">
+
+                    </div>--%>
+                    <div class="col-lg-12 padding-left-0">
+                        <asp:SiteMapPath ID="sitemappath" runat="server"></asp:SiteMapPath>
+                    </div>
+                </div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
@@ -255,7 +266,7 @@
             <table id="tblCartItems"></table>
             <div class="total">
                 <span>Ukupno: </span>
-                <span id="cartFpTotal">0,00 RSD</span>
+                <span id="cartFpTotal">0,00 RSD</span><span> RSD</span>
             </div>
             <div class="buttons">
                 <a href="<%=ResolveUrl("~/korpa") %>" class="ws-button btn btn-primary pull-left">Korpa</a>
@@ -278,8 +289,9 @@
         </div>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="<%=ResolveUrl("~/js/bundle.min.js?v=2.1") %>"></script>
+    <script src="<%=ResolveUrl("~/js/bundle.min.js?v=2.11") %>"></script>
     <%--<script src="/js.src/web-shop.js" type="text/javascript"></script>--%>
+    <%--<script src="/js.src/main.js" type="text/javascript"></script>--%>
     <asp:ContentPlaceHolder ID="footer" runat="server"></asp:ContentPlaceHolder>
 </body>
 </html>

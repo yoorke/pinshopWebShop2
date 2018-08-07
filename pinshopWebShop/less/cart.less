@@ -2,10 +2,11 @@
     //font-size:0.9em;
     .total {
         text-align: right;
-        margin: 0.5em 0 0 0;
+        margin: 1em 0 0 0;
         font-size: 1.2em;
         background-color:@default-gray;
         border-top:1px solid #eee;
+        padding: 0 5px;
 
         #cartFpTotal {
             font-weight: bold;
@@ -22,11 +23,13 @@
     .update-cont{
         display:inline-block;
         padding:2px;
-        background-color:@default-gray;
+        background-color:lighten(@default-gray, 2%);
+        border:1px solid darken(@default-gray, 10%);
 
         span.fa{
             cursor:pointer;
             color: lighten(@text-color, 10%);
+            font-size:0.8em;
         }
 
         span.fa.left{
@@ -35,6 +38,10 @@
 
         span.fa.right{
             margin-left:2px;
+        }
+
+        span.value{
+            padding:0 20px;
         }
     }
 
@@ -48,13 +55,28 @@
 
     span.value{
         font-weight:bold;
-        font-size:1.3em;
+        font-size:1.1em;
     }
 
     #cartFpMessage{
         display:block;
         width:100%;
         text-align:center;
+    }
+
+    span.code{
+        display:block;
+        font-size:0.9em;
+        color:lighten(@text-color, 20%);
+    }
+
+    img{
+        border:1px solid darken(@default-gray, 10%);
+        width:100%;
+    }
+
+    tr{
+        //border-bottom:1px solid @default-gray;
     }
 }
 
@@ -102,4 +124,19 @@
             color:lighten(@text-color, 10%);
         }
     }
+}
+
+#cartFpProductsCount{
+    font-size:1.2em;
+    font-weight:bold;
+    background-color:#ffff00;
+    border-radius:5em;
+    //padding:0.2em 0.5em;
+    position:absolute;
+    right:0;
+    top:10px;
+    width:30px;
+    height:30px;
+    text-align:center;
+    padding-top:0.2em;
 }

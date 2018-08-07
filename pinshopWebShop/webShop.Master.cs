@@ -20,6 +20,12 @@ namespace WebShop2
                 Page.Header.DataBind();
             }
             loadFooter();
+
+            if (SiteMap.CurrentNode == SiteMap.RootNode)
+            { 
+                sitemappath.Visible = false;
+                breadcrumbsCont.Visible = false;
+            }
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

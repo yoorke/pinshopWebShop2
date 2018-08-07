@@ -262,6 +262,8 @@ namespace WebShop2.UserControls
                 //((CartFirstPage)Page.Master.FindControl("CartFirstPage1")).ProductsCount = dgvCart.Rows.Count;
                 if (QuantityChanged != null)
                     QuantityChanged(this, null);
+
+                //ScriptManager.RegisterClientScriptBlock(this.Page.FindControl("updatePanel") as UpdatePanel, (this.Page.FindControl("updatePanel") as UpdatePanel).GetType(), "UpdateCartFPProductsCount", "GetCartFpProductsCount()", true);
             }
         }
 

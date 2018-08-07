@@ -18,6 +18,10 @@
     margin-left:1em;
 }
 
+.margin-bottom-1{
+    margin-bottom:1em;
+}
+
 .padding-0{
     padding:0;
 }
@@ -54,18 +58,19 @@
     position:absolute;
     top:0;
     right:0;
-    border:1px solid @default-gray;
+    border:1px solid darken(@default-gray, 20%);
     background-color:#fff;
     transition:0.2s ease all;
     padding:0.5em;
     font-size:0.9em;
     z-index:999;
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.2);
 
     table td{
         padding:0.2em 0.5em;
 
         img{
-            max-width:38px;
+            //wmax-width:38px;
         }
     }
 

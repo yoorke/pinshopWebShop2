@@ -69,8 +69,11 @@ namespace WebShop2
             ProductBL productBL = new ProductBL();
             Product product = productBL.GetProduct(productID, string.Empty, true, string.Empty);
 
-            if(product != null) { 
+            if(product != null) {
 
+                if (!Request.RawUrl.Equals(product.Url))
+                    Response.RedirectPermanent(product.Url);
+                
                 //images = product.Images;
                 priProductImages.Images = product.Images;
                 priProductImages.ShowImages();
@@ -140,6 +143,8 @@ namespace WebShop2
                     imgBrand.Visible = true;
                     imgBrand.ImageUrl = "/images/brand/" + product.Brand.LogoUrl;
                 }
+
+                ViewState.Add("productUrl", product.Url);
             }
             else
             {
@@ -219,7 +224,7 @@ namespace WebShop2
 
             HtmlLink link = new HtmlLink();
             link.Attributes.Add("rel", "canonical");
-            link.Attributes.Add("href", ConfigurationManager.AppSettings["webShopUrl"] + Page.Request.RawUrl);
+            link.Attributes.Add("href", ConfigurationManager.AppSettings["webShopUrl"] +  ViewState["productUrl"]);
             Header.Controls.Add(link);
         }
 

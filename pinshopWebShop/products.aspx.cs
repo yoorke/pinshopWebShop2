@@ -8,6 +8,8 @@ using eshopBE;
 using eshopBL;
 using System.Collections.Generic;
 using System.Configuration;
+using eshopUtilities;
+using System.IO;
 
 namespace WebShop2
 {
@@ -86,8 +88,15 @@ namespace WebShop2
                 if (Page.RouteData.Values["category"] != null)
                     categoryUrl = Page.RouteData.Values["category"].ToString();
 
-                if (new CategoryBL().GetCategoryByUrl(categoryUrl) == null)
+                if (categoryUrl.EndsWith("/"))
+                    categoryUrl = categoryUrl.Substring(0, categoryUrl.Length - 1);
+                if ((category = new CategoryBL().GetCategoryByUrl(categoryUrl)) == null) {
+                    //ErrorLog.LogError(new Exception("Category url:" + categoryUrl), Request.RawUrl, Request.UserHostAddress, Request.Url.ToString());
+                    redirect(Request.RawUrl);
+                    ErrorLog.LogError(new Exception("Category url:" + categoryUrl), Request.RawUrl, Request.UserHostAddress, Request.Url.ToString());
                     Server.Transfer("/not-found.aspx");
+                }
+
                 string[] brandIDs = brands != string.Empty ? brands.Split(',') : new string[] {};
                 string[] attributeIDs = attributes != string.Empty ? attributes.Split(',') : new string[] { };
 
@@ -115,12 +124,12 @@ namespace WebShop2
 
                 this.sort = sort;
 
-                category = new CategoryBL().GetCategoryByUrl(categoryUrl);
+                //category = new CategoryBL().GetCategoryByUrl(categoryUrl);
                 //ViewState.Add("category", categoryUrl);
                 loadIntoForm();
-                loadBrands(categoryUrl, brandIDs, false);
+                loadBrands(categoryUrl, brandIDs, category.ShowProductsFromSubCategories);
                 loadFilter(categoryUrl, attributeIDs);
-                loadPrices(categoryUrl, priceFrom, priceTo, category.ParentCategoryID == 1);
+                loadPrices(categoryUrl, priceFrom, priceTo, category.ShowProductsFromSubCategories);
 
                 
                 //ViewState["pageTitle"] = category.Name + " | Pin Servis doo";
@@ -142,7 +151,11 @@ namespace WebShop2
 
 
                 lblCategoryDescription.Text = category.Description;
-                createQueryString();
+
+                int subCategoriesCount = showSubCategories(category.CategoryID);
+
+                if(subCategoriesCount == 0 || category.ShowProductsFromSubCategories)
+                    createQueryString();
 
                 Page.Title = category.Name + " | " + "Pin Servis str";
             }
@@ -168,9 +181,9 @@ namespace WebShop2
             cmbSort.SelectedValue = this.sort;
         }
 
-        private void loadBrands(string categoryUrl, string[] brandIDs, bool showOnlySelectedBrands)
+        private void loadBrands(string categoryUrl, string[] brandIDs, bool showSubCategoryBrands)
         {
-            chkBrands.DataSource = new BrandBL().GetBrands(categoryUrl, showOnlySelectedBrands);
+            chkBrands.DataSource = new BrandBL().GetBrands(categoryUrl, showSubCategoryBrands);
             chkBrands.DataTextField = "name";
             chkBrands.DataValueField = "brandID";
             chkBrands.DataBind();
@@ -184,7 +197,7 @@ namespace WebShop2
                 foreach (string brandID in brandIDs)
                     if (int.Parse(brandID) == int.Parse(li.Value))
                         li.Selected = true;
-                    else if(showOnlySelectedBrands)
+                    else if(false)
                         li.Attributes.Add("style", "display:none");
                         
             }
@@ -344,6 +357,63 @@ namespace WebShop2
                 rptProducts.DataBind();
                 divStatus.Visible = true;
             }
+        }
+
+        public void redirect(string url)
+        {
+            Dictionary<string, string> urls = new Dictionary<string, string>();
+
+            string line;
+            using (StreamReader sr = new StreamReader(Server.MapPath("~/categoriesRedirectUrls.txt")))
+            {
+                while((line = sr.ReadLine()) != null)
+                {
+                    urls.Add(line.Split(',')[0], line.Split(',')[1]);
+                }
+            }
+
+            
+            //urls.Add("/proizvodi/prenosni-racunari/laptopovi", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
+            //urls.Add("/proizvodi/laptopovi", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
+            //urls.Add("/proizvodi/laptop", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
+
+            //urls.Add("/proizvodi/prenosni-racunari/dodatna-oprema", "/proizvodi/prenosni-racunari/dodatna-oprema");
+            //urls.Add("/proizvodi/dodatna-oprema", "/proizvodi/prenosni-racunari/dodatna-oprema");
+
+            //urls.Add("/proizvodi/prenosni-racunari/tableti", "/proizvodi/prenosni-racunari/tableti-i-oprema/tableti");
+            //urls.Add("/proizvodi/tableti", "/proizvodi/prenosni-racunari/tableti-i-oprema/tableti");
+
+            //urls.Add("/proizvodi/racunari/brandname", "/proizvodi/racunari/brandname-racunari");
+            //urls.Add("/proizvodi/brandname", "/proizvodi/racunari/brandname-racunari");
+            //urls.Add("/proizvodi/all-in-one", "/proizvodi/racunari/brandname-racunari/all-in-one");
+
+            //urls.Add("/proizvodi/napajanja", "/proizvodi/komponente/kucista-i-napajanja/napajanja");
+            //urls.Add("/proizvodi/hard-diskovi", "/proizvodi/komponente/hard-diskovi");
+            //urls.Add("/proizvodi/dvd-uredjaji", "/proizvodi/komponente/opticki-uredjaji/dvd-uredjaji");
+            //urls.Add("/proizvodi/maticne-ploce", "/proizvodi/komponente/maticne-ploce");
+
+            //urls.Add("/proizvodi/tastature", "/proizvodi/periferije/tastature-i-misevi/tastature");
+            
+            //urls.Add("proizvodi/)
+
+            //urls.Add("/proizvodi/pegle", "/proizvodi/kucni-i-kuhinjski-aparati/kucni-aparati/pegle");
+
+
+            if (urls.ContainsKey(url))
+                Response.RedirectPermanent(urls[url]);
+        }
+
+        private int showSubCategories(int categoryID)
+        {
+            rptSubCategories.DataSource = new CategoryBL().GetAllSubCategories(categoryID, false);
+            rptSubCategories.DataBind();
+
+            if(((List<Category>)rptSubCategories.DataSource) != null && ((List<Category>)rptSubCategories.DataSource).Count > 0)
+            {
+                divSubCategories.Visible = true;
+            }
+
+            return ((List<Category>)rptSubCategories.DataSource) != null ? ((List<Category>)rptSubCategories.DataSource).Count : 0;
         }
     }
 }
