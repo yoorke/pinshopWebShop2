@@ -25,13 +25,44 @@
                 </div>
                 <Ws2:ProductImages ID="priProductImages" runat="server" />
                 <asp:Image ID="imgPromotion" runat="server" Visible="false" CssClass="promotion" />
+                <div class="row icons">
+                    <%--<div class="col-md-12">--%>
+                        
+                    <%--</div>--%>
+                    <div class="col-xs-3 text-center padding-left-0 padding-right-0">
+                        <button type="button" onclick="AddToWishList(event, '<%=lblProductID.ClientID %>')" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Dodaj u listu želja">
+                            <span class="fa fa-fw fa-heart"></span>
+                            <span class="hidden-xs hidden-sm">Lista želja</span>
+                        </button>
+                    </div>
+                    <div class="col-xs-3 text-center padding-left-0 padding-right-0"><%--<asp:LinkButton ID="btnCompare" runat="server" Text="Uporedi" OnClientClick="btnCompare_Click('<%=lblProductID.ClientID %>')"></asp:LinkButton>--%>
+                        <%--<button type="button" id="btnCompare" onclick="btnCompare_Click('<%=lblProductID.ClientID %>')">Uporedi</button>--%>
+                        <button type="button" onclick="AddToCompare(event, '<%=lblProductID.ClientID %>')" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Uporedi proizvod">
+                            <span class="fa fa-fw fa-balance-scale"></span>
+                            <span class="hidden-xs hidden-sm">Uporedi</span>
+                        </button>
+
+                    </div>
+                    <div class="col-xs-3 text-center padding-left-0 padding-right-0">
+                        <button type="button" onclick="RecommendProduct()" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Pošalji prijatelju">
+                            <span class="fa fa-fw fa-envelope"></span>
+                            <span class="hidden-xs hidden-sm">Podeli</span>
+                        </button>
+                    </div>
+                    <div class="col-xs-3 text-center padding-left-0 padding-right-0">
+                        <a href="<%=ResolveUrl("~/stampa-proizvoda/" + lblProductID.Value) %>" target="_blank">
+                            <span class="fa fa-fw fa-print"></span>
+                            <span class="hidden-xs hidden-sm">Štampaj</span>
+                        </a>
+                    </div>
+                </div>
             </div><%--col--%>
             <div class="col-sm-7">
                 <div id="imgZoom" class="img-zoom"></div>
                 <asp:HiddenField ID="lblProductID" runat="server" />
-                <asp:Image ID="imgBrand" runat="server" Visible="false" CssClass="brand-logo" />
-                <h1><asp:Literal ID="lblBrand" runat="server"></asp:Literal></h1>
-                <h2><asp:Literal ID="lblName" runat="server"></asp:Literal></h2>
+                
+                <h1 id="lblH1" runat="server"><asp:Literal ID="lblBrand" runat="server"></asp:Literal></h1>
+                <h2 id="lblH2" runat="server"><asp:Literal ID="lblName" runat="server"></asp:Literal></h2>
                 <div class="code">Šifra: <asp:Label ID="lblCode" runat="server"></asp:Label></div>
                 <p>Pogledajte i ostale proizvode iz kategorije <asp:HyperLink ID="lnkCategory" runat="server" CssClass="underline"></asp:HyperLink></p>
                 
@@ -55,15 +86,30 @@
                     </div>
                 </div><%--row-kredit-i-rate--%>
                 
-                <div class="row box-content box-content-secondary">
-                    <div class="col-sm-6">
-                        <p>Dostupnost:</p>
-                        <p class="bold uppercase"><span class="stock-icon"><asp:Label ID="lblStockIcon" runat="server"></asp:Label></span> <asp:Literal ID="txtAvailability" runat="server" Text="Na stanju"></asp:Literal></p>
-                        <p class="margin-top-2">Očekivani rok isporuke:</p>
-                        <p class="bold"><asp:Literal ID="txtDelivery" runat="server" Text="do 2 dana"></asp:Literal></p>
-                        <Ws:ProductRating ID="productRating" runat="server" />
+                <div class="row box-content box-content-secondary margin-left-05">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <asp:Image ID="imgBrand" runat="server" Visible="false" CssClass="brand-logo" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>Dostupnost:</p>
+                                <p class="bold uppercase"><span class="stock-icon"><asp:Label ID="lblStockIcon" runat="server"></asp:Label></span> <asp:Literal ID="txtAvailability" runat="server" Text="Na stanju"></asp:Literal></p>
+                                
+                            </div>
+                            <div class="col-xs-6">
+                                <p class="margin-top-2">Očekivani rok isporuke:</p>
+                                <p class="bold"><asp:Literal ID="txtDelivery" runat="server" Text="do 2 dana"></asp:Literal></p>
+                                <Ws:ProductRating ID="productRating" runat="server" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-6 text-right">
+                    <%--<div class="col-sm-4">
+
+                    </div>--%>
+                    <div class="col-sm-4 text-right">
                         <div class="price-div"><p class="margin-bottom-0" id="priceDiv" runat="server"><asp:Label ID="lblPrice" runat="server" Text="MP 110.989 din"></asp:Label><span class="price-label"></span></p></div>
                         <div class="web-price-div"><p class="web-price margin-bottom-0" id="webPriceDiv" runat="server"><asp:Label ID="lblWebPrice" runat="server" Text="99.890 din"></asp:Label><span class="web-price-label"> RSD</span></p></div>
                         <div class="saving-div"><p id="savingDiv" runat="server"><asp:Label ID="lblSaving" runat="server" Text="Ušteda: 2.548,00 din"></asp:Label><span class="saving-label"></span></p></div>
@@ -71,46 +117,24 @@
                         <button type="button" id="btnCartAjax" class="ws-btn btn-cart" runat="server"><span class="fa fa-fw fa-shopping-cart"></span><span>Dodaj u korpu</span></button>
                     </div>
                 </div><%--row--%>
-                <div class="row icons">
+                <%--<div class="row icons">--%>
                     <%--<div class="col-xs-1">--%>
                         <%--<img src='<%=Page.ResolveUrl("~/images/compare.gif") %>' />--%>
                         
                     <%--</div>--%>
-                    <div class="col-xs-3 text-center"><%--<asp:LinkButton ID="btnCompare" runat="server" Text="Uporedi" OnClientClick="btnCompare_Click('<%=lblProductID.ClientID %>')"></asp:LinkButton>--%>
-                        <%--<button type="button" id="btnCompare" onclick="btnCompare_Click('<%=lblProductID.ClientID %>')">Uporedi</button>--%>
-                        <button type="button" onclick="AddToCompare(event, '<%=lblProductID.ClientID %>')" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Uporedi proizvod">
-                            <span class="fa fa-fw fa-balance-scale"></span>
-                            <span>Uporedi</span>
-                        </button>
-
-                    </div>
+                    
                     <%--<div class="col-xs-1">--%>
                         <%--<img src='<%=Page.ResolveUrl("~/images/wishlist.gif") %>' />--%>
                         
                     <%--</div>--%>
-                    <div class="col-xs-3 text-center">
-                        <button type="button" onclick="AddToWishList(event, '<%=lblProductID.ClientID %>')" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Dodaj u listu želja">
-                            <span class="fa fa-fw fa-heart"></span>
-                            <span>Lista želja</span>
-                        </button>
-                    </div>
+                    
                     <%--<div class="col-xs-1">--%>
                         <%--<img src='<%=Page.ResolveUrl("~/images/recommend.gif") %>' />--%>
                         
                     <%--</div>--%>
-                    <div class="col-xs-3 text-center">
-                        <button type="button" onclick="RecommendProduct()" class="ws-btn" data-toggle="tooltip" data-placement="top" title="Pošalji prijatelju">
-                            <span class="fa fa-fw fa-envelope"></span>
-                            <span>Podeli</span>
-                        </button>
-                    </div>
-                    <div class="col-xs-3 text-center">
-                        <a href="<%=ResolveUrl("~/stampa-proizvoda/" + lblProductID.Value) %>" target="_blank">
-                            <span class="fa fa-fw fa-print"></span>
-                            <span>Štampaj</span>
-                        </a>
-                    </div>
-                </div><%--row--%>
+                    
+                    
+                <%--</div>--%><%--row--%>
                 <div class="row margin-top-1">
                     <div class="col-lg-12 text-right">
                         <div id="lblProductFacebookLike" runat="server"></div>
@@ -148,13 +172,13 @@
         
         <%--specification--%>
         <div class="row">
-            <div class="col-lg-8 specification">
+            <div class="col-lg-6 specification">
                 <h3>Specifikacije i detalji</h3>
                 <asp:Literal ID="lblSpecification" runat="server"></asp:Literal>
             </div><%--col--%>
-            <div class="col-lg-4" style="background-color:#eee">
+            <%--<div class="col-lg-4" style="background-color:#eee">
 
-            </div>
+            </div>--%>
         </div><%--row--%>
         <div class="row question">
             <div class="col-md-12">
@@ -162,7 +186,7 @@
                 <span>Nema pitanja</span>
             </div>
         </div>
-        <div class="row product_slider">
+        <div class="row product_slider margin-bottom-4">
             <div class="col-lg-12">
                 <Ws2:ProductSlider ID="sliderCategory" runat="server" />
             </div>

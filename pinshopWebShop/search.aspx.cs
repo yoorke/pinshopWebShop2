@@ -35,11 +35,14 @@ namespace WebShop2
             if (!Page.IsPostBack)
             {
                 string searchString = string.Empty;
-                if (Request.QueryString.ToString().Contains("a="))
+                string categoryID = "-1";
+                if (Request.QueryString.ToString().Contains("s=") && Request.QueryString.ToString().Contains("c="))
                 {
-                    searchString = Request.QueryString["a"].ToString();
+                    searchString = Request.QueryString["s"].ToString();
+                    categoryID = Request.QueryString["c"].ToString();
                     lblHeading.Text = "Pretraga: " + searchString;
                     ViewState["searchString"] = searchString;
+                    ViewState["categoryID"] = categoryID;
                     loadIntoForm();
                     searchProducts();
                 }
@@ -49,7 +52,9 @@ namespace WebShop2
         private void searchProducts()
         {
             string searchString = ViewState["searchString"].ToString();
-            List<Product> products = new ProductBL().SearchProducts(searchString, this.sort);
+            int categoryID = -1;
+            int.TryParse(ViewState["categoryID"].ToString(), out categoryID);
+            List<Product> products = new ProductBL().SearchProducts(searchString, this.sort, categoryID);
             PagedDataSource pagedDataSource = new PagedDataSource();
             pagedDataSource.DataSource = products;
             pagedDataSource.AllowPaging = true;

@@ -94,7 +94,7 @@ namespace WebShop2.UserControls
                         image.CssClass = "thumb img-responsive";
                         image.OnClientClick = "ChangeImage(this.src);return false;";
 
-                        pnlThumbs.Controls.Add(new LiteralControl("<div class='col-md-3'>"));
+                        pnlThumbs.Controls.Add(new LiteralControl("<div class='col-xs-3'>"));
                         pnlThumbs.Controls.Add(image);
                         pnlThumbs.Controls.Add(new LiteralControl("</div>"));
                     }

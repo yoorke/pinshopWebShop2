@@ -80,11 +80,14 @@ namespace WebShop2
 
                 switch(ConfigurationManager.AppSettings["product_Line1"])
                 {
+                    case "Brand,Name": lblBrand.Text = product.Brand.Name + " " + product.Name; break;
                     case "Name": lblBrand.Text = product.Name; break;
                     case "Brand": lblBrand.Text = product.Brand.Name; break;
+                    case "none": { lblBrand.Text = string.Empty; lblH1.Visible = false; lblBrand.Visible = false;  break; }
                 }
                 switch(ConfigurationManager.AppSettings["product_Line2"])
                 {
+                    case "none": { lblName.Text = string.Empty; lblName.Visible = false; lblH2.Visible = false;  break; };
                     case "Name": lblName.Text = product.Name;break;
                     case "Description": lblName.Text = product.Description;break;
                 }
@@ -99,7 +102,7 @@ namespace WebShop2
                     savingDiv.Visible = false;
                 }
 
-                lblSpecification.Text = !product.Specification.Contains("<table class='table table-striped'><tbody></table>") ? product.Specification : "Nema podataka";
+                lblSpecification.Text = !product.Specification.Contains("<table class='table table-striped table-condensed'><tbody></table>") ? product.Specification : "Nema podataka";
                 lblDescription.Text = product.Description != string.Empty ? product.Description : "Nema opisa";
                 if (product.Promotion != null)
                 {
@@ -107,7 +110,7 @@ namespace WebShop2
                     imgPromotion.Visible = true;
                 }
                 lblProductID.Value = product.ProductID.ToString();
-                Page.Title = (ConfigurationManager.AppSettings["product_Line1"] == "Name" ? product.Name : product.Brand.Name) + " " + (ConfigurationManager.AppSettings["product_Line2"] == "Name" ? product.Name : product.Description);
+                Page.Title = (ConfigurationManager.AppSettings["product_Line1"] == "Name" ? product.Name : product.Brand.Name) + " " + (ConfigurationManager.AppSettings["product_Line2"] == "Name" || ConfigurationManager.AppSettings["product_Line2"] == "none" ? product.Name : product.Description);
                 ViewState.Add("pageTitle", Page.Title);
                 ViewState.Add("productDescription", product.Description);
                 if(product.Images != null && product.Images.Count > 0)

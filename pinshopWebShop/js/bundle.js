@@ -2804,6 +2804,8 @@ jQuery(document).ready(function($){
 $(document).ready(function () {
     $('[data-toggle="tooltip"]').tooltip();
 })
+//import { clearTimeout, setTimeout } from "timers";
+
 function ShowCartFpContainer(src) {
     var top = (src == 'cartButton' ? $('#btnCartFp').offset().top + $('#btnCartFp').height() : $(window).scrollTop());
     var right = $(window).width() - ($('#btnCartFp').offset().left + $('#btnCartFp').width());
@@ -2940,6 +2942,9 @@ $(document).click(function (e) {
     if ($('#wishListFpContainer').is(':visible')) {
         $('#wishListFpContainer').hide();
     }
+    if ($('.search-items-cont').is(':visible') && e.target.className != 'search-items-cont') {
+        $('.search-items-cont').hide();
+    }
 
 })
 
@@ -2974,7 +2979,7 @@ function ChangeImage(imageUrl) {
 
 function btnSearch_Click() {
     if ($('#txtSearch').val().length > 0)
-        window.location = '/pretraga?a=' + $('#txtSearch').val();
+        window.location = '/pretraga?s=' + $('#txtSearch').val() + '&c=-1';
 }
 
 $('#btnSearch').click(function () {
@@ -2987,10 +2992,27 @@ $('#txtSearch').keydown(function (event) {
         btnSearch_Click();
         return false;
     }
-    if ($('txtSearch').val().length > 2) {
-        $('.search-items-cont').show();
+    else if (event.keyCode == 27) {
+        $('.search-items-cont').hide();
     }
 })
+
+$('#txtSearch').keyup(function (event) {
+    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8)) {
+        //$('.search-items-cont').show();
+        if (timer) {
+            clearTimeout(timer);
+        }
+        timer = setTimeout(function () {
+            SearchControl_GetSearchResponse($('#txtSearch').val());
+        }, 1000);
+    }
+    else {
+        $('.search-items-cont').hide();
+    }
+})
+
+var timer;
 
 function CartFpUpdateQuantity(productID, value) {
     

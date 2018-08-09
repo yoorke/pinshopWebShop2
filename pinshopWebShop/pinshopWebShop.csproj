@@ -479,7 +479,9 @@
     <Content Include="images\verifajd1.jpg" />
     <Content Include="images\visa1.jpg" />
     <Content Include="jQueryTemplates\cartFPTemplate.html" />
+    <Content Include="jQueryTemplates\searchItemsTemplate.html" />
     <Content Include="js.src\product-image-zoom.js" />
+    <Content Include="js.src\search-control.js" />
     <Content Include="js\bundle.js" />
     <Content Include="js\lightbox.js" />
     <Content Include="js\product-image-zoom.js" />
@@ -712,6 +714,7 @@
     <Content Include="kupindoXml.ashx" />
     <Content Include="less\custom-page.less" />
     <Content Include="less\breadcrumbs.less" />
+    <Content Include="less\search-control.less" />
     <None Include="packages.config" />
     <Content Include="SitemapHandler.ashx" />
     <None Include="Web.Debug.config">

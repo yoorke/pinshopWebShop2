@@ -167,5 +167,11 @@ namespace WebShop2
         {
             return HttpContext.Current.Session["cartID"] != null ? new CartBL().GetProductsCount(HttpContext.Current.Session["cartID"].ToString()) : 0;
         }
+
+        [WebMethod()]
+        public static string GetSearchData(string searchText)
+        {
+            return JsonConvert.SerializeObject(new CategoryBL().Search(searchText));
+        }
     }
 }

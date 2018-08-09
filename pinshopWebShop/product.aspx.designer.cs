@@ -49,13 +49,13 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.HiddenField lblProductID;
         
         /// <summary>
-        /// imgBrand control.
+        /// lblH1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgBrand;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblH1;
         
         /// <summary>
         /// lblBrand control.
@@ -65,6 +65,15 @@ namespace WebShop2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblBrand;
+        
+        /// <summary>
+        /// lblH2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblH2;
         
         /// <summary>
         /// lblName control.
@@ -101,6 +110,15 @@ namespace WebShop2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl loanBox;
+        
+        /// <summary>
+        /// imgBrand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgBrand;
         
         /// <summary>
         /// lblStockIcon control.
