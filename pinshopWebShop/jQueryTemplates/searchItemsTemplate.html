@@ -1,5 +1,5 @@
 ﻿<tr>
     <td>
-        <a href="/pretraga?s=${searchText}&c=${categoryID}">{{if url != '' }} Pronađi u kategoriji {{else}} Pronađi na celom {{/if}} <strong>${name}</strong> {{if count != 0 }} (${count}) {{/if}}</a>
+        <a href="/pretraga?s=${searchText}&c=${categoryID}">{{if url != '' }} Pronađi '${searchText}' u kategoriji {{else}} Pronađi na celom {{/if}} <strong>{{if url != '' }} ${fullName} {{else}} ${name} {{/if}}</strong> {{if count != 0 }} (${count}) {{/if}}</a>
     </td>
 </tr>

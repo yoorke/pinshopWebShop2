@@ -8,7 +8,10 @@
     <div class="col-lg-12 page-content products">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="heading"><asp:Literal ID="lblHeading" runat="server" EnableViewState="false"></asp:Literal></h1>
+                <h1 class="heading">
+                    Pretraga: <asp:Literal ID="lblHeading" runat="server" EnableViewState="false"></asp:Literal>
+                    , u kategoriji: <asp:Literal ID="lblCategoryName" runat="server" EnableViewState="false"></asp:Literal>
+                </h1>
             </div>
         </div>
         <div class="row product-pager">

@@ -2998,14 +2998,14 @@ $('#txtSearch').keydown(function (event) {
 })
 
 $('#txtSearch').keyup(function (event) {
-    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8)) {
+    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8 || (event.keyCode > 47 && event.keyCode < 58))) {
         //$('.search-items-cont').show();
         if (timer) {
             clearTimeout(timer);
         }
         timer = setTimeout(function () {
             SearchControl_GetSearchResponse($('#txtSearch').val());
-        }, 1000);
+        }, 500);
     }
     else {
         $('.search-items-cont').hide();
@@ -3066,4 +3066,24 @@ function GetCartProductsCount() {
 
 function formatCurrency(value) {
     return value.toLocaleString('sr', { minimumFractionDigits: 2 });
+}
+function SearchControl_GetSearchResponse(searchString) {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/GetSearchData',
+        data: JSON.stringify({ "searchText": searchString }),
+        contentType: 'application/json;charset=utf-8',
+        dataType: 'json',
+        success: function (response) {
+            $('#tblSearchItems tr').remove();
+            $('.search-items-cont').show();
+            $.get('/jQueryTemplates/searchItemsTemplate.html', null, function (searchItemsTemplate) {
+                $.tmpl(searchItemsTemplate, JSON.parse(response.d)).appendTo('#tblSearchItems');
+            })
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+       
+    })
 }

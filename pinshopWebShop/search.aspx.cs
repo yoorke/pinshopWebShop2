@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using eshopBL;
 using eshopBE;
+using System.Configuration;
 
 namespace WebShop2
 {
@@ -40,7 +41,8 @@ namespace WebShop2
                 {
                     searchString = Request.QueryString["s"].ToString();
                     categoryID = Request.QueryString["c"].ToString();
-                    lblHeading.Text = "Pretraga: " + searchString;
+                    lblHeading.Text = searchString;
+                    lblCategoryName.Text = int.Parse(categoryID) > 0 ? new CategoryBL().GetCategory(int.Parse(categoryID)).Name : "na celom " + ConfigurationManager.AppSettings["companyName"];
                     ViewState["searchString"] = searchString;
                     ViewState["categoryID"] = categoryID;
                     loadIntoForm();

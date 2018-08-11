@@ -372,7 +372,7 @@ namespace WebShop2
                 }
             }
 
-            
+
             //urls.Add("/proizvodi/prenosni-racunari/laptopovi", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
             //urls.Add("/proizvodi/laptopovi", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
             //urls.Add("/proizvodi/laptop", "/proizvodi/prenosni-racunari/laptopovi-i-oprema/laptopovi");
@@ -393,14 +393,15 @@ namespace WebShop2
             //urls.Add("/proizvodi/maticne-ploce", "/proizvodi/komponente/maticne-ploce");
 
             //urls.Add("/proizvodi/tastature", "/proizvodi/periferije/tastature-i-misevi/tastature");
-            
+
             //urls.Add("proizvodi/)
 
             //urls.Add("/proizvodi/pegle", "/proizvodi/kucni-i-kuhinjski-aparati/kucni-aparati/pegle");
 
 
+            url = url.Contains('?') ? url.Substring(0, url.IndexOf('?')) : url;
             if (urls.ContainsKey(url))
-                Response.RedirectPermanent(urls[url]);
+                Response.RedirectPermanent(urls[url] + (Request.QueryString.ToString() != string.Empty ? "?" + Request.QueryString.ToString() : string.Empty));
         }
 
         private int showSubCategories(int categoryID)

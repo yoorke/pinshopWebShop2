@@ -192,14 +192,14 @@ $('#txtSearch').keydown(function (event) {
 })
 
 $('#txtSearch').keyup(function (event) {
-    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8)) {
+    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8 || (event.keyCode > 47 && event.keyCode < 58))) {
         //$('.search-items-cont').show();
         if (timer) {
             clearTimeout(timer);
         }
         timer = setTimeout(function () {
             SearchControl_GetSearchResponse($('#txtSearch').val());
-        }, 1000);
+        }, 500);
     }
     else {
         $('.search-items-cont').hide();

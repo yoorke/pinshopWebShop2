@@ -64,6 +64,7 @@
         height: 2.6em;
         background-color: darken(@default-gray, 5%);
         //color:lighten(@text-color, 10%);
+        margin-top:1em;
         .fa {
             //font-size:1.2em;
             //color:darken(@brand-primary, 10%);
@@ -125,6 +126,12 @@
         input[type=image]{
             cursor:pointer;
             margin:0 auto;
+            border:1px solid @default-gray !important;
+            transition:0.2s all ease;
+        }
+
+        input[type=image]:hover{
+            border:1px solid @dark-gray !important;
         }
     }
 
@@ -158,6 +165,13 @@
     .brand-logo{
         //max-height:50px;
         margin-top:-30px;
+    }
+
+    .specification{
+        .attributeGroup{
+            //text-align:center;
+            font-weight:bold;
+        }
     }
 }
 
