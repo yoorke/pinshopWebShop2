@@ -88,8 +88,15 @@ namespace WebShop2
                 if (Page.RouteData.Values["category"] != null)
                     categoryUrl = Page.RouteData.Values["category"].ToString();
 
+                if (categoryUrl.EndsWith("13123"))
+                { 
+                    categoryUrl = categoryUrl.Substring(0, categoryUrl.IndexOf("13123"));
+                    Response.RedirectPermanent("/proizvodi/" + categoryUrl + (Request.QueryString.ToString() != string.Empty ? "?" + Request.QueryString.ToString() : string.Empty));
+                }
+
                 if (categoryUrl.EndsWith("/"))
                     categoryUrl = categoryUrl.Substring(0, categoryUrl.Length - 1);
+
                 if ((category = new CategoryBL().GetCategoryByUrl(categoryUrl)) == null) {
                     //ErrorLog.LogError(new Exception("Category url:" + categoryUrl), Request.RawUrl, Request.UserHostAddress, Request.Url.ToString());
                     redirect(Request.RawUrl);
@@ -400,6 +407,8 @@ namespace WebShop2
 
 
             url = url.Contains('?') ? url.Substring(0, url.IndexOf('?')) : url;
+            if (url.Contains("13123"))
+                url = url.Replace("13123", "");
             if (urls.ContainsKey(url))
                 Response.RedirectPermanent(urls[url] + (Request.QueryString.ToString() != string.Empty ? "?" + Request.QueryString.ToString() : string.Empty));
         }

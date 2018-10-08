@@ -20,12 +20,22 @@ namespace WebShop2
         {
             try
             {
-                Common.SendMessage(txtEmail.Text, txtSubject.Text, txtMessage.Text);
-                lblStatus.Text = "Vaša poruka je uspešno poslata.";
+                System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
+                {
+                    Common.SendMessage(txtEmail.Text, "Poruka sa sajta pinshop.rs - " + txtSubject.Text, "Poruka od: " + txtEmail.Text + "<br/><br/>" + txtMessage.Text);
+                    //lblStatus.Text = "Vaša poruka je uspešno poslata.";
+                    //lblStatus.Visible = true;
+                    //lblStatus.CssClass = "alert alert-success text-center";
+                });
+                lblStatus.Text = "Vaša poruka je uspešno poslata";
+                lblStatus.Visible = true;
+                lblStatus.CssClass = "alert alert-success text-center";
             }
             catch
             {
                 lblStatus.Text = "Greška prilikom slanja";
+                lblStatus.Visible = true;
+                lblStatus.CssClass = "alert alert-danger text-center";
             }
         }
     }

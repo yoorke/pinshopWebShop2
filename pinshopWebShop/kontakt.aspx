@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="kontakt.aspx.cs" Inherits="WebShop2.kontakt" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="<%=ResolveUrl("~/css/mainMenuVerticalV1.min.css") %>" />
+    <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-Menu-Vertical-V1.min.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-lg-12 page-content">
@@ -39,23 +39,30 @@
                     <div class="form-group">
                         <label class="control-label col-lg-3"></label>
                         <div class="col-lg-9">
-                            <asp:Button ID="btnSend" runat="server" CssClass="btn btn-default" OnClick="btnSend_Click" Text="Pošalji" />
+                            <asp:Button ID="btnSend" runat="server" CssClass="btn btn-default width-100" OnClick="btnSend_Click" Text="Pošalji" UseSubmitBehavior="false" />
                         </div>
                     </div>
                 </div>
                 
             </div>
         </div>
-        <div class="row">
+        <div class="row margin-top-1 margin-bottom-1">
             <div class="col-lg-12">
-                <div class="status" style="display:none">
-                    <asp:Literal ID="lblStatus" runat="server"></asp:Literal>
+                <div class="status" style="">
+                    <asp:Label ID="lblStatus" runat="server" Visible="false" Width="100%"></asp:Label>
                 </div>
             </div>
         </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzY1PFJ6PdSD0uGEOfedUKPMVZJOcJyQ"></script>
-    <script src="/js/map.js"></script>
+    <%--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmzY1PFJ6PdSD0uGEOfedUKPMVZJOcJyQ"></script>
+    <script src="/js/map.js"></script>--%>
+    <script>
+        function btnSend1_Click() {
+            $('[id*=btnSend').attr('disabled', true);
+            //return true;
+        }
+        window.onbeforeunload = btnSend1_Click;
+    </script>
 </asp:Content>

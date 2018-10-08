@@ -385,6 +385,7 @@
         </div>
         <div class="col-lg-5">
             <asp:LinkButton ID="btnOrder" runat="server" Text="Naruči" CssClass="btn btn-primary btn-order pull-right width-100" OnClick="btnOrder_Click" OnClientClick="return removeValidatorStyle()"></asp:LinkButton>
+            <span id="workerBox" class="worker-box"><span class="fa fa-fw fa-spinner fa-spin"></span></span>
         </div>
     </div>
 </div><%--checkout--%>
@@ -518,6 +519,15 @@
     function removeValidatorStyle() {
         $('[id*=requiredFieldValidator]').removeAttr('style');
         $('[id*=regularExpressionValidator]').removeAttr('style');
+        if (Page_ClientValidate('')) {
+            $('[id*=btnOrder').attr('disabled', true)
+            $('#workerBox').show();
+        }
+        else {
+            $('body,html').animate({
+                scrollTop: $('[id*=rdbUserType]').offset().top - 90
+            }, 700)
+        }
     }
 </script>
 <script>

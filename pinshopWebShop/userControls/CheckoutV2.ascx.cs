@@ -60,9 +60,12 @@ namespace WebShop2.UserControls
 
 
                 try
-                { 
-                    Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstname.Text + " " + txtLastname.Text, order);
-                    Common.SendNewOrderNotification(order.OrderID.ToString(), order);
+                {
+                    System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
+                    {
+                        Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstname.Text + " " + txtLastname.Text, order);
+                        Common.SendNewOrderNotification(order.OrderID.ToString(), order);
+                    });
                 }
                 catch
                 {

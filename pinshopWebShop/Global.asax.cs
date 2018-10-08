@@ -17,6 +17,9 @@ namespace WebShop2
         {
             new RoutesBL().RegisterRoutes();
             new SitemapBL().SaveSitemap();
+
+            if (bool.Parse(ConfigurationManager.AppSettings["hasRedirect"]))
+                Application.Add("redirectUrls", new Redirect().LoadUrls());
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -44,6 +47,27 @@ namespace WebShop2
                 Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl);
                 eshopUtilities.ErrorLog.LogMessage(DateTime.Now.ToString() + " - Redirected: " + Request.ServerVariables["HTTP_HOST"].ToString() + HttpContext.Current.Request.RawUrl + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl);
             }
+
+            //string url = Request.RawUrl;
+            //if (url.Contains("?"))
+            //url = url.Substring(0, url.IndexOf("?"));
+            if (bool.Parse(ConfigurationManager.AppSettings["hasRedirect"]))
+            { 
+                if (Application["redirectUrls"] == null)
+                    Application.Add("redirectUrls", new Redirect().LoadUrls());
+            //{
+                string url = Request.RawUrl;
+                if (Request.QueryString.ToString() != string.Empty)
+                    url = url.Substring(0, url.IndexOf("?"));
+                if(((Dictionary<string, string>)Application["redirectUrls"]).ContainsKey(url))
+                {
+                    //string url = Request.RawUrl;
+                    //if (Request.QueryString.ToString() != null)
+                        //url = url.Substring(0, url.IndexOf("?"));
+                    Response.RedirectPermanent(((Dictionary<string, string>)Application["redirectUrls"])[url] + (Request.RawUrl.Contains("?") ? "?" + Request.QueryString.ToString() : string.Empty));
+                }
+            }
+            //}
             //ErrorLog.LogMessage(DateTime.Now.ToString() + Request.ServerVariables["HTTP_HOST"] + HttpContext.Current.Request.RawUrl);
         }
 

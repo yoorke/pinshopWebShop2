@@ -172,7 +172,7 @@
         
         <%--specification--%>
         <div class="row">
-            <div class="col-lg-6 specification">
+            <div class="col-lg-7 specification">
                 <h3>Specifikacije i detalji</h3>
                 <asp:Literal ID="lblSpecification" runat="server"></asp:Literal>
             </div><%--col--%>
