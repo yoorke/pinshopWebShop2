@@ -8,13 +8,13 @@
     <!--<td class="text-right"><span class="value">${parseFloat(userPrice).toFixed(2)}</span> <span class="unit">RSD</span></td>-->
     <td class="text-right" style="width:90px">
         <div class="update-cont">
-            <span class="fa fa-fw fa-minus left" onclick="CartFpUpdateQuantity(${ productID }, -1)"></span>
+            <span class="fa fa-fw fa-minus left" onclick="CartFpUpdateQuantity(${ productID }, -1, event)"></span>
             <span class="value">${quantity}</span>
-            <span class="fa fa-fw fa-plus right" onclick="CartFpUpdateQuantity(${ productID }, 1)"></span>
+            <span class="fa fa-fw fa-plus right" onclick="CartFpUpdateQuantity(${ productID }, 1, event)"></span>
         </div>
         <!--<span class="unit">kom</span>-->
         <span class="value">${formatCurrency(parseFloat(total))}</span> <span class="unit">RSD</span>
     </td>
     <!--<td class="text-right"></td>-->
-    <td class="text-right" style="width:20px;position:relative"><span class="fa fa-fw fa-close" style="position:absolute;top:0;right:0" onclick="CartFpDeleteProduct(${ productID })"></span></td>
+    <td class="text-right" style="width:20px;position:relative"><span class="fa fa-fw fa-close" style="position:absolute;top:0;right:0" onclick="CartFpDeleteProduct(${ productID }, event)"></span></td>
 </tr>

@@ -49,9 +49,15 @@ namespace WebShop2.UserControls
                 int userID=1;
                 if (chkCreateAccount.Checked)
                 {
-                    userID = createUser();
-                    if (userID > 0)
+                    User user = createUser();
+                    userID = user.UserID;
+                    if (userID > 0) { 
                         FormsAuthentication.SetAuthCookie(txtEmail.Text, true);
+                        System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
+                        {
+                            Common.SendUserCreatedConfirmationMail(txtEmail.Text, user.Password);
+                        });
+                    }
                 }
                 else if (Membership.GetUser() != null)
                     userID = int.Parse(Membership.GetUser().ProviderUserKey.ToString());
@@ -78,7 +84,7 @@ namespace WebShop2.UserControls
             }
             catch (BLException ex)
             {
-                setStatus(ex.Message, System.Drawing.Color.Red, true);
+                setStatus(ex.Message, System.Drawing.Color.Red, true, "alert-danger");
             }
         }
 
@@ -125,7 +131,7 @@ namespace WebShop2.UserControls
             return order;
         }
 
-        private int createUser()
+        private User createUser()
         {
             return UserBL.SaveUser(txtFirstname.Text, txtLastname.Text, txtEmail.Text, string.Empty, txtEmail.Text, txtAddress.Text, txtCity.Text, txtPhone.Text, "kupac", txtZip.Text);
         }
@@ -146,11 +152,12 @@ namespace WebShop2.UserControls
             chkCreateAccount.Enabled = false;
         }
 
-        private void setStatus(string text, System.Drawing.Color color, bool visible)
+        private void setStatus(string text, System.Drawing.Color color, bool visible, string classes)
         {
             csStatus.Text = text;
             csStatus.ForeColor = color;
             csStatus.Visible = visible;
+            csStatus.Class = "alert " + classes;
             csStatus.Show();
         }
 
@@ -167,7 +174,7 @@ namespace WebShop2.UserControls
                 Response.Redirect("/checkout.aspx");
             }
             else
-                setStatus("Prijava nije uspešna", System.Drawing.Color.Red, true);
+                setStatus("Prijava nije uspešna", System.Drawing.Color.Red, true, "alert-danger");
         }
 
         public void LoadCart()

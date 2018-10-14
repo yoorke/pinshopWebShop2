@@ -33,5 +33,34 @@
 }
 
 .carousel-inner{
-    overflow:visible;
+    //overflow:visible;
+}
+
+.product-slider-button{
+    position:absolute;
+    color:rgba(127, 127, 127, .3);//#999;
+    transition:0.2s ease all;
+    font-size:2em !important;
+    top:200px;
+    z-index:999;
+
+    a{
+        font-size:1.5em;
+    }
+}
+
+.product-slider-button:hover{
+    color:@brand-primary;
+}
+
+.product-slider-button-prev{
+    //position:absolute;
+    left:0;
+    //top:200px;
+}
+
+.product-slider-button-next{
+    //position:absolute;
+    right:0;
+    //top:50px;
 }

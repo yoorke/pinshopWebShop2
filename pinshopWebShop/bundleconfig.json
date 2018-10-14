@@ -42,7 +42,8 @@
       "js.src/jquery.tmpl.min.js",
       "js.src/tooltip-start.js",
       "js.src/web-shop.js",
-      "js.src/search-control.js"
+      "js.src/search-control.js",
+      "js.src/fixed-header.js"
     ],
     "minify": {
       "enabled": true,

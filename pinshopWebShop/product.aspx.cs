@@ -137,7 +137,7 @@ namespace WebShop2
                     divNis.Attributes["class"] = "nis-cont not-in-stock";
                 }
 
-                btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+                btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "', event)");
                 
                 lblCode.Text = product.Code;
 
@@ -237,8 +237,8 @@ namespace WebShop2
             sliderCategory.LgCols = 3;
             sliderCategory.Products = new ProductBL().GetProductsForFirstPage(category.CategoryID, -1, 12, "Slučajni");
             sliderCategory.Name = category.Name;
-            ((Literal)sliderCategory.FindControl("lblPrev")).Text = @"<a id=""prev"" runat=""server"" href=""#carouselCategory"" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon'></span></a>";
-            ((Literal)sliderCategory.FindControl("lblNext")).Text = @"<a id=""next"" runat=""server"" href=""#carouselCategory"" data-slide=""next"" class=""next_button""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
+            ((Literal)sliderCategory.FindControl("lblPrev1")).Text = @"<a id=""prev"" runat=""server"" href=""#carouselCategory"" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon'></span></a>";
+            ((Literal)sliderCategory.FindControl("lblNext1")).Text = @"<a id=""next"" runat=""server"" href=""#carouselCategory"" data-slide=""next"" class=""next_button""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
             ((Literal)sliderCategory.FindControl("lblCarousel")).Text = @"<div id=""carouselCategory"" class=""carousel slide"" data-ride="""" runat=""server"">";
             ((Literal)sliderCategory.FindControl("lblCarouselClose")).Text = "</div>";
         }

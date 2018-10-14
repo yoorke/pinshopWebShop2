@@ -1,12 +1,15 @@
 ﻿//import { clearTimeout, setTimeout } from "timers";
 
-function ShowCartFpContainer(src) {
-    var top = (src == 'cartButton' ? $('#btnCartFp').offset().top + $('#btnCartFp').height() : $(window).scrollTop());
+var cartFpVisible = false;
+function ShowCartFpContainer(src, event) {
+    cartFpVisible = true;
+    var top = (src == 'cartButton' ? $('#btnCartFp').offset().top + $('#btnCartFp').height() : $(window).scrollTop() + 50);
     var right = $(window).width() - ($('#btnCartFp').offset().left + $('#btnCartFp').width());
     $('#cartFpContainer').css({ top: top, right: right });
     $('#cartFpContainer').show();
 
     GetCartItems();
+    event.stopPropagation();
 }
 
 function ShowCompareFpContainer(x, y, count) {
@@ -23,7 +26,7 @@ function ShowWishListFpContainer(x, y, count) {
     $('#wishListFpContainer').show();
 }
 
-function AddToCart(lblProductID) {
+function AddToCart(lblProductID, event) {
     var productID = parseInt($('#' + lblProductID).val());
     
     $.ajax({
@@ -33,7 +36,7 @@ function AddToCart(lblProductID) {
         contentType: 'application/json;charset=utf-8',
         dataType: 'json',
         success: function (response) {
-            ShowCartFpContainer('productFp');
+            ShowCartFpContainer('productFp', event);
             GetCartProductsCount();
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -119,8 +122,8 @@ function RecommendProduct() {
 
 //document
 $(window).scroll(function () {
-    if($('#cartFpContainer').is(':visible')){
-        var scrollTop = $(window).scrollTop();
+    if($('#cartFpContainer').is(':visible') && cartFpVisible){
+        var scrollTop = $(window).scrollTop() + 50;
         var btnCartFpTop = $('#btnCartFp').offset().top + $('#btnCartFp').height();
         $('#cartFpContainer').css({ top: scrollTop > btnCartFpTop ? scrollTop : btnCartFpTop });
     }
@@ -128,7 +131,9 @@ $(window).scroll(function () {
 
 $(document).click(function (e) {
     if ($('#cartFpContainer').is(':visible') && e.target.parentElement.className != 'cart-fp' && e.target.parentElement.className != 'header-box cart-fp-container' && e.target.parentElement.className != 'update-cont') {
-        $('#cartFpContainer').hide();
+        //$('#cartFpContainer').hide();
+        $('#cartFpContainer').css({ 'top': '-500px' });
+        cartFpVisible = false;
     }
     if ($('#compareFpContainer').is(':visible')) {
         $('#compareFpContainer').hide();
@@ -171,19 +176,23 @@ function ChangeImage(imageUrl) {
     link.href = imageUrl.toString().substring(0, imageUrl.toString().indexOf('-thumb')) + extension;
 }
 
-function btnSearch_Click() {
-    if ($('#txtSearch').val().length > 0)
-        window.location = '/pretraga?s=' + $('#txtSearch').val() + '&c=-1';
+function btnSearch_Click(value) {
+    //if ($('#txtSearch').val().length > 0)
+    if (value.length > 0)
+        //window.location = '/pretraga?s=' + $('#txtSearch').val() + '&c=-1';
+        window.location = '/pretraga?s=' + value + '&c=-1';
 }
 
-$('#btnSearch').click(function () {
-    btnSearch_Click();
+//$('#btnSearch').click(function () {
+$('.search-control button').click(function () {
+    btnSearch_Click(this.closest('div.search-control').children[0].value);
     return false;
 })
 
-$('#txtSearch').keydown(function (event) {
+//$('#txtSearch').keydown(function (event) {
+$('.search-control input[type=text]').keydown(function (event) {
     if (event.keyCode == 13) {
-        btnSearch_Click();
+        btnSearch_Click(this.value);
         return false;
     }
     else if (event.keyCode == 27) {
@@ -191,14 +200,19 @@ $('#txtSearch').keydown(function (event) {
     }
 })
 
-$('#txtSearch').keyup(function (event) {
-    if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8 || (event.keyCode > 47 && event.keyCode < 58))) {
-        //$('.search-items-cont').show();
+//$('#txtSearch').keyup(function (event) {
+$('.search-control input[type=text]').keyup(function (event) {
+    var value = this.value;
+    var control = event.currentTarget;
+    //if ($('#txtSearch').val().length > 3 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8 || (event.keyCode > 47 && event.keyCode < 58))) {
+    if (this.value.length > 2 && ((event.keyCode > 64 && event.keyCode < 91) || event.keyCode == 8 || (event.keyCode > 47 && event.keyCode < 58))) {
+    //$('.search-items-cont').show();
         if (timer) {
             clearTimeout(timer);
         }
         timer = setTimeout(function () {
-            SearchControl_GetSearchResponse($('#txtSearch').val());
+            //SearchControl_GetSearchResponse($('#txtSearch').val());
+            SearchControl_GetSearchResponse(value, control);
         }, 500);
     }
     else {
@@ -208,7 +222,7 @@ $('#txtSearch').keyup(function (event) {
 
 var timer;
 
-function CartFpUpdateQuantity(productID, value) {
+function CartFpUpdateQuantity(productID, value, event) {
     
     $.ajax({
         type: 'POST',
@@ -217,7 +231,7 @@ function CartFpUpdateQuantity(productID, value) {
         contentType: 'application/json;charset=utf-8',
         dataType: 'json',
         success: function (msg) {
-            ShowCartFpContainer('cartButton');
+            ShowCartFpContainer('cartButton', event);
         },
         error: function (jqXhr, textStatus, errorThrown) {
 
@@ -225,7 +239,7 @@ function CartFpUpdateQuantity(productID, value) {
     })
 }
 
-function CartFpDeleteProduct(productID) {
+function CartFpDeleteProduct(productID, event) {
     $.ajax({
         type: 'POST',
         url: '/WebMethods.aspx/DeleteProductFromCart',
@@ -233,7 +247,7 @@ function CartFpDeleteProduct(productID) {
         contentType: 'application/json;chartset=utf-8',
         dataType: 'json',
         success: function (msg) {
-            ShowCartFpContainer('cartButton');
+            ShowCartFpContainer('cartButton', event);
             GetCartProductsCount();
         },
         error: function (jqXhr, textStatus, errorThrown) {
@@ -251,6 +265,7 @@ function GetCartProductsCount() {
         dataType: 'json',
         success: function (msg) {
             $('#cartFpProductsCount')[0].innerText = msg.d;
+            $('#fhCartProductsCount')[0].innerText = msg.d;
         },
         error: function (jqXhr, textStatus, errorThrown) {
             alert(errorThrown);

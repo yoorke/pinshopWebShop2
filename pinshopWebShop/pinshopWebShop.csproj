@@ -480,6 +480,7 @@
     <Content Include="images\visa1.jpg" />
     <Content Include="jQueryTemplates\cartFPTemplate.html" />
     <Content Include="jQueryTemplates\searchItemsTemplate.html" />
+    <Content Include="js.src\fixed-header.js" />
     <Content Include="js.src\product-image-zoom.js" />
     <Content Include="js.src\search-control.js" />
     <Content Include="js\bundle.js" />
@@ -492,6 +493,7 @@
     <Content Include="js\registration.min.js">
       <DependentUpon>registration.js</DependentUpon>
     </Content>
+    <Content Include="js\slider.js" />
     <Content Include="kontakt.aspx" />
     <Content Include="less\bootstrap\.csscomb.json" />
     <Content Include="less\bootstrap\.csslintrc" />
@@ -578,6 +580,7 @@
     <Content Include="reports\reportTemplates\report-style.css" />
     <Content Include="reports\reportTemplates\reportFooterTemplate.html" />
     <Content Include="reports\reportTemplates\reportHeaderTemplate.html" />
+    <Content Include="userControls\FixedHeader.ascx" />
     <Content Include="userControls\PagerV2.ascx" />
     <Content Include="userControls\ProductRatingView.ascx" />
     <Content Include="userControls\Search.ascx" />
@@ -716,6 +719,7 @@
     <Content Include="less\custom-page.less" />
     <Content Include="less\breadcrumbs.less" />
     <Content Include="less\search-control.less" />
+    <Content Include="less\fixed-header.less" />
     <None Include="packages.config" />
     <Content Include="SitemapHandler.ashx" />
     <None Include="Web.Debug.config">
@@ -822,7 +826,9 @@
     </Content>
     <Content Include="js\lightbox.min.js" />
     <Content Include="js\main-menu-vertical-v2-start.min.js" />
-    <Content Include="js\slider.min.js" />
+    <Content Include="js\slider.min.js">
+      <DependentUpon>slider.js</DependentUpon>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1034,6 +1040,13 @@
     </Compile>
     <Compile Include="userControls\CustomStatus.ascx.designer.cs">
       <DependentUpon>CustomStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="userControls\FixedHeader.ascx.cs">
+      <DependentUpon>FixedHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userControls\FixedHeader.ascx.designer.cs">
+      <DependentUpon>FixedHeader.ascx</DependentUpon>
     </Compile>
     <Compile Include="userControls\MainMenuVertical.ascx.cs">
       <DependentUpon>MainMenuVertical.ascx</DependentUpon>

@@ -19,4 +19,8 @@
       "relativeUrls": false
     }
   }
+  //{
+    //"outputFile": "js.src/web-shop.es5.js",
+    //"inputFile": "js.src/web-shop.js"
+  //}
 ]

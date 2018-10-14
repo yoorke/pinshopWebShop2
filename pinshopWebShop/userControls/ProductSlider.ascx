@@ -8,16 +8,18 @@
     </div>
     <div class="col-md-2">
         <%-- Controls --%>
-        <div class="controls pull-right hidden-xs">
+        <%--<div class="controls pull-right hidden-xs">
             <asp:Literal ID="lblPrev" runat="server"></asp:Literal>
-            <asp:Literal ID="lblNext" runat="server"></asp:Literal>
+            <asp:Literal ID="lblNext" runat="server"></asp:Literal>--%>
             <%--<a id="prev" runat="server" href="#carousel-example" data-slide="prev"><img src="<%=ResolveUrl("~/images/prev_next.gif") %>" alt="Prethodni" /></a>
             <a id="next" runat="server" href="#carousel-example" data-slide="next" class="next_button"><img src="<%=ResolveUrl("~/images/prev_next.gif") %>" alt="Sledeći" /></a>--%>
-        </div><%--controls--%>
+        <%--</div>--%><%--controls--%>
     </div><%--col--%>
 </div><%--row--%>
 <div class="row">
 <div class="col-lg-12">
+    <asp:Literal ID="lblPrev1" runat="server"></asp:Literal>
+    <asp:Literal ID="lblNext1" runat="server"></asp:Literal>
 <asp:Literal ID="lblCarousel" runat="server"></asp:Literal>
 <%--<!--<div id="carouselexample" class="carousel slide" data-ride="" runat="server">-->
     <!-- wrapper for slides -->--%>

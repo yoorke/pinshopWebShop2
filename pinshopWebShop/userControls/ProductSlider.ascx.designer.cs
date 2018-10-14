@@ -31,22 +31,22 @@ namespace WebShop2.UserControls {
         protected global::System.Web.UI.WebControls.Label lblName;
         
         /// <summary>
-        /// lblPrev control.
+        /// lblPrev1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lblPrev;
+        protected global::System.Web.UI.WebControls.Literal lblPrev1;
         
         /// <summary>
-        /// lblNext control.
+        /// lblNext1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lblNext;
+        protected global::System.Web.UI.WebControls.Literal lblNext1;
         
         /// <summary>
         /// lblCarousel control.

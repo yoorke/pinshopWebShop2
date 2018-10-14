@@ -333,6 +333,13 @@ header {
     -moz-transition: opacity 0.3s 0s, visibility 0.3s 0s, -moz-transform 0.3s 0s;
     transition: opacity 0.3s 0s, visibility 0.3s 0s, transform 0.3s 0s;
   }
+
+  .cd-dropdown.fixed{
+      position:fixed;
+      top:40px;
+      left:208px;
+      z-index:9999;
+  }
 }
 
 .cd-dropdown-content, .cd-dropdown-content ul {

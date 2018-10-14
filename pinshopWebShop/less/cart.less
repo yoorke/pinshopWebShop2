@@ -7,7 +7,7 @@
         background-color:@default-gray;
         border-top:1px solid #eee;
         padding: 0 5px;
-
+        
         #cartFpTotal {
             font-weight: bold;
             color: @brand-primary;
@@ -139,4 +139,15 @@
     height:30px;
     text-align:center;
     padding-top:0.2em;
+}
+
+@keyframes cartFpShow{
+    0% { 
+        display: none;
+        top: -200px;
+    }
+    100% {
+        display:block;
+        top:0px;
+    }
 }

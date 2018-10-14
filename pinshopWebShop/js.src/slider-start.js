@@ -4,4 +4,8 @@
             thumbnails: true
         })
     }
+
+    //if ($(window).width() >= 992) {
+        //$('.slider').css({ 'height': $('.cd-dropdown').height() });
+    //}
 })

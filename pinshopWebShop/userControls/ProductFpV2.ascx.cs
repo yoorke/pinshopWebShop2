@@ -137,7 +137,7 @@ namespace WebShop2.UserControls
                 }
             }
 
-            btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "')");
+            btnCartAjax.Attributes.Add("onclick", "AddToCart('" + lblProductID.ClientID + "', event)");
         }
 
         protected void btnCart_Click(object sender, EventArgs e)

@@ -41,8 +41,8 @@ namespace WebShop2
                 slider.NumberOfProducts = 4;
                 slider.LgCols = 3;
                 slider.Products = new ProductBL().GetProductsForPromotion(int.Parse(((HiddenField)e.Item.FindControl("lblPromotionID")).Value));
-                ((Literal)slider.FindControl("lblPrev")).Text = @"<a id=""prev" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon'></span></a>";
-                ((Literal)slider.FindControl("lblNext")).Text = @"<a id=""next" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @" data-slide=""next""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
+                ((Literal)slider.FindControl("lblPrev1")).Text = @"<a id=""prev" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon'></span></a>";
+                ((Literal)slider.FindControl("lblNext1")).Text = @"<a id=""next" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @" data-slide=""next""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
                 ((Literal)slider.FindControl("lblCarousel")).Text = @"<div id=" + "carousel" + ((HiddenField)e.Item.FindControl("lblPromotionID")).Value + @" class=""carousel slide"" data-ride="""">";
                 ((Literal)slider.FindControl("lblCarouselClose")).Text = "</div>";
             }
@@ -56,8 +56,8 @@ namespace WebShop2
                 slider.NumberOfProducts = 4;
                 slider.LgCols = 3;
                 slider.Products = new ProductBL().GetProductsForFirstPage(int.Parse(((HiddenField)e.Item.FindControl("lblCategoryID")).Value), -1, int.Parse(((HiddenField)e.Item.FindControl("lblNumberOfProducts")).Value), ((HiddenField)e.Item.FindControl("lblFirstPageOrderBy")).Value);
-                ((Literal)slider.FindControl("lblPrev")).Text = @"<a id=""prev" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon'></span></a>";
-                ((Literal)slider.FindControl("lblNext")).Text = @"<a id=""next" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @" data-slide=""next""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
+                ((Literal)slider.FindControl("lblPrev1")).Text = @"<a id=""prev" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @" data-slide=""prev""><span class='fa fa-fw fa-chevron-circle-left direction-icon product-slider-button product-slider-button-prev'></span></a>";
+                ((Literal)slider.FindControl("lblNext1")).Text = @"<a id=""next" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @""" href=" + "#carousel" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @" data-slide=""next""><span class='fa fa-fw fa-chevron-circle-right direction-icon product-slider-button product-slider-button-next'></span></a>";
                 ((Literal)slider.FindControl("lblCarousel")).Text = @"<div id=" + "carousel" + ((HiddenField)e.Item.FindControl("lblCategoryID")).Value + @" class=""carousel slide"" data-ride="""">";
                 ((Literal)slider.FindControl("lblCarouselClose")).Text = "</div>";
             }
