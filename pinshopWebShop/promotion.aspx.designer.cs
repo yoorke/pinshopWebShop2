@@ -13,24 +13,6 @@ namespace WebShop2 {
     public partial class promotion {
         
         /// <summary>
-        /// banner1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebShop2.UserControls.Banner banner1;
-        
-        /// <summary>
-        /// banner2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebShop2.UserControls.Banner banner2;
-        
-        /// <summary>
         /// lblPromotionName control.
         /// </summary>
         /// <remarks>

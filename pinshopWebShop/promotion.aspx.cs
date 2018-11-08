@@ -16,9 +16,11 @@ namespace WebShop2
             Master.FindControl("mainMenuVertical").Visible = true;
             if (!Page.IsPostBack)
             {
-                if(Page.Request.QueryString.ToString().Contains("akcija"))
+                //if(Page.Request.QueryString.ToString().Contains("akcija"))
+                if(Page.RouteData.Values["url"] != null)
                 {
-                    string url = Page.Request.QueryString["akcija"].ToString();
+                    //string url = Page.Request.QueryString["akcija"].ToString();
+                    string url = Page.RouteData.Values["url"].ToString();
                     loadPromotion(url);
                 }
             }

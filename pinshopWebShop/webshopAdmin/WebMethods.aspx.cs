@@ -76,6 +76,7 @@ namespace webshopAdmin
         {
             try
             {
+                code = code.Contains("\t") ? code.Replace("\t", "") : code;
                 bool saved = new EweBL().SaveProduct(code, isApproved, isActive, categoryID);
                 return saved ? "Saved" : "Not saved";
             }

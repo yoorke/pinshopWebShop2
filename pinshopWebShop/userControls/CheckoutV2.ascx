@@ -322,7 +322,8 @@
                                                 <asp:TextBox ID="txtCoupon" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                             <div class="col-lg-4">
-                                                <asp:Button ID="btnCoupon" runat="server" OnClick="btnCoupon_Click" CssClass="btn btn-primary" Text="Primeni" CausesValidation="false" />
+                                                <asp:Button ID="btnCoupon" runat="server" OnClick="btnCoupon_Click" CssClass="btn btn-primary" Text="Primeni" CausesValidation="false" OnClientClick="return applyCoupon()" style="width:100%;float:right" />
+                                                <span id="couponWorkerBox" class="worker-box" style="padding-top:5px"><span class="fa fa-fw fa-spinner fa-spin"></span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -356,6 +357,7 @@
                                                     <asp:LinkButton ID="lblRemoveCoupon" runat="server" OnClick="lblRemoveCoupon_Click" Visible="false" CausesValidation = "false">
                                                         <span class="glyphicon glyphicon-remove"></span>
                                                     </asp:LinkButton>
+                                                    <%--<span id="couponWorkerBox" class="worker-box"><span class="fa fa-fw fa-spinner fa-spin"></span></span>--%>
                                                 </p>
                                                 <p>
                                                     <span class="priceTitle">Iznos dostave:</span>
@@ -527,6 +529,18 @@
             $('body,html').animate({
                 scrollTop: $('[id*=rdbUserType]').offset().top - 90
             }, 700)
+        }
+    }
+
+    function applyCoupon() {
+        if ($('[id*=txtCoupon]').val() != '') {
+        $('#couponWorkerBox').show();
+        //$('[id*=btnCoupon').attr('disabled', true);
+        window.setTimeout(function () {
+            $('#couponWorkerBox').hide();
+            //$('[id*=btnCoupon').attr('disabled', false);
+        }, 3000);
+            return true;
         }
     }
 </script>

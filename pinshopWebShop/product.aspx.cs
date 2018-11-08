@@ -96,7 +96,7 @@ namespace WebShop2
                 lblWebPrice.Text = (product.Promotion == null) ? string.Format("{0:N2}", product.WebPrice) : string.Format("{0:N2}", product.Promotion.Price);
                 lblSaving.Text = "Ušteda: " + string.Format("{0:N2}", product.Price - double.Parse(lblWebPrice.Text));
 
-                if(product.Price == double.Parse(lblWebPrice.Text))
+                if(product.Price == double.Parse(lblWebPrice.Text) || (product.Price - double.Parse(lblWebPrice.Text)) == 0)
                 {
                     priceDiv.Visible = false;
                     savingDiv.Visible = false;

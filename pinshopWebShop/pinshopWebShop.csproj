@@ -660,6 +660,7 @@
     <Content Include="webshopAdmin\scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="webshopAdmin\slider.aspx" />
     <Content Include="webshopAdmin\sliders.aspx" />
+    <Content Include="webshopAdmin\unusedImagesSettings.aspx" />
     <Content Include="webshopAdmin\user.aspx" />
     <Content Include="webshopAdmin\users.aspx" />
     <Content Include="webshopAdmin\WebMethods.aspx" />
@@ -1439,6 +1440,13 @@
     </Compile>
     <Compile Include="webshopAdmin\sliders.aspx.designer.cs">
       <DependentUpon>sliders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webshopAdmin\unusedImagesSettings.aspx.cs">
+      <DependentUpon>unusedImagesSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webshopAdmin\unusedImagesSettings.aspx.designer.cs">
+      <DependentUpon>unusedImagesSettings.aspx</DependentUpon>
     </Compile>
     <Compile Include="webshopAdmin\uploadImage.ashx.cs">
       <DependentUpon>uploadImage.ashx</DependentUpon>

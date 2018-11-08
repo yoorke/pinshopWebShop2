@@ -43,11 +43,12 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row product_box">
             <div class="col-lg-12">
                 <asp:Repeater ID="rptProducts" runat="server">
                     <ItemTemplate>
-                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding-left-0 padding-right-0 margin-top-05">
+                        <%--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding-left-0 padding-right-0 margin-top-05">--%>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 product-fp-col">
                             <Ws2:ProductFp ID="product_fp" runat="server" ProductItem='<%#Container.DataItem %>' />
                         </div>
                     </ItemTemplate>

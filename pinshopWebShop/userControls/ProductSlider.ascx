@@ -2,7 +2,7 @@
 <%@ Register Src="~/userControls/ProductFpV2.ascx" TagName="ProductFpV2" TagPrefix="Ws2" %>
 <div class="row product-slider-header">
     <div class="col-md-10">
-        <asp:HyperLink ID="lnkName" runat="server" NavigateUrl='<%# "/proizvodi/" + Eval("url") %>'>
+        <asp:HyperLink ID="lnkName" runat="server" NavigateUrl='<%# Eval("fullUrl") %>'>
             <h2><asp:Label ID="lblName" runat="server" Text='<%#Eval("name") %>'></asp:Label></h2>
         </asp:HyperLink>
     </div>
