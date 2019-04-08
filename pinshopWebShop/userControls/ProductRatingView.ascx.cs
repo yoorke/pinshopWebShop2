@@ -30,6 +30,7 @@ namespace WebShop2.userControls
             { 
                 HtmlGenericControl ratingStar = new HtmlGenericControl("span");
                 ratingStar.Attributes["class"] = "fa fa-fw fa-star" +((_ratingValue >= i) ? string.Empty : "-o");
+                //ratingStar.Attributes["class"] = ((_ratingValue >= i) ? "fas" : "far") + " fa-fw fa-star";
 
                 ratingDiv.Controls.Add(ratingStar);
             }

@@ -2846,7 +2846,9 @@ function AddToCart(lblProductID, event) {
             GetCartProductsCount();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nazalost, doslo je do greske. Pokusajte ponovo');
         }
     })
     
@@ -2874,7 +2876,9 @@ function GetCartItems() {
             $('#cartFpTotal')[0].innerText = total.toLocaleString('sr', { minimumFractionDigits: 2 });
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -2890,10 +2894,12 @@ function AddToCompare(event, lblProductID) {
         dataType: 'json',
         success: function (msg) {
             ShowCompareFpContainer(event.pageX, event.pageY, msg.d);
-            $('[id*=lblCompareCount]')[0].innerText = msg.d;
+            //$('[id*=lblCompareCount]')[0].innerText = msg.d;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -2917,7 +2923,9 @@ function AddToWishList(event, lblProductID) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR);
+            //alert(jqXHR);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -3082,6 +3090,19 @@ function GetCartProductsCount() {
 function formatCurrency(value) {
     return value.toLocaleString('sr', { minimumFractionDigits: 2 });
 }
+
+function btnProductCompareRemove_Click(lblProductID) {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/DeleteFromProductCompare',
+        data: JSON.stringify({ "productID": $('#' + lblProductID).val() }),
+        contentType: 'application/json;chartset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            window.location.href = ('/uporedi');
+        }
+    })
+}
 function SearchControl_GetSearchResponse(searchString, control) {
     $.ajax({
         type: 'POST',
@@ -3108,16 +3129,18 @@ function SearchControl_GetSearchResponse(searchString, control) {
 $(document).ready(function () {
     $(window).scroll(function () {
         if ($(window).width() >= 1024) {
-        //$('.cd-dropdown').css({ 'position': 'initial' });
-        $('.cd-dropdown').removeClass('fixed');
-        if ($(window).scrollTop() > 110)
-            //alert('werewrew');
-            $('.fixed-header').addClass('show');
-        else if ($(window).scrollTop() <= 110)
-            $('.fixed-header').removeClass('show');
-        if ($(window).scrollTop() > 430)
-            $('.fh-main-menu-toggle').addClass('show');
-        if ($(window).scrollTop() <= 430)
+            //$('.cd-dropdown').css({ 'position': 'initial' });
+            $('.cd-dropdown').removeClass('fixed');
+            if ($(window).scrollTop() > 110)
+                //alert('werewrew');
+                $('.fixed-header').addClass('show');
+            else if ($(window).scrollTop() <= 110) {
+                $('.fixed-header').removeClass('show');
+                closeSearchItems();
+            }
+            if ($(window).scrollTop() > 430)
+                $('.fh-main-menu-toggle').addClass('show');
+            if ($(window).scrollTop() <= 430)
                 $('.fh-main-menu-toggle').removeClass('show');
         }
     })
@@ -3125,6 +3148,7 @@ $(document).ready(function () {
     $('.fh-main-menu-toggle').click(function () {
         //$('.cd-dropdown').css({ 'position': 'fixed', 'top': '50px', 'left': '208px', 'z-index': '9999' });
         $('.cd-dropdown').addClass('fixed');
+        $('.cd-dropdown').css({ "left": $('.fh-main-menu-toggle').offset().left });
         if ($('.cd-dropdown-trigger').is(':visible'))
             $('.cd-dropdown').addClass('dropdown-is-active');
     })
@@ -3135,11 +3159,12 @@ $(document).ready(function () {
             //return;
         //$('.cd-dropdown').css({ 'position': 'initial' });
         $('.cd-dropdown').removeClass('fixed');
+        $('.cd-dropdown').css({ 'left': 0 });
         if ($('.cd-dropdown-trigger').is(':visible'))
             $('.cd-dropdown').removeClass('dropdown-is-active');
     })
 
-    function closeSearhItems() {
+    function closeSearchItems() {
         $('.fixed-header .search-items-cont').hide();
     }
 })

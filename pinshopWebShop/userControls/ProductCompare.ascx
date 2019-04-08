@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProductCompare.ascx.cs" Inherits="WebShop2.UserControls.ProductCompare" %>
-<div class="row productCompare">
+<div class="row product-compare">
     <div class="close">
         <span class="glyphicon glyphicon-remove" onclick="btnProductCompareRemove_Click('<%=lblProductID.ClientID %>')"></span>
     </div>
@@ -11,17 +11,17 @@
         </div><%--row--%>
         <asp:HiddenField ID="lblProductID" runat="server" />
         <div class="row">
-            <div class="col-lg-12 text-center productBrand">
+            <div class="col-lg-12 text-center product-brand">
                 <asp:Literal ID="lblBrand" runat="server"></asp:Literal>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 productName">
-                <h2><asp:Literal ID="lblProductName" runat="server"></asp:Literal></h2>
+            <div class="col-lg-12">
+                <h2 class="product-name"><asp:Literal ID="lblProductName" runat="server"></asp:Literal></h2>
             </div>
         </div><%--row--%>
         <div class="row">
-            <div class="col-lg-12 productPrice text-right">
+            <div class="col-lg-12 product-price text-right">
                 <asp:Literal ID="lblWebPrice" runat="server"></asp:Literal> din
             </div>
         </div><%--row--%>

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="account.aspx.cs" Inherits="WebShop2.account" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="<%=ResolveUrl("~/css/mainMenuVerticalV1.css") %>" />
+    <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-Menu-Vertical-V1.min.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-lg-12 page-content">
@@ -18,25 +18,25 @@
         <div class="status" id="divStatus" runat="server" visible="false">
             <asp:Label ID="lblStatus" runat="server"></asp:Label>
         </div>
-        <div class="row margin-top-2">
+        <div class="row margin-top-1">
             <div class="col-lg-5">
                 <div class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="txtLastname" class="control-label col-lg-2">Prezime: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtLastname" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtLastname" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtFirstname" class="control-label col-lg-2">Ime: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtFirstname" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtFirstname" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtEmail" class="control-label col-lg-2">Email: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                     
@@ -44,7 +44,7 @@
                     <div class="form-group">
                         <label for="txtPhone" class="control-label col-lg-2">Telefon: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtPhone" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtPhone" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                 </div>
@@ -54,19 +54,19 @@
                     <div class="form-group">
                         <label for="txtAddress" class="control-label col-lg-2">Adresa: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtAddress" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtCity" class="control-label col-lg-2">Mesto: </label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtCity" runat="server" CssClass="col-lg-12"></asp:TextBox>
+                            <asp:TextBox ID="txtCity" runat="server" CssClass="form-control col-lg-12"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtZip" class="control-label col-lg-2">Ptt:</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtZip" runat="server" CssClass="col-lg-5"></asp:TextBox>
+                            <asp:TextBox ID="txtZip" runat="server" CssClass="form-control col-lg-5"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -78,13 +78,18 @@
         <div class="row margin-top-05">
             <div class="col-lg-1"></div>
             <div class="col-lg-1">
-                <asp:Button ID="btnSave" runat="server" CssClass="btn btn-default" Text="Sačuvaj" OnClick="btnSave_Click" />
+                <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary" Text="Sačuvaj" OnClick="btnSave_Click" />
             </div>
             <div class="col-lg-1">
                 <asp:Button ID="btnChangePassword" runat="server" CssClass="btn btn-default" Text="Izmena šifre" OnClick="btnChangePassword_Click" />
             </div>
         </div>
-        <div class="row margin-top-2">
+        <div class="row margin-top-1">
+            <div class="col-md-12">
+                <h2>Porudžbine</h2>
+            </div>
+        </div>
+        <div class="row margin-top-1">
             <div class="col-lg-12">
                 <asp:Repeater ID="rptOrders" runat="server" OnItemDataBound="rptOrders_ItemDataBound">
                     <HeaderTemplate>

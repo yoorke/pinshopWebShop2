@@ -12,7 +12,7 @@ namespace WebShopAdmin.webshopAdmin
 {
     public partial class unusedImagesSettings : System.Web.UI.Page
     {
-        private DataTable images;
+        DataTable images;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (User.Identity.IsAuthenticated && (User.IsInRole("administrator")))
@@ -26,7 +26,7 @@ namespace WebShopAdmin.webshopAdmin
 
         protected void btnDeleteAll_Click(object sender, EventArgs e)
         {
-
+            new ImagesBL().DeleteUnusedFiles();
         }
 
         protected void btnRefresh_Click(object sender, EventArgs e)
@@ -43,24 +43,22 @@ namespace WebShopAdmin.webshopAdmin
         {
             images = new ImagesBL().GetUnusedImageFiles();
 
-            if (chkShowImages.Checked) {
+            if(chkShowImages.Checked)
+            { 
                 dgvImages.DataSource = images;
                 dgvImages.DataBind();
             }
 
-            lblImagesCount.Text = images.Rows.Count.ToString();
+            lblImagesCount.Text = string.Format("{0:N2}", images.Rows.Count);
             lblImagesSize.Text = string.Format("{0:N2}", calculateSize(images) / 1024);
         }
 
         private double calculateSize(DataTable images)
         {
             double totalSize = 0;
-            //if(dgvImages.DataSource != null)
-                //foreach(DataRow row in ((DataTable)dgvImages.DataSource).Rows)
-                foreach(DataRow row in images.Rows)
-                {
-                    totalSize += double.Parse(row["size"].ToString());
-                }
+            foreach (DataRow row in images.Rows)
+                totalSize += double.Parse(row["size"].ToString());
+
             return totalSize;
         }
     }

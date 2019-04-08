@@ -22,6 +22,15 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
+        /// requiredFiledValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFiledValidator1;
+        
+        /// <summary>
         /// txtSubject control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.TextBox txtSubject;
         
         /// <summary>
+        /// requiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator2;
+        
+        /// <summary>
         /// txtMessage control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace WebShop2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtMessage;
+        
+        /// <summary>
+        /// requiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator3;
         
         /// <summary>
         /// btnSend control.

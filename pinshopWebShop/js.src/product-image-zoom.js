@@ -1,10 +1,14 @@
 ﻿$(document).ready(function () {
     $('#ctl00_ContentPlaceHolder1_priProductImages_imgMain').mouseenter(function () {
         var src = $('#ctl00_ContentPlaceHolder1_priProductImages_imgMain')[0].src;
-        var filename = src.substring(0, src.indexOf('-main.jpg'));
-        $('#imgZoom').css('background-image', 'url(' + filename + '.jpg' + ')');
-        $('#imgZoom').css('background-size', '300%');
-        $('#imgZoom').show();
+        //var filename = src.substring(0, src.indexOf('-main.jpg'));
+        var filename = src.replace('-main', '');
+        if (filename != '') {
+            //$('#imgZoom').css('background-image', 'url(' + filename + '.jpg' + ')');
+            $('#imgZoom').css('background-image', 'url(' + filename + ')');
+            $('#imgZoom').css('background-size', '300%');
+            $('#imgZoom').show();
+        }
     })
     $('#ctl00_ContentPlaceHolder1_priProductImages_imgMain').mouseout(function () {
         $('#imgZoom').hide();

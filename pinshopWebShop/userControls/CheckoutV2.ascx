@@ -152,7 +152,7 @@
                                         <div role="form">
                                             <div class="form-group">
                                                 <label for="txtZip">Poštanski broj: </label>
-                                                <asp:TextBox ID="txtZip" runat="server" CssClass="textbox form-control"></asp:TextBox>
+                                                <asp:TextBox ID="txtZip" runat="server" CssClass="textbox form-control" MaxLength="5"></asp:TextBox>
                                                 <asp:RegularExpressionValidator ID="regularExpressionValidator2" runat="server" ControlToValidate="txtZip" ErrorMessage="PTT nije u odgovarajućem formatu" ValidationExpression="^\d{5}$" Display="Dynamic" CssClass="form-control-error"></asp:RegularExpressionValidator>
                                                 <asp:RequiredFieldValidator ID="requiredFieldValidator6" runat="server" ControlToValidate="txtZip" ErrorMessage="PTT je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>                                    
                                             </div><%--form-group--%>
@@ -270,8 +270,9 @@
                                                         </asp:RadioButtonList>
                                                         <div id="showDeliveryInfo" class="margin-top-2" style="display:block" runat="server">
                                                             <ul class="margin-left-1">
-                                                                <li><small>Za porudžbine preko 5.000,00 dinara dostava je BESPLATNA.</small></li>
-                                                                <li><small>Za porudžbine čija vrednost ne prelazi 5.000,00 dinara naplaćuje se dostava u iznosu od 300 din.</small></li>
+                                                                <%--<li><small>Za porudžbine preko 5.000,00 dinara dostava je BESPLATNA.</small></li>--%>
+                                                                <%--<li><small>Za porudžbine čija vrednost ne prelazi 5.000,00 dinara naplaćuje se dostava u iznosu od 300 din.</small></li>--%>
+                                                                <li><small>U PROMO periodu do 30.06.2019. dostava je besplatna za sve porudžbine bez obzira na vrednost poručene robe.</small></li>
                                                             </ul>
                                                         </div>
                                                         <div id="showShop" class="margin-top-2" runat="server" style="display:none">

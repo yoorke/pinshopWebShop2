@@ -53,24 +53,25 @@ namespace WebShop2.UserControls
                     userID = user.UserID;
                     if (userID > 0) { 
                         FormsAuthentication.SetAuthCookie(txtEmail.Text, true);
-                        System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
-                        {
-                            Common.SendUserCreatedConfirmationMail(txtEmail.Text, user.Password);
-                        });
+                        //System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
+                        //{
+                            //Common.SendUserCreatedConfirmationMail(txtEmail.Text, user.Password);
+                        //});
                     }
                 }
                 else if (Membership.GetUser() != null)
                     userID = int.Parse(Membership.GetUser().ProviderUserKey.ToString());
                 else userID = 42;
                 Order order = createOrder(userID);
-
+                Session.Add("orderTotal", lblTotal.Text);
 
                 try
                 {
                     System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem(bw =>
                     {
-                        Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstname.Text + " " + txtLastname.Text, order);
-                        Common.SendNewOrderNotification(order.OrderID.ToString(), order);
+                        Settings settings = new SettingsBL().GetSettings();
+                        Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstname.Text + " " + txtLastname.Text, order, settings);
+                        Common.SendNewOrderNotification(order.OrderID.ToString(), order, settings);
                     });
                 }
                 catch
@@ -209,7 +210,18 @@ namespace WebShop2.UserControls
             taxBase = discount / 1.2;
             tax = discount - taxBase;
 
-            delivery = rdbDelivery.SelectedValue != "2" ? ((cartTotal > double.Parse(ConfigurationManager.AppSettings["freeDeliveryTotalValue"])) ? 0 : double.Parse(ConfigurationManager.AppSettings["deliveryCost"])) : 0;
+            //delivery = rdbDelivery.SelectedValue != "2" ? 
+            //((cartTotal > double.Parse(ConfigurationManager.AppSettings["freeDeliveryTotalValue"])) ? 
+            //0 : double.Parse(ConfigurationManager.AppSettings["deliveryCost"])) : 0;
+
+            //delivery = rdbDelivery.SelectedValue != "2" ?
+            //((cartTotal > new SettingsHandler().GetSettings().FreeDeliveryTotalValue) ?
+            //0 : new SettingsHandler().GetSettings().DeliveryCost) : 0;
+
+            Settings settings = new SettingsBL().GetSettings();
+            delivery = rdbDelivery.SelectedValue != "2" ?
+                ((cartTotal > settings.FreeDeliveryTotalValue) ?
+                    0 : settings.DeliveryCost) : 0;
 
             total = discount + delivery;
             saving = cartTotal - discount;

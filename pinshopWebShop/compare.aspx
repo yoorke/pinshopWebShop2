@@ -13,11 +13,16 @@
 <body>--%>
     <%--<form id="form1" runat="server">--%>
 <asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
-
+    <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-menu-vertical-v1.min.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" runat="server" ContentPlaceHolderID="ContentPlaceHolder1">
     <div class="row">
         <div class="col-md-12 page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="heading">Poređenje</h1>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <asp:Label ID="lblStatus" runat="server" CssClass="alert" Visible="false"></asp:Label>

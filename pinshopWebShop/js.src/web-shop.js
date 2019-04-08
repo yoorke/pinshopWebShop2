@@ -40,7 +40,9 @@ function AddToCart(lblProductID, event) {
             GetCartProductsCount();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nazalost, doslo je do greske. Pokusajte ponovo');
         }
     })
     
@@ -68,7 +70,9 @@ function GetCartItems() {
             $('#cartFpTotal')[0].innerText = total.toLocaleString('sr', { minimumFractionDigits: 2 });
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -84,10 +88,12 @@ function AddToCompare(event, lblProductID) {
         dataType: 'json',
         success: function (msg) {
             ShowCompareFpContainer(event.pageX, event.pageY, msg.d);
-            $('[id*=lblCompareCount]')[0].innerText = msg.d;
+            //$('[id*=lblCompareCount]')[0].innerText = msg.d;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            //alert(jqXHR.responseText);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -111,7 +117,9 @@ function AddToWishList(event, lblProductID) {
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR);
+            //alert(jqXHR);
+            console.error(jqXHR.responseText);
+            alert('Nažalost, došlo je do greške. Pokušajte ponovo.')
         }
     })
 }
@@ -275,4 +283,17 @@ function GetCartProductsCount() {
 
 function formatCurrency(value) {
     return value.toLocaleString('sr', { minimumFractionDigits: 2 });
+}
+
+function btnProductCompareRemove_Click(lblProductID) {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/DeleteFromProductCompare',
+        data: JSON.stringify({ "productID": $('#' + lblProductID).val() }),
+        contentType: 'application/json;chartset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            window.location.href = ('/uporedi');
+        }
+    })
 }

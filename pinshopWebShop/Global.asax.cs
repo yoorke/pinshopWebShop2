@@ -81,6 +81,10 @@ namespace WebShop2
             Exception ex = Server.GetLastError();
             if (ex is System.Threading.ThreadAbortException)
                 return;
+            if (ex != null && ex.Message.Contains("The file") && ex.Message.Contains("does not exist"))
+            {
+                Server.Transfer("not-found.aspx");
+            }
             else
             {
                 eshopUtilities.ErrorLog.LogError(ex, Request.RawUrl, Request.UserHostAddress, Request.Url.ToString());

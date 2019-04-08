@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="passwordChange.aspx.cs" Inherits="WebShop2.passwordChange" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="<%=ResolveUrl("~/css/mainMenuVerticalV1.min.css") %>" />
+    <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-Menu-Vertical-V1.min.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="col-lg-12 page-content">
@@ -10,29 +10,29 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 login">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-4 col-md-offset-4 col-sm-offset-3 login">
                 <div class="form-horizontal" role="form">
                     <div class="form-group">
                         <label for="txtPassword" class="control-label col-md-4">Stara šifra: </label>
                         <div class="col-md-8">
-                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="100%" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtNewPassword" class="control-label col-md-4">Nova šifra: </label>
                         <div class="col-md-8">
-                            <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtNewPassword" runat="server" TextMode="Password" Width="100%" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="txtNewPasswordConfirm" class="control-label col-md-4">Nova šifra ponovo: </label>
                         <div class="col-md-8">
-                            <asp:TextBox ID="txtNewPasswordConfirm" runat="server" TextMode="Password" Width="100%"></asp:TextBox>
+                            <asp:TextBox ID="txtNewPasswordConfirm" runat="server" TextMode="Password" Width="100%" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="text-center">
                         <div class="col-md-4"></div>
-                        <asp:Button ID="btnChangePassword" runat="server" Text="Izmeni šifru" OnClick="btnChangePassword_Click" CssClass="btn btn-red" />
+                        <asp:Button ID="btnChangePassword" runat="server" Text="Izmeni šifru" OnClick="btnChangePassword_Click" CssClass="btn btn-primary" />
                     </div>
                 </div>
                 

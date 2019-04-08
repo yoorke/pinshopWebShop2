@@ -5,7 +5,7 @@
         })
     }
 
-    //if ($(window).width() >= 992) {
-        //$('.slider').css({ 'height': $('.cd-dropdown').height() });
-    //}
+    if ($(window).width() >= 992) {
+        $('.slider').css({ 'height': $('.cd-dropdown').height() });
+    }
 })

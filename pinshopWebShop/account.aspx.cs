@@ -66,11 +66,11 @@ namespace WebShop2
             user.Zip = txtZip.Text;
             user.Phone = txtPhone.Text;
 
-            new UserBL().UpdateUser(user);
+            new UserBL().UpdateUserAccountData(user);
 
             lblStatus.Text = "Podaci o korisniku uspešno izmenjeni.";
             divStatus.Visible = true;
-            divStatus.Attributes["class"] = "status success";
+            divStatus.Attributes["class"] = "alert alert-success text-center";
         }
 
         protected void btnChangePassword_Click(object sender, EventArgs e)

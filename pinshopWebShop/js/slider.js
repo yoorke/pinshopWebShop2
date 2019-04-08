@@ -235,7 +235,7 @@ jQuery.extend( jQuery.easing,
 
 		gridDifference		: 250,	//to make the grid blocks slower than the slices, this value must be smaller than transPeriod
 		
-		height				: '35%',	//here you can type pixels (for instance '300px'), a percentage (relative to the width of the slideshow, for instance '50%') or 'auto'
+		height				: '44.5%',	//here you can type pixels (for instance '300px'), a percentage (relative to the width of the slideshow, for instance '50%') or 'auto'
 		
 		imagePath			: 'images/',	//he path to the image folder (it serves for the blank.gif, when you want to display videos)
 		
@@ -2492,7 +2492,7 @@ $(document).ready(function () {
         })
     }
 
-    //if ($(window).width() >= 992) {
-        //$('.slider').css({ 'height': $('.cd-dropdown').height() });
-    //}
+    if ($(window).width() >= 992) {
+        $('.slider').css({ 'height': $('.cd-dropdown').height() });
+    }
 })

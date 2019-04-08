@@ -34,6 +34,7 @@ namespace WebShop2
                 //List<int> productList = (List<int>)HttpContext.Current.Session["compare"];
                 showProducts();
             }
+            Master.FindControl("mainMenuVertical").Visible = true;
         }
 
         private void showProducts()

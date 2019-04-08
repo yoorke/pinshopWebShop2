@@ -573,6 +573,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="not-found.aspx" />
+    <Content Include="notificationTemplates\emailTemplate.html" />
+    <Content Include="notificationTemplates\footerTemplate.html" />
+    <Content Include="notificationTemplates\headerTemplate.html" />
+    <Content Include="notificationTemplates\orderConfirmationTemplate.html" />
+    <Content Include="notificationTemplates\orderItemTemplate.html" />
     <Content Include="products.aspx" />
     <Content Include="redirect.txt" />
     <Content Include="reports\reportTemplates\product\productPrint.aspx" />
@@ -596,6 +601,7 @@
     <Content Include="webshopAdmin\category.aspx" />
     <Content Include="webshopAdmin\categoryBanner.aspx" />
     <Content Include="webshopAdmin\categoryBanners.aspx" />
+    <Content Include="webshopAdmin\companySettings.aspx" />
     <Content Include="webshopAdmin\coupon.aspx" />
     <Content Include="webshopAdmin\coupons.aspx" />
     <Content Include="webshopAdmin\createUser.aspx" />
@@ -721,6 +727,7 @@
     <Content Include="less\breadcrumbs.less" />
     <Content Include="less\search-control.less" />
     <Content Include="less\fixed-header.less" />
+    <Content Include="less\product-compare.less" />
     <None Include="packages.config" />
     <Content Include="SitemapHandler.ashx" />
     <None Include="Web.Debug.config">
@@ -997,6 +1004,7 @@
     <Compile Include="search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SettingsHandler.cs" />
     <Compile Include="SitemapHandler.ashx.cs">
       <DependentUpon>SitemapHandler.ashx</DependentUpon>
     </Compile>
@@ -1258,6 +1266,13 @@
     </Compile>
     <Compile Include="webshopAdmin\categoryBanners.aspx.designer.cs">
       <DependentUpon>categoryBanners.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webshopAdmin\companySettings.aspx.cs">
+      <DependentUpon>companySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webshopAdmin\companySettings.aspx.designer.cs">
+      <DependentUpon>companySettings.aspx</DependentUpon>
     </Compile>
     <Compile Include="webshopAdmin\coupon.aspx.cs">
       <DependentUpon>coupon.aspx</DependentUpon>

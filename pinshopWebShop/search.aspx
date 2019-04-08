@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-menu-vertical-v1.min.css") %>" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="col-lg-12 page-content products">
+    <div class="col-lg-12 products">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="heading">

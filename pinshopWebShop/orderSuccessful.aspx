@@ -1,5 +1,13 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="orderSuccessful.aspx.cs" Inherits="WebShop2.orderSuccessful" Title="Narudžbina uspešno prosleđena | Webshop" %>
 <%@ Register Src="userControls/Banner.ascx" TagName="Banner" TagPrefix="Ws" %>
+<asp:Content ID="content3" ContentPlaceHolderID="headBefore" runat="server">
+    <script>
+        var dataLayer = window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+            orderTotal: <%=this.OrderValue%>
+        })
+    </script>
+</asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-menu-vertical-v1.min.css") %>" />
 </asp:Content>
