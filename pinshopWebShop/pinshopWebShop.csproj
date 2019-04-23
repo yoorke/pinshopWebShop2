@@ -628,6 +628,7 @@
     <Content Include="webshopAdmin\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="webshopAdmin\getProducts.aspx" />
     <Content Include="webshopAdmin\getProductsKimtec.aspx" />
+    <Content Include="webshopAdmin\getProductsThreeg.aspx" />
     <Content Include="webshopAdmin\images\arrow_down.png" />
     <Content Include="webshopAdmin\images\arrow_up.png" />
     <Content Include="webshopAdmin\images\delete_icon.png" />
@@ -1350,6 +1351,13 @@
     </Compile>
     <Compile Include="webshopAdmin\getProductsKimtec.aspx.designer.cs">
       <DependentUpon>getProductsKimtec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webshopAdmin\getProductsThreeg.aspx.cs">
+      <DependentUpon>getProductsThreeg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webshopAdmin\getProductsThreeg.aspx.designer.cs">
+      <DependentUpon>getProductsThreeg.aspx</DependentUpon>
     </Compile>
     <Compile Include="webshopAdmin\kimtecCategories.aspx.cs">
       <DependentUpon>kimtecCategories.aspx</DependentUpon>

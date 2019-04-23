@@ -76,7 +76,6 @@ namespace webshopAdmin
         {
             try
             {
-                code = code.Contains("\t") ? code.Replace("\t", "") : code;
                 bool saved = new EweBL().SaveProduct(code, isApproved, isActive, categoryID);
                 return saved ? "Saved" : "Not saved";
             }
@@ -98,6 +97,20 @@ namespace webshopAdmin
             catch(Exception ex)
             {
                 throw new Exception("Error: Code " + code);
+            }
+        }
+
+        [WebMethod]
+        public static string SaveProductThreeg(string code, bool isApproved, bool isActive, int categoryID)
+        {
+            try
+            {
+                bool saved = new ThreegBL().SaveProduct(code, isApproved, isActive, categoryID);
+                return saved ? "Saved" : "Not saved";
+            }
+            catch(Exception ex)
+            {
+                return "Not saved. " + ex.Message;
             }
         }
 
