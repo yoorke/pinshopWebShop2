@@ -142,7 +142,7 @@
                         <%--<span class="col-sm-3"></span>--%>
                         <%--<div class="col-sm-12 margin-top-2 margin-bottom-2">--%>
                         <div class="col-md-12">
-                            <BotDetectCaptcha:WebFormsCaptcha ID="botDetect1" runat="server" />
+                            <BotDetectCaptcha:WebFormsCaptcha ID="botDetect1" runat="server" UserInputControlID="CaptchaCode" />
                         </div>
                     </div>
                     <div class="form-group text-center">
@@ -153,7 +153,7 @@
                     </div>
                     <hr />
                     <div class="text-center">
-                        <asp:Button ID="btnCreateUser" runat="server" OnClick="btnCreateUser_Click" CssClass="btn btn-primary" Text="Kreiraj nalog" />
+                        <asp:Button ID="btnCreateUser" runat="server" OnClick="btnCreateUser_Click" CssClass="btn btn-primary" Text="Kreiraj nalog" OnClientClick="return Validate()" />
                     </div>
                 </div>
             </div>
@@ -161,5 +161,5 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src='<%=ResolveUrl("/js/registration.min.js") %>'></script>
+    <script src='<%=ResolveUrl("/js/registration.js") %>'></script>
 </asp:Content>

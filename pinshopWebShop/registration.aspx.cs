@@ -24,8 +24,8 @@ namespace WebShop2
         {
             try
             {
-                //if (botDetect1.Validate(CaptchaCode.Text))
-                //{
+                if (botDetect1.Validate(CaptchaCode.Text))
+                {
                     if (checkData())
                     {
                         //User user = new User();
@@ -54,9 +54,9 @@ namespace WebShop2
                         divLoginMessage.Visible = true;
                         lblLoginText.InnerText = "Unesite sve obavezne podatke.";
                     }
-                //}
-                //else
-                    CaptchaErrorLabel.Text = "ewrwer";
+                }
+                else
+                    CaptchaErrorLabel.Text = "Tekst sa slike nije validan.";
             }
             catch (Exception ex)
             {

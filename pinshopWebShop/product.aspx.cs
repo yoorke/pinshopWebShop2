@@ -51,6 +51,7 @@ namespace WebShop2
                     int productID;
                     int.TryParse(sb.ToString(), out productID);
                     loadProduct(productID);
+                    //createDescription();
                 }
             }
             else
@@ -148,6 +149,9 @@ namespace WebShop2
                 }
 
                 ViewState.Add("productUrl", product.Url);
+                //ViewState.Add("brandName", product.Brand.Name);
+                //ViewState.Add("ean", product.Ean);
+                createDescription(product.Brand.Name, product.Ean);
             }
             else
             {
@@ -241,6 +245,29 @@ namespace WebShop2
             ((Literal)sliderCategory.FindControl("lblNext1")).Text = @"<a id=""next"" runat=""server"" href=""#carouselCategory"" data-slide=""next"" class=""next_button""><span class='fa fa-fw fa-chevron-circle-right direction-icon'></span></a>";
             ((Literal)sliderCategory.FindControl("lblCarousel")).Text = @"<div id=""carouselCategory"" class=""carousel slide"" data-ride="""" runat=""server"">";
             ((Literal)sliderCategory.FindControl("lblCarouselClose")).Text = "</div>";
+        }
+
+        private void createDescription(string brand, string ean)
+        {
+            StringBuilder script = new StringBuilder();
+            script.Append("<script type='text/javascript' ")
+                .Append("src = '//media.flixfacts.com/js/loader.js' ")
+                .Append("data-flix-distributor='15602' ")
+                .Append("data-flix-language='rs' ")
+                //.Append("data-flix-brand='Samsung' ")
+                .Append("data-flix-brand='" + brand[0].ToString().ToUpper() + brand.Substring(1).ToLower() + "' ")
+                //.Append("data-flix-mpn='UA60ES8000MXXY' ")
+                //.Append("data-flix-ean='8801643996680' ")
+                .Append("data-flix-ean='" + ean + "' ")
+                .Append("data-flix-sku='' ")
+                .Append("data-flix-button='flix-minisite' ")
+                .Append("data-flix-inpage='flix-inpage' ")
+                .Append("data-flix-button-image='' ")
+                .Append("data-flix-price='' ")
+                .Append("data-flix-fallback-language='' ")
+                .Append("async></script>");
+            if (!ClientScript.IsStartupScriptRegistered("productDescription"))
+                ClientScript.RegisterStartupScript(this.GetType(), "productDescription", script.ToString());
         }
     }
 }

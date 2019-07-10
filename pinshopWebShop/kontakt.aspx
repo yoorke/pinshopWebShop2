@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/webShop.Master" AutoEventWireup="true" CodeBehind="kontakt.aspx.cs" Inherits="WebShop2.kontakt" %>
+<%@ Register Assembly="BotDetect" Namespace="BotDetect.Web.UI" TagPrefix="BotDetectCaptcha" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="<%=ResolveUrl("~/css/main-Menu-Vertical-V1.min.css") %>" />
 </asp:Content>
@@ -78,6 +79,18 @@
                             <div class="col-lg-9">
                                 <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="requiredFieldValidator3" runat="server" ControlToValidate="txtMessage" Display="Dynamic" ErrorMessage="Poruka je obavezan podatak" CssClass="form-control-error"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3"></label>
+                            <div class="col-md-9">
+                                <BotDetectCaptcha:WebFormsCaptcha ID="botDetect1" runat="server" UserInputControlID="txtCaptchaCode" ImageSize="150,50" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Kod sa slike:</label>
+                            <div class="col-md-9">
+                                <asp:TextBox ID="txtCaptchaCode" runat="server" CssClass="form-control" placeholder="Unesite kod sa slike"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">

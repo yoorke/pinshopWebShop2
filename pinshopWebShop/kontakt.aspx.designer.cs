@@ -67,6 +67,24 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator requiredFieldValidator3;
         
         /// <summary>
+        /// botDetect1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BotDetect.Web.UI.WebFormsCaptcha botDetect1;
+        
+        /// <summary>
+        /// txtCaptchaCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCaptchaCode;
+        
+        /// <summary>
         /// btnSend control.
         /// </summary>
         /// <remarks>

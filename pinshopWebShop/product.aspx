@@ -160,6 +160,8 @@
             <div class="col-lg-12">
                 <h3>Opis</h3>
                 <asp:Literal ID="lblDescription" runat="server"></asp:Literal>
+                <div id="flix-minisite"></div>
+                <div id="flix-inpage"></div>
             </div><%--col--%>
         </div><%--row--%>
 
