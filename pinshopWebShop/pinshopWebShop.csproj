@@ -480,6 +480,7 @@
     <Content Include="images\visa1.jpg" />
     <Content Include="jQueryTemplates\cartFPTemplate.html" />
     <Content Include="jQueryTemplates\searchItemsTemplate.html" />
+    <Content Include="jQueryTemplates\searchProductItemsTemplate.html" />
     <Content Include="js.src\fixed-header.js" />
     <Content Include="js.src\product-image-zoom.js" />
     <Content Include="js.src\search-control.js" />

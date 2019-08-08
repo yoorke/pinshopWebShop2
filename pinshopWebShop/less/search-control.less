@@ -22,8 +22,39 @@
         padding: 5px;
     }
 
-    tr a:hover{
+    tr a.product{
+        text-align: center;
+        border-bottom:1px solid #eee;
+        margin-right: 0;
+        img{
+            display:block;
+            margin: 0 auto;
+            //width: 75px;
+            padding: 0;
+        }
+
+        span.name, span.price{
+            display: block;
+            //width:100%;
+        }
+
+        span.price{
+            text-align: right;
+            font-weight:bold;
+            font-size:1.1em;
+            color: @brand-primary;
+            padding-right: 5px;
+        }
+    }
+
+    tr a:hover:not(.product){
         color: #fff;
         background-color: lighten(@brand-primary, 10%);
+    }
+
+    tr a.product:hover{
+        span.price{
+            //color: #fff;
+        }
     }
 }

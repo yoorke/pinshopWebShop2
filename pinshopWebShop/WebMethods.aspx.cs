@@ -173,5 +173,11 @@ namespace WebShop2
         {
             return JsonConvert.SerializeObject(new CategoryBL().Search(searchText));
         }
+
+        [WebMethod()]
+        public static string GetProductsSearchData(string searchText)
+        {
+            return JsonConvert.SerializeObject(new ProductBL().SearchProductsSimple(searchText, "product.name", -1, 5));
+        }
     }
 }

@@ -93,7 +93,7 @@ namespace webshopAdmin
                 category.ImageUrlPositionY = int.TryParse(txtPositionY.Text, out positionY) ? int.Parse(txtPositionY.Text) : 0;
                 category.Icon = txtIcon.Text;
                 category.ShowProductsFromSubCategories = chkShowProductsFromSubCategories.Checked;
-                category.PriceFixedAmount = double.Parse(txtPriceFixedAmount.Text);
+                category.PriceFixedAmount = txtPriceFixedAmount.Text.Length > 0 ? double.Parse(txtPriceFixedAmount.Text) : 0;
 
                 CategoryBL categoryBl = new CategoryBL();
                 int categoryID = categoryBl.SaveCategory(category);

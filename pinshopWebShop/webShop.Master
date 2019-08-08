@@ -301,7 +301,7 @@
     <script src="<%=ResolveUrl("~/js/bundle.min.js?v=2.11") %>"></script>
     <script src="/js.src/web-shop.js" type="text/javascript"></script>
     <%--<script src="/js.src/main.js" type="text/javascript"></script>--%>
-    <%--<script src="/js.src/search-control.js" type="text/javascript"></script>--%>
+    <script src="/js.src/search-control.js" type="text/javascript"></script>
     <%--<script src="/js.src/fixed-header.js" type="text/javascript"></script>--%>
     <%--<script src="/js.src/slider-start.js" type="text/javascript"></script>--%>
     <%--<script src="/js.src/product-image-zoom.js" type="text/javascript"></script>--%>

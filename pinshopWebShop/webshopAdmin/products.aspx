@@ -171,7 +171,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="ProductID" ControlStyle-Width="50px" Visible="false">
+                            <asp:TemplateField HeaderText="ID" ControlStyle-Width="50px" Visible="true" ItemStyle-Width="50px">
                                 <ItemTemplate>
                                     <asp:Label ID="lblProductID" runat="server" Text='<%#Eval("productID") %>'></asp:Label>
                                 </ItemTemplate>

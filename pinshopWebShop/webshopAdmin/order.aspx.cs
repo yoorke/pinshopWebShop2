@@ -50,7 +50,7 @@ namespace webshopAdmin
             lblDate.Text = order.Date.ToString();
             lblFirstname.Text = order.Firstname;
             lblLastname.Text = order.Lastname;
-            lblUserType.Text = lblName.Text.Length > 0 ? "Pravno lice" : "Fizičko lice";//order.UserType;
+            lblUserType.Text = order.Name.Length > 0 || lblName.Text.Length > 0 ? "Pravno lice" : "Fizičko lice";//order.UserType;
             lblName.Text = order.Name.Length > 0 ? order.Name : "-";
             lblPib.Text = order.Pib.Trim().Length > 0 ? order.Pib : "-";
             lblAddress.Text = order.Address;

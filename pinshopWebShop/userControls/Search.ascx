@@ -3,6 +3,13 @@
     <input type="text" id="txtSearch" class="form-control" placeholder="Pronađi" maxlength="100" />
     <span class="input-group-btn"><button type="button" id="btnSearch" class="btn btn-default" onclick="btnSearch_Click"><span class="fa fa-search"></span></button></span>
     <div class="search-items-cont" style="display:none" id="searchItemsCont">
-        <table id="tblSearchItems"></table>
+        <div class="row">
+            <div class="col-md-7">
+                <table id="tblSearchItems"></table>
+            </div>
+            <div class="col-md-5">
+                <table id="tblSearchProductItems"></table>
+            </div>
+        </div>
     </div>
 </div>
