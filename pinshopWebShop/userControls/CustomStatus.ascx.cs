@@ -45,6 +45,11 @@ namespace WebShop2.UserControls
             set { _class = value; }
         }
 
+        public string GetClientID
+        {
+            get { return divCol.ClientID; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblStatusText.ForeColor = _foreColor;
@@ -58,7 +63,8 @@ namespace WebShop2.UserControls
             lblStatusText.Text = _text;
             //lblStatusText.ForeColor = _foreColor;
             lblStatusText.Visible = _visible;
-            lblStatusText.Attributes["class"] = _class;
+            //lblStatusText.Attributes["class"] = _class;
+            divCol.Attributes["class"] = "alert alert-" + _class + " text-center";
         }
     }
 }

@@ -478,6 +478,7 @@
     <Content Include="images\raiffeisen1.jpg" />
     <Content Include="images\verifajd1.jpg" />
     <Content Include="images\visa1.jpg" />
+    <Content Include="index-maintenance.html" />
     <Content Include="jQueryTemplates\cartFPTemplate.html" />
     <Content Include="jQueryTemplates\searchItemsTemplate.html" />
     <Content Include="jQueryTemplates\searchProductItemsTemplate.html" />

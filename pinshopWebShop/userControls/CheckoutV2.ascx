@@ -4,7 +4,8 @@
     <a id="account" name="account"></a>
     <div class="row margin-top-1 margin-bottom-1">
         <div class="col-lg-12">
-            <uc1:CustomStatus ID="csStatus" runat="server" />
+            <a name="csStatus1" id="csStatus1"></a>
+            <uc1:CustomStatus ID="csStatus" runat="server" name="csStatus" />
         </div><%--col--%>
     </div><%--row--%>
     <asp:Panel ID="pnlLogin" DefaultButton="btnLogin" runat="server">
@@ -543,6 +544,16 @@
         }, 3000);
             return true;
         }
+    }
+
+    function scrollToErrorDiv() {
+        //alert('weqweqw');
+        //$('#csStatus1').scrollIntoView();
+        var offset = $('#csStatus1').offset();
+        $('body,html').animate({
+            scrollTop: offset.top - 50,
+            scrollLeft: offset.left
+        }, 500)
     }
 </script>
 <script>

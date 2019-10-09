@@ -85,7 +85,13 @@ namespace WebShop2.UserControls
             }
             catch (BLException ex)
             {
-                setStatus(ex.Message, System.Drawing.Color.Red, true, "alert-danger");
+                setStatus(ex.Message, System.Drawing.Color.Red, true, "danger");
+                //Page.MaintainScrollPositionOnPostBack = false;
+                //Page.SetFocus(csStatus);
+                //Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "hash", "alert('12312312')", true);
+                //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "setFocus", "location.hash = " + csStatus.GetClientID, true);
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "setFocus", "scrollToErrorDiv()", true);
+                //Page.RegisterClientScriptBlock("hash", "location.hash = " + csStatus.GetClientID);
             }
         }
 
@@ -158,7 +164,7 @@ namespace WebShop2.UserControls
             csStatus.Text = text;
             csStatus.ForeColor = color;
             csStatus.Visible = visible;
-            csStatus.Class = "alert " + classes;
+            csStatus.Class = classes;
             csStatus.Show();
         }
 

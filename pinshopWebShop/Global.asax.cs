@@ -39,6 +39,9 @@ namespace WebShop2
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            //if(!HttpContext.Current.Request.RawUrl.Contains("index.html") && !HttpContext.Current.Request.RawUrl.Contains(".jpg") && !HttpContext.Current.Request.RawUrl.Contains(".png") &&!HttpContext.Current.Request.RawUrl.Contains(".ico"))
+                //Response.Redirect("/index.html");
+
             if (((bool.Parse(ConfigurationManager.AppSettings["useSSL"]) && !HttpContext.Current.Request.IsSecureConnection)
                 || !HttpContext.Current.Request.Url.ToString().ToLower().StartsWith(ConfigurationManager.AppSettings["webShopUrl"]))
                 && !HttpContext.Current.Request.IsLocal)
