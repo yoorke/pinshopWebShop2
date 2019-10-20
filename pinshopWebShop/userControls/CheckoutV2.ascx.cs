@@ -47,7 +47,7 @@ namespace WebShop2.UserControls
             try
             {
                 int userID=1;
-                if (chkCreateAccount.Checked)
+                if (chkCreateAccount.Checked && !(new UserBL().UserExists(txtEmail.Text)))
                 {
                     User user = createUser();
                     userID = user.UserID;
