@@ -455,6 +455,7 @@
     <Content Include="css\style.min.css" />
     <Content Include="customPage.aspx" />
     <Content Include="default.aspx" />
+    <Content Include="error.aspx" />
     <Content Include="error.html" />
     <Content Include="eweXslt.xslt" />
     <Content Include="favicon.ico" />
@@ -886,6 +887,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

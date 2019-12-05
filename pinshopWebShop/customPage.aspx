@@ -18,10 +18,10 @@
                 <div id="divContent" runat="server"></div>
             </div>
         </div>
-        <div class="row margin-top-2">
+        <div class="row margin-top-2 product_box">
             <asp:Repeater ID="rptProducts" runat="server">
                 <ItemTemplate>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 padding-left-0 padding-right-0">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 product-fp-col">
                         <ws:ProductFP id="productFP" runat="server" ProductItem='<%#Container.DataItem %>' />
                     </div>
                 </ItemTemplate>

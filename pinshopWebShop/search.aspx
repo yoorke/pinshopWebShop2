@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="heading">
-                    Pretraga: <asp:Literal ID="lblHeading" runat="server" EnableViewState="false"></asp:Literal>
-                    , u kategoriji: <asp:Literal ID="lblCategoryName" runat="server" EnableViewState="false"></asp:Literal>
+                    Pretraga: <asp:Literal ID="lblHeading" runat="server" EnableViewState="true"></asp:Literal>
+                    , u kategoriji: <asp:Literal ID="lblCategoryName" runat="server" EnableViewState="true"></asp:Literal>
                 </h1>
             </div>
         </div>
@@ -53,6 +53,11 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
+            </div>
+        </div>
+        <div class="row product-pager">
+            <div class="col-lg-5">
+                <Ws2:Pager ID="pager2" runat="server" OnOnClick="pager1_OnClick" />
             </div>
         </div>
     </div>

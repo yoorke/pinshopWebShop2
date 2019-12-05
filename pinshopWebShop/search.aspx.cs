@@ -70,6 +70,10 @@ namespace WebShop2
                 pager1.currentPage = currentPage;
                 pager1.doPaging();
 
+                pager2.TotalPages = int.Parse(ViewState["totalPages"].ToString());
+                pager2.currentPage = currentPage;
+                pager2.doPaging();
+
                 rptProducts.DataSource = pagedDataSource;
                 rptProducts.DataBind();
             }

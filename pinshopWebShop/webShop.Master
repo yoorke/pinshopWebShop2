@@ -32,6 +32,9 @@
             (document, 'script', 'facebook-jssdk'));
     </script>
 
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/67398b57bc51b2dc8f5c9dc07/1a35513cfa98b2cc13bc90b32.js");</script>
+
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
