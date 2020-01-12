@@ -47,6 +47,10 @@ namespace WebShop2
                     ViewState["categoryID"] = categoryID;
                     loadIntoForm();
                     searchProducts();
+                    int categoryIDValue = -1;
+                    int.TryParse(categoryID, out categoryIDValue);
+                    //if (categoryIDValue == -1)
+                        loadCategories(searchString);
                 }
             }
         }
@@ -121,6 +125,15 @@ namespace WebShop2
             cmbSort.Items.Add(new ListItem("Ceni opadajuće", "priceDesc"));
             cmbSort.Items.Add(new ListItem("Ceni rastuće", "priceAsc"));
             cmbSort.SelectedValue = sort;
+        }
+
+        private void loadCategories(string search)
+        {
+            var categories = new CategoryBL().Search(search);
+            rptCategories.DataSource = categories;
+            rptCategories.DataBind();
+
+            divCategories.Visible = categories != null && categories.Rows.Count > 0;
         }
     }
 }

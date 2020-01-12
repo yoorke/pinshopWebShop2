@@ -2864,7 +2864,7 @@ function GetCartItems() {
         success: function (response) {
             $('#tblCartItems tr').remove();
             $('#cartFpMessage').show();
-            $.get('/jQueryTemplates/cartFPTemplate.html', null, function (cartTemplate) {
+            $.get('/jQueryTemplates/cartFPTemplate.html?v=1', null, function (cartTemplate) {
                 if (JSON.parse(response.d).length > 0)
                     $('#cartFpMessage').hide();
                 $.tmpl(cartTemplate, JSON.parse(response.d)).appendTo('#tblCartItems');

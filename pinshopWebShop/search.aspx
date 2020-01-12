@@ -43,6 +43,21 @@
                 </div>
             </div>
         </div>
+        <div class="row text-center margin-bottom-1 hidden-xs" id="divCategories" runat="server" visible="false">
+            <asp:Repeater ID="rptCategories" runat="server">
+                <ItemTemplate>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center">
+                        <div class="subCategory-cont">
+                            <asp:HyperLink runat="server" NavigateUrl='<%#"/pretraga?s=" + ViewState["searchString"] + "&c=" + Eval("categoryID")%>'>
+                                <div class="subCategory-name">
+                                    <asp:Label id="lblSubCategoryName" runat="server" Text='<%#Eval("name") %>'></asp:Label>
+                                </div>
+                            </asp:HyperLink>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
         <div class="row product_box">
             <div class="col-lg-12">
                 <asp:Repeater ID="rptProducts" runat="server">

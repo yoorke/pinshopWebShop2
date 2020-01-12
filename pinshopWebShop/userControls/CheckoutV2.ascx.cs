@@ -127,7 +127,7 @@ namespace WebShop2.UserControls
             order.Delivery = new Delivery(int.Parse(rdbDelivery.SelectedValue.ToString()), rdbDelivery.SelectedItem.Text);
             CartBL cartBL = new CartBL();
             order.Coupon = new Coupon(cartBL.GetCartCoupon(Session["cartID"].ToString()), string.Empty, 0, string.Empty, DateTime.Now, DateTime.Now, null, null);
-            order.OrderStatus = new OrderStatus(1, string.Empty);
+            order.OrderStatus = new OrderStatus(1, string.Empty, false);
             order.Zip = txtZip.Text;
             order.Comment = txtRemark.Text;
             order.CartID = Session["cartID"].ToString();

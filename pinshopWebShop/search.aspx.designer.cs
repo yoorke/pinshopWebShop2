@@ -58,6 +58,24 @@ namespace WebShop2 {
         protected global::System.Web.UI.WebControls.DropDownList cmbSort;
         
         /// <summary>
+        /// divCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCategories;
+        
+        /// <summary>
+        /// rptCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptCategories;
+        
+        /// <summary>
         /// rptProducts control.
         /// </summary>
         /// <remarks>
