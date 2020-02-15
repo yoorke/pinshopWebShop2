@@ -98,15 +98,22 @@ namespace WebShop2.UserControls
                 //}
 
                 HyperLink lblPage = (HyperLink)e.Item.FindControl("lblPage");
-                lblPage.Attributes.Add("onclick", "changePage(" + lblPage.Text + ")");
-                if (lblPage.Text == (currentPage + 1).ToString())
-                {
-                    //lblPage.Enabled = false;
-                    lblPage.Font.Bold = true;
-                    lblPage.Attributes["class"] = "paging-active";
+                if(!lblPage.Text.Equals("..."))
+                { 
+                    lblPage.Attributes.Add("onclick", "changePage(" + lblPage.Text + ")");
+                    if (lblPage.Text == (currentPage + 1).ToString())
+                    {
+                        //lblPage.Enabled = false;
+                        lblPage.Font.Bold = true;
+                        lblPage.Attributes["class"] = "paging-active";
+                    }
+                    else
+                        lblPage.Attributes["class"] += " cursor-pointer";
                 }
                 else
-                    lblPage.Attributes["class"] += " cursor-pointer";
+                {
+                    lblPage.Attributes["class"] = "dot";
+                }
             }
         }
 
@@ -116,21 +123,39 @@ namespace WebShop2.UserControls
             dt.Columns.Add("PageIndex");
             dt.Columns.Add("PageText");
 
-            firstIndex = currentPage - 5;
+            DataRow newRow = dt.NewRow();
+            newRow[0] = 0;
+            newRow[1] = 1;
+            dt.Rows.Add(newRow);
 
-            if (currentPage > 5)
-                lastIndex = currentPage + 5;
-            else
-                lastIndex = 10;
+            firstIndex = currentPage - 3;
 
-            if (lastIndex > _totalPages)
-            {
-                lastIndex = _totalPages;
-                firstIndex = lastIndex - 10;
+
+            if (firstIndex < 1)
+                firstIndex = 1;
+
+            //lastIndex = firstIndex == 1 ? 8 : currentPage + 7;
+            lastIndex = currentPage < 5 ? 8 : currentPage + 4;
+
+            if (lastIndex > _totalPages - 1) { 
+                lastIndex = _totalPages - 1;
+                firstIndex = lastIndex - 7;
             }
 
-            if (firstIndex < 0)
-                firstIndex = 0;
+            //if (currentPage > 3)
+            //lastIndex = currentPage + 5;
+            //else
+            //lastIndex = 7;
+
+            //if (lastIndex > _totalPages - 1)
+            //{
+            //lastIndex = _totalPages - 1;
+            //firstIndex = lastIndex - 7;
+            //}
+
+            //if (firstIndex < 0)
+            //firstIndex = 1;
+
 
             for (int i = firstIndex; i < lastIndex; i++)
             {
@@ -139,6 +164,24 @@ namespace WebShop2.UserControls
                 dr[1] = i + 1;
                 dt.Rows.Add(dr);
             }
+
+            newRow = dt.NewRow();
+            newRow[0] = _totalPages - 1;
+            newRow[1] = _totalPages;
+            dt.Rows.Add(newRow);
+
+            newRow = dt.NewRow();
+            newRow[0] = -1;
+            newRow[1] = "...";
+            if (int.Parse(dt.Rows[1][0].ToString()) > 1)
+                dt.Rows.InsertAt(newRow, 1);
+
+            newRow = dt.NewRow();
+            newRow[0] = -1;
+            newRow[1] = "...";
+
+           if (int.Parse(dt.Rows[dt.Rows.Count - 2][0].ToString()) < _totalPages - 2)
+                dt.Rows.InsertAt(newRow, dt.Rows.Count - 1);
 
             rptPaging.DataSource = dt;
             rptPaging.DataBind();
