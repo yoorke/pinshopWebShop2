@@ -74,9 +74,9 @@ namespace WebShop2.UserControls
                         Common.SendNewOrderNotification(order.OrderID.ToString(), order, settings);
                     });
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    throw;
                 }
                 new CartBL().ClearItems(Session["cartID"].ToString());
                 new CartBL().RemoveCoupon(Session["cartID"].ToString());

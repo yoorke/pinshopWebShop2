@@ -132,7 +132,7 @@
                                     <div class="col-lg-12">
                                         <div role="form">
                                             <div class="form-group">
-                                                <label for="txtAddress">Adresa: </label>
+                                                <label for="txtAddress">Ulica i broj: </label>
                                                 <asp:TextBox ID="txtAddress" runat="server" CssClass="textbox form-control"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="requiredFieldValidator4" runat="server" ControlToValidate="txtAddress" ErrorMessage="Adresa je obavezan podatak" Display="Dynamic" CssClass="form-control-error"></asp:RequiredFieldValidator>
                                             </div><%--form-group--%>

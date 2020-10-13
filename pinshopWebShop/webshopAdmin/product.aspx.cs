@@ -130,6 +130,8 @@ namespace webshopAdmin
             }
             else
                 Page.Response.Redirect("/" + ConfigurationManager.AppSettings["webshopAdminUrl"] + "/login.aspx?returnUrl=" + Page.Request.RawUrl);
+
+            disableCache();
         }
 
         private void loadIntoForm()
@@ -743,6 +745,7 @@ namespace webshopAdmin
                 txtCode.Text = string.Empty;
                 txtSupplierCode.Text = string.Empty;
                 txtEan.Text = string.Empty;
+                cmbSupplier.SelectedIndex = -1;
 
                 txtCode.Focus();
 
@@ -755,6 +758,16 @@ namespace webshopAdmin
             customStatus.Text = text;
             customStatus.Class = classes;
             customStatus.Show();
+        }
+
+        private void disableCache()
+        {
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.Now.AddDays(-1));
+            Response.Cache.SetNoStore();
+            Response.Cache.SetProxyMaxAge(new TimeSpan(0, 0, 0));
+            Response.Cache.SetValidUntilExpires(false);
+            Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
         }
     }
 }

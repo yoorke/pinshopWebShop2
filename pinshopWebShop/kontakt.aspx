@@ -42,7 +42,7 @@
                 <h4 class="section-header">Email</h4>
                 <p class="contact-box">
                     <span class="fa fa-fw fa-envelope icon"></span>
-                    <span>maloprodaja at pinshop.rs</span>
+                    <span>prodaja at pinshop.rs</span>
                 </p>
                 <h4 class="section-header">Pronađite nas na društvenim mrežama</h4>
                 <p class="contact-box">

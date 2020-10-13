@@ -140,6 +140,8 @@ namespace WebShop2.UserControls
             if (lastIndex > _totalPages - 1) { 
                 lastIndex = _totalPages - 1;
                 firstIndex = lastIndex - 7;
+                if (firstIndex < 1)
+                    firstIndex = 1;
             }
 
             //if (currentPage > 3)
@@ -165,23 +167,27 @@ namespace WebShop2.UserControls
                 dt.Rows.Add(dr);
             }
 
-            newRow = dt.NewRow();
-            newRow[0] = _totalPages - 1;
-            newRow[1] = _totalPages;
-            dt.Rows.Add(newRow);
+            if(lastIndex - firstIndex > -1)
+            { 
+                newRow = dt.NewRow();
+                newRow[0] = _totalPages - 1;
+                newRow[1] = _totalPages;
+                dt.Rows.Add(newRow);
+            }
 
             newRow = dt.NewRow();
             newRow[0] = -1;
             newRow[1] = "...";
-            if (int.Parse(dt.Rows[1][0].ToString()) > 1)
+            if (dt.Rows.Count > 1 && int.Parse(dt.Rows[1][0].ToString()) > 1)
                 dt.Rows.InsertAt(newRow, 1);
 
             newRow = dt.NewRow();
             newRow[0] = -1;
             newRow[1] = "...";
 
-           if (int.Parse(dt.Rows[dt.Rows.Count - 2][0].ToString()) < _totalPages - 2)
-                dt.Rows.InsertAt(newRow, dt.Rows.Count - 1);
+            if(dt.Rows.Count > 2)
+                if (int.Parse(dt.Rows[dt.Rows.Count - 2][0].ToString()) < _totalPages - 2)
+                    dt.Rows.InsertAt(newRow, dt.Rows.Count - 1);
 
             rptPaging.DataSource = dt;
             rptPaging.DataBind();
